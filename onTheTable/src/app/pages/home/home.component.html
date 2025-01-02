@@ -1,0 +1,16 @@
+<app-login-mesa *ngIf="mode==1"  [(mode)]="mode"></app-login-mesa>
+<!-- <app-cad-reserva></app-cad-reserva> -->
+<div class="back centralizado">
+    <div class="conteudo container">
+        <div class="cabecalho container centralizado">
+            <img src="./assets/main/main.png" alt="">
+        </div>
+        <div class="botoes centralizado">
+            <p>Seja bem-vindo! Vamos começar?</p>
+
+            <button class="botaoVermelho" (click)="irPara()">Escanear código da mesa</button>
+            <button class="botaoBorda" (click)="mode=1">Preencher código manualmente</button>
+            <a>Reservar mesa</a>
+        </div>
+    </div>
+</div>

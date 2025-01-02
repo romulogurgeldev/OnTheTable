@@ -1,0 +1,59 @@
+.back{
+    
+    height: 100vh;
+    justify-content: flex-start;
+   
+}
+.cabecalho h1{
+    font-size: 20px;
+    color: white;
+}
+.infoRestaurante{
+    align-items: flex-start;
+    width: 80%;
+    margin-bottom: 5%;
+}
+.infoRestaurante h2{
+    font-size: 15px;
+}
+.cadaIntegrante{
+    width: 78%;
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.1),
+    inset 1px 1px 2px #fff;
+    
+    min-height: 60px;
+    padding: 1%;
+    margin-bottom: 5%;
+    padding-bottom: 5%;
+    background-color: white;
+}
+.foto{
+    width: 100px;
+    height: 100px;
+    margin-top: 10px; 
+    margin-bottom: 10px;
+}
+.infoPedido p{
+    text-align: center;
+}
+.cabecalho{
+    width: 79%;
+    
+    margin-top: 0%;
+    height: 50px;
+    margin-bottom: 5%;
+    width: 100%;
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.1);
+}
+.botoes{
+    width: 100%;
+
+}
+.botoes button{
+    margin-top: 5%;
+}
+.botoes a{
+    margin-top: 5%;
+    text-decoration: underline;
+}
+

@@ -1,0 +1,221 @@
+<div class="back"  >
+
+    <div class="cadaCategoria" *ngFor="let item of categorias; let i=index" [ngClass]="{'abrir': abrir2[i]==true, 'fechar': abrir2[i]==false}" >
+        <div class="cabecalho centralizado" [ngClass]="{'comSombra': abrir2[i]==true}">
+
+            <table   >
+                <tr>
+                    <td class="tituloTable tituloInicio centralizado" *ngIf="item.comidas && tipo=='comida'" >
+                        <div class="tituloTexto centralizado">
+                            <h1 class="centralizado" (click)="abrir2[i]= abrir2==null ? true : !abrir2[i] ">
+                                {{item.name}}
+    
+                            </h1>
+                            <h1 class="centralizado" (click)="abrir2[i]= abrir2==null ? true : !abrir2[i] " style="margin-left:5px ;">
+                                ({{item.comidas.length}})
+    
+                            </h1>
+                            <mat-icon style="margin-top:2px" (click)="abrir2[i]= abrir2==null ? true : !abrir2[i] " *ngIf="!abrir2[i]" >expand_more</mat-icon>
+                            <mat-icon style="margin-top:2px" (click)="abrir2[i]= abrir2==null ? true : !abrir2[i] " *ngIf="abrir2[i]">expand_less</mat-icon>
+                        </div>
+                        <div class="input centralizado" (click)="abrir2[i]= true ">
+                            <input type="text" (keyup)="itemPesquisa($event)">
+                            <mat-icon>search</mat-icon>
+                        </div>
+                        <div class="botoes centralizado">
+                            <button class="btnBranco centralizado" *ngIf="tipo=='comida'"  (click)="abrirJanela(3, item)" title="adicionar prato">
+                                <mat-icon style="color:black">add</mat-icon>
+                                Adicionar Prato
+                            </button>
+                            <button class="botaoVermelho"   (click)="abrirJanela(2, item)" title="Editar nome categoria"><mat-icon>edit</mat-icon></button>
+    
+                        </div>
+
+                    </td> 
+
+                    <td class="tituloTable tituloInicio centralizado" *ngIf="item.mesas && tipo=='mesa'" >
+                        <div class="tituloTexto centralizado">
+                            <h1 class="centralizado" (click)="abrir2[i]= abrir2==null ? true : !abrir2[i] ">
+                                {{item.name }} 
+    
+                            </h1>
+                            <h1 class="centralizado" (click)="abrir2[i]= abrir2==null ? true : !abrir2[i]"  style="margin-left:5px ;">
+                                ({{item.mesas.length}})
+                            </h1>
+                            <mat-icon style="margin-top:2px" *ngIf="!abrir2[i]" (click)="abrir2[i]= abrir2==null ? true : !abrir2[i]" >expand_more</mat-icon>
+                            <mat-icon style="margin-top:2px" *ngIf="abrir2[i]" (click)="abrir2[i]= abrir2==null ? true : !abrir2[i]" >expand_less</mat-icon>
+                        </div>
+                        <div class="input centralizado" (click)="abrir2[i]= true ">
+                            <input type="text" (keyup)="itemPesquisa($event)">
+                            <mat-icon>search</mat-icon>
+                        </div>
+                        <div class="botoes centralizado">
+                                
+                            <button class="btnBranco centralizado" *ngIf="tipo=='mesa'"  (click)="abrirJanela(3, item)" title="adicionar mesa">
+                                	<mat-icon style="color:black">add</mat-icon>
+                                    <p *ngIf="item.name!='Balcão'" style="margin-top: 7%;">Adicionar Mesa</p>
+                                    <p *ngIf="item.name=='Balcão'" style="margin-top: 7%;">Adicionar Balcão</p>
+                                </button>   
+                            <button class="botaoVermelho" *ngIf="item.name!='Balcão'"  (click)="abrirJanela(2, item)" title="Editar nome salão"><mat-icon>edit</mat-icon></button>
+                            
+                        </div>
+                    </td> 
+
+
+
+                    
+                </tr>
+            </table>
+
+        </div>
+        <div class="conteudo" *ngIf="abrir2[i]" [ngClass]="{'sumir': abrir2[i]==false, 'aparecer': abrir2[i]==true}">
+            <table  *ngIf="tipo=='mesa'">
+                <tr>
+                    <td class="tituloTable">
+                        Cód.
+                    </td> 
+                    <td class="tituloTable">
+                        Nome
+                        <mat-icon style="margin-top:2px" (click)="pegaMesa(ordemName, 'name', i); ordemName=-1; ordemSize=1" *ngIf="ordemName===1" >expand_more</mat-icon>
+                        <mat-icon style="margin-top:2px" (click)="pegaMesa(ordemName, 'name', i); ordemName=1; ordemSize=1" *ngIf="ordemName===-1">expand_less</mat-icon>
+                    
+                    </td> 
+                    <td class="tituloTable">
+                        QrCode
+                    </td>
+                    <td class="tituloTable">
+                        Tamanho
+                        <mat-icon style="margin-top:2px" (click)="pegaMesa(ordemSize, 'size', i); ordemSize=-1; ordemName=1" *ngIf="ordemSize===1" >expand_more</mat-icon>
+                        <mat-icon style="margin-top:2px" (click)="pegaMesa(ordemSize, 'size', i); ordemSize=1; ordemName=1" *ngIf="ordemSize===-1">expand_less</mat-icon>
+                    
+                    </td>
+                    <td class="tituloTable">
+
+                    </td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+
+                <tr  *ngFor="let item2 of item.mesas | search: pesquisa; let j = index" >
+                    <td (click)="abrirJanela(4, item, item2)">
+                        <a>{{item2.code}}</a>
+                    </td>
+                    <td (click)="abrirJanela(4, item, item2)">
+                        <a>{{item2.name}}</a>
+                    </td>
+                    <td >
+                        <a class="centralizado" style="flex-direction: row; justify-content: flex-start;" download="{{item2.name}}-{{item2._id.substr(0, 6)}}.png" [href]="pegaQrCode()">                        
+                            <mat-icon  style="font-size: 18px;" >download</mat-icon>
+                            
+                            <p style="font-size: 12px;">Download</p>
+                            <ngx-qrcode  
+                                #teste
+                                value = "{{item2.url}}"
+                        
+                                cssClass = "aclass2"
+                        
+                                
+                            >
+                            </ngx-qrcode>
+                        </a>
+                    </td>
+                    <td >{{item2.size}}</td>
+                    <td ></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <a (click)="abrirJanela(5,item, item2)" title="Editar {{item2.name}}" >
+                            <mat-icon  style="font-size: 18px;">edit</mat-icon>
+    
+                        </a>
+                    </td>
+
+                    <td (click)="openConfirmBox('Este item será apagado e todos os seus dados, não é possível reverter essa ação!', item2._id, j, i)" *ngIf="item.name!='Balcão'" >
+                        <a title="excluir mesa"><mat-icon style="color:rgb(251,88,97) ;">delete</mat-icon></a>
+                    </td>
+                    
+                    <td (click)="openConfirmBox('Este item será apagado e todos os seus dados, não é possível reverter essa ação!', item2._id, j, i)" *ngIf="item.name=='Balcão' && j>0" >
+                        <a title="excluir mesa"><mat-icon style="color:rgb(251,88,97) ;">delete</mat-icon></a>
+                    </td>
+                </tr>
+    
+            </table>
+            <table *ngIf="tipo=='comida'" >
+                <tr>
+
+                    <td class="tituloTable" >
+                        <div class="centralizado" style="flex-direction: row; justify-content: flex-start;">
+                            <p>Nome</p>
+                            <mat-icon (click)="pegaComida(ordemName, 'name', i); ordemName=-1; ordemSize=1" *ngIf="ordemName===1" >expand_more</mat-icon>
+                            <mat-icon (click)="pegaComida(ordemName, 'name', i); ordemName=1; ordemSize=1" *ngIf="ordemName===-1">expand_less</mat-icon>
+                        
+                        </div>
+
+                    </td> 
+
+
+                    <td class="tituloTable"  >
+                        <div class="centralizado" style="flex-direction: row; justify-content: flex-start;">
+                            Preço
+                            <mat-icon (click)="pegaComida(ordemSize, 'price', i); ordemSize=-1; ordemName=1" *ngIf="ordemSize===1" >expand_more</mat-icon>
+                            <mat-icon (click)="pegaComida(ordemSize, 'price', i); ordemSize=1; ordemName=1" *ngIf="ordemSize===-1">expand_less</mat-icon>
+                        
+                        </div>
+
+                    </td>
+                    
+                    <td class="tituloTable"  >
+                        <div class="centralizado" style="flex-direction: row; justify-content: flex-start;">
+                            Disponível
+                            <mat-icon (click)="pegaComida(ordemSize, 'available', i); ordemSize=-1; ordemName=1" *ngIf="ordemSize===1" >expand_more</mat-icon>
+                            <mat-icon (click)="pegaComida(ordemSize, 'available', i); ordemSize=1; ordemName=1" *ngIf="ordemSize===-1">expand_less</mat-icon>
+                        
+                        </div>
+
+
+                    </td>
+                    <td class="tituloTable"  title="complementos">
+                        <div class="centralizado" style="flex-direction: row; justify-content: flex-start;">
+                            Comp.
+
+                        </div>
+
+
+                    </td>
+   
+
+                    <td class="tituloTable" ></td>
+         
+
+                    <td class="tituloTable" ></td>
+                    <td class="tituloTable"  ></td>
+
+                    <td class="tituloTable"  ></td>
+
+                    
+
+                    
+                </tr>
+                
+                <tr  *ngFor="let item2 of item.comidas | search: pesquisa; let j = index" >
+                    <td style="width: 30%;">
+                        <a (click)="abrirJanela(4, item, item2)">{{item2.name}}</a>
+                    </td>
+
+                    <td >{{item2.price | currency:'BRL':true:'1.2-2'}}</td>
+                    <td  >
+                        <mat-slide-toggle [checked]="item2.available" (change)="disponibilidade($event, item2)"></mat-slide-toggle>
+                    </td>
+                    
+                    <td>  {{item2.complementos ? "Sim" : "Não"}}  </td>
+                    <td>    </td>
+                    <td (click)="abrirJanela(5,item, item2)"><a title="editar prato"><mat-icon>edit</mat-icon></a></td>
+                    <td (click)="openConfirmBox('Este item será apagado e todos os seus dados, não é possível reverter essa ação!', item2._id, j, i)"><a title="excluir prato"><mat-icon style="color:rgb(251,88,97) ;">delete</mat-icon></a></td>
+
+                </tr>
+    
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+<app-chama-servico *ngIf="servico" ></app-chama-servico>
+<div (scroll)="onScroll()">
+    <header class="centralizado"  *ngIf="!fixed && mesa" >
+
+        <div class="info centralizado">
+            <div class="compartilhar centralizado">
+                <p>Já cheguei! Avise em qual mesa você está</p>
+                <button class="backgroundImage">
+                    <span class="material-symbols-outlined">
+                        share
+                        </span>
+                </button>
+            </div>
+            <div class="nomeMesa">
+                <h1>{{mesa.restaurant.name}}</h1>
+               
+                <h4>{{mesa.name}}</h4>
+            </div>
+            <div class="pesquisar centralizado">
+                <span class="material-symbols-outlined">search</span>
+                <input type="text" placeholder="Busque seu prato favorito" (keyup)="itemPesquisa($event)">
+            </div>
+        </div>
+    
+    </header>
+    <header class="fixed" *ngIf="fixed" >
+        <div class="textoFixed centralizado">
+            <h1>{{mesa.restaurant.name+" "}}-{{" "+mesa.name}}</h1>
+            
+        </div>
+        <div class="pesquisar centralizado">
+            <span class="material-symbols-outlined">search</span>
+            <input type="text" placeholder="Busque seu prato favorito" (keyup)="itemPesquisa($event)">
+        </div>
+        <div style="margin-top:-2%" *ngIf="!carregando" >
+            <app-lista-categorias [(categoria)]="categoria" [(escolhida)]="escolhida" *ngIf="categoria" [(cor)]="branco"></app-lista-categorias>
+        </div>
+    </header>
+    <app-chama-servico [(servico)]="servico" *ngIf="servico" [(idMesa)]="mesa._id"></app-chama-servico>
+    
+    <div class="chamarGarcom centralizado" *ngIf="!carregando && configRestaurant?.servicos" >
+        
+        <button class="botaoVermelho" (click)="servico=true">Chamar serviço</button>
+        <!-- <div class="imgButton centralizado botaoVermelho">
+            <img src="./assets/icones/pedidos.svg" alt="">
+    
+        </div> -->
+    </div>
+    <div style="margin-top:-2%; margin-left: 5%;" *ngIf="!carregando" >
+        <app-lista-categorias [(categoria)]="categoria" [(escolhida)]="escolhida" *ngIf="categoria" ></app-lista-categorias>
+    </div>
+    
+    <div class="back" *ngIf="!carregando && !pesquisa" [ngClass]="{'backFixed': fixed}" >
+        <div style="margin-top:5%" *ngFor="let item of categoria" >
+            <app-lista-produtos [(mode)]="mode" [categoria]="item" [(idMesa)]="mesa._id" [(promotions)]="promotions" *ngIf="item.name==escolhida || escolhida=='todas'" ></app-lista-produtos>
+        </div>
+    
+    </div>
+    <div class="pesquisa" *ngIf="pesquisa" >
+    
+        <div style="margin-top:5%"  >
+            <app-resultado-pesquisa [(produtos)]="produtos" [(pesquisa)]="pesquisa" [(idMesa)]="mesa._id"></app-resultado-pesquisa>
+        </div>
+    </div>
+    
+</div>

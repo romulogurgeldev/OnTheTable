@@ -1,0 +1,108 @@
+.menu{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 25vw;
+    height: 10vh;
+    min-height: 100px;
+    background-color: white;
+    min-width: 360px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.1),
+    inset 1px 1px 2px #fff;
+    z-index: 2;
+}
+.menu .conteudo{
+    position: relative;
+    opacity: 0;
+
+    width: 100%;
+    height: 0%;
+
+}
+.btnFechar{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 5px;
+}
+.abrir .conteudo{
+
+    height: 85%;
+}
+
+.menu .rodape{
+    width: 100%;
+    height: 15%;
+}
+.menu img{
+    width: 20%;
+}
+.pesquisa{
+    width: 50vw;
+    min-width: 360px;
+    min-height: 10vh;
+
+}
+.back{
+    width: 50vw;
+    min-width: 360px;
+
+    height: 100vh;
+}
+.conteudoCardapio{
+    width: 100%;
+    height: 90vh;
+    padding: 2%;
+}
+.conteudoCardapio .cabecalho h1{
+    font-size: 25px;
+}
+.cardapio{
+    margin-top: 50px;
+    
+}
+.mesas{
+    margin-top: 50px;
+
+}
+
+.abrir{
+    animation-name: abrirPraCima;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+}
+.fechar{
+    
+    animation-name: fecharPraCima;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+}
+.aparecer{
+    animation-delay: 0.1s;
+    animation-name: aparecer;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+}
+.sumir{
+    animation-name: sumir;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+}
+@keyframes abrirPraCima {
+    from {height: 10vh;}
+    to {height: 85vh;}
+}
+@keyframes fecharPraCima {
+    from {height: 85vh;}
+    to {height: 10vh;}
+}
+@keyframes sumir {
+    from {opacity: 1}
+    to {opacity: 0}
+}
+@keyframes aparecer {
+    from {opacity: 0}
+    to {opacity: 1}
+}

@@ -1,0 +1,30 @@
+
+.back{
+    flex-direction: row;
+    height: 100vh;
+    background-color: rgb(240, 240, 240);
+
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow:auto;
+    font-family: 'Lato', sans-serif;
+   
+    
+}
+.back div{
+    width: 30%;
+}
+
+.conteudo{
+    
+    width: 100% !important;
+
+}
+
+.menu{
+    left: 0;
+   
+    background-color: black;
+}
+
+

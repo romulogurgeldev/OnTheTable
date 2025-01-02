@@ -1,0 +1,22 @@
+<div class="back centralizado">
+
+    <div class="conteudo centralizado">
+        <button class="botaoVermelho btnFechar" (click)="fechar()">X</button>
+        <form  [formGroup]="form" class="forms centralizado">  
+            <h5 style="text-align: center;">Bem-vindo ao OnTheTable! digite o código da mesa e bom apetite!</h5>
+
+            <mat-form-field appearance="outline" class="centralizado">
+                <mat-label>Código da Mesa*</mat-label>
+
+                <input matInput name="name"  formControlName="code">
+                <mat-error *ngIf="form.controls['code'].invalid && form.controls['code'].touched" > - Campo obrigatório</mat-error> 
+
+            </mat-form-field>
+            <button class="botaoVermelho" style="margin-top:5%;" 
+            *ngIf="form.controls['code'].valid" (click)="checkin()">Entrar</button>
+            <button class="botaoVermelho botaoDesativado" style="margin-top:5%;" 
+            *ngIf="form.controls['code'].invalid ">Entrar</button>
+        </form>
+    </div>
+</div>
+

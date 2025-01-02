@@ -1,0 +1,48 @@
+<!-- <div class="back" *ngIf="categorias" >
+    <div class="cadaCategoria" *ngFor="let item of categorias; let i=index" [ngClass]="{'abrir': abrir2[i]==true, 'fechar': abrir2[i]==false}" >
+        <div class="cabecalho centralizado">
+
+            <table >
+                <tr>
+                    <td class="tituloTable" (click)="abrir2[i]= abrir2==null ? true : !abrir2[i] ">{{item.name}}</td> 
+                    <td class="tituloTable" *ngIf="item.comidas" >itens: {{item.comidas.length}}</td>
+                    <td class="tituloTable">
+                        <button class="botaoRosa" (click)="createFood(item, i)">+ Adicionar Prato</button>
+                    </td>
+                    <td class="tituloTable">                
+                        <button class="botaoVermelho">Editar</button>
+                    </td>
+                    <td class="tituloTable">
+                        <button class="btnBranco" (click)="deleteCategoria(item._id, i)">Excluir</button>
+                    </td>
+
+                    
+                </tr>
+            </table>
+
+        </div>
+        <div class="conteudo" *ngIf="abrir2[i]" [ngClass]="{'sumir': abrir2[i]==false, 'aparecer': abrir2[i]==true}">
+            <table >
+                <tr>
+                    <td class="tituloTable">Nome</td> 
+                    <td class="tituloTable">Preço</td>
+                    <td class="tituloTable"></td>
+                    <td class="tituloTable"></td>
+                    <td class="tituloTable"></td>
+
+                    
+                </tr>
+                <tr *ngFor="let item2 of item.comidas; let j = index" >
+                    <td>{{item2.name}}</td>
+                    <td >R$ {{item2.price}}</td>
+                    <td><a>Abrir</a></td>
+                    <td><a>Editar</a></td>
+                    <td (click)="deleteFood(item2._id, j, i)"><a>Excluir</a></td>
+
+                </tr>
+    
+            </table>
+        </div>
+    </div>
+</div> -->
+

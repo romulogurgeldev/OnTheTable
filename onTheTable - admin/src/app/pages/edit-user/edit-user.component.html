@@ -1,0 +1,16 @@
+<div class="back centralizado">
+    <div class="centralizado" style="width: 45%; flex-direction: row; justify-content: space-between">
+        <div class="centralizado" style="width: 60%; flex-direction: row; justify-content: space-between">
+            <mat-icon style="margin-top: 3%;" (click)="irPara()">arrow_back_ios</mat-icon>
+            <h1>Editar Perfil</h1>
+        </div>
+    </div>
+    <mat-spinner *ngIf="carregando==true" style="margin-top: 10%"></mat-spinner>
+    <div class="conteudo centralizado" *ngIf="usuario" >
+
+        <app-forms-edit-login [(usuario)]="usuario" [(carregando)]="carregando"></app-forms-edit-login>
+        <app-forms-edit-user [(usuario)]="usuario" [(carregando)]="carregando"></app-forms-edit-user>
+        <app-forms-edit-cep [(usuario)]="usuario" [(carregando)]="carregando"></app-forms-edit-cep>
+
+    </div>
+</div>

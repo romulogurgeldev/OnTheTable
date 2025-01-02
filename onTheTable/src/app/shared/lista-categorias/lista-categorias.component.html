@@ -1,0 +1,5 @@
+<div class="back centralizado" [ngClass]="{'cor2': cor}" >
+    <p (click)="escolheCategoria('todas')" [ngClass]="{'ativado': escolhida=='todas'}" >Todos</p>
+    <p *ngFor="let item of categoria" (click)="escolheCategoria(item.name)" [ngClass]="{'ativado': escolhida==item.name}" >{{item.name}}</p>
+
+</div>

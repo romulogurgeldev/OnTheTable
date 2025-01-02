@@ -1,0 +1,15 @@
+<div class="menu centralizado " [ngClass]="{'abrir': abrir==true, 'fechar': abrir==false}" >
+
+    <div class="conteudo" *ngIf="abrir"  [ngClass]="{'sumir': abrir==false, 'aparecer': abrir==true}">
+        <button class="botaoVermelho btnFechar" (click)="abrir=false">X</button>
+        
+    </div>
+    <div class="centralizado rodape">
+        <img src="./assets/logo.png" alt="" [ngClass]="{'crescer': abrir==false, 'diminuir': abrir==true}">
+
+    </div>
+
+</div>
+
+<app-lista-delivery [(abrir)]="abrir"></app-lista-delivery>
+

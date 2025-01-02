@@ -1,0 +1,184 @@
+<!-- <div class="cadaCategoria" *ngFor="let item of promotions; let i=index" [ngClass]="{'abrir': abrir2[i]==true, 'fechar': abrir2[i]==false}" >
+    <div class="cabecalho centralizado" [ngClass]="{'comSombra': abrir2[i]==true}">
+
+        <table   >
+            <tr>
+                <td class="tituloTable tituloInicio centralizado">
+                    <div class="tituloTexto centralizado">
+                        <h1 class="centralizado" (click)="abrir2[i]= abrir2==null ? true : !abrir2[i] ">
+                            {{item.name}}
+
+                        </h1>
+                        <h1 class="centralizado" (click)="abrir2[i]= abrir2==null ? true : !abrir2[i] " style="margin-left:5px ;">
+                            ({{item.foods.length}})
+
+                        </h1>
+                        <mat-icon style="margin-top:2px" (click)="abrir2[i]= abrir2==null ? true : !abrir2[i] " *ngIf="!abrir2[i]" >expand_more</mat-icon>
+                        <mat-icon style="margin-top:2px" (click)="abrir2[i]= abrir2==null ? true : !abrir2[i] " *ngIf="abrir2[i]">expand_less</mat-icon>
+                    </div>
+                    <div class="input centralizado" (click)="abrir2[i]= true ">
+                        <input type="text" (keyup)="itemPesquisa($event)">
+                        <mat-icon>search</mat-icon>
+                    </div>
+                    <div class="botoes centralizado">
+                        <button class="btnBranco centralizado"   title="adicionar prato">
+                            <mat-icon style="color:black">add</mat-icon>
+                            Adicionar Prato
+                        </button>
+                        <button class="botaoVermelho"  title="Editar nome categoria"><mat-icon>edit</mat-icon></button>
+
+                    </div>
+
+                </td> 
+
+
+
+
+
+                
+            </tr>
+        </table>
+
+    </div>
+    <div class="conteudo" *ngIf="abrir2[i]" [ngClass]="{'sumir': abrir2[i]==false, 'aparecer': abrir2[i]==true}">
+
+        <table  *ngIf="cadaComida[i]" >
+
+            <tr>
+
+                <td class="tituloTable" >
+                    <div class="centralizado" style="flex-direction: row; justify-content: flex-start;">
+                        <p>Nome</p>
+
+                    </div>
+
+                </td> 
+
+
+                <td class="tituloTable"  >
+                    <div class="centralizado" style="flex-direction: row; justify-content: flex-start;">
+                        Preço
+
+                    </div>
+
+                </td>
+                
+                <td class="tituloTable" >Preço Promocional</td>
+                <td class="tituloTable" >Tamanho</td>
+     
+
+                <td class="tituloTable"  >Disponível</td>
+
+                <td class="tituloTable"  ></td>
+
+                
+
+                
+            </tr>
+
+            
+            <tr  *ngFor="let item2 of item.foods | search: pesquisa; let j = index" >
+                <td style="width: 30%;">
+                    {{item2.name}}
+                </td>
+
+                <td >{{item2.price | currency:'BRL':true:'1.2-2'}}</td>
+                <td>  {{descontar(item2.price, item.discountValue, item.typeDiscount) | currency:'BRL':true:'1.2-2'}}  </td>
+                <td>  {{item2.type}}  </td>
+
+                <td>  {{item2.available==true ? "Sim" : "Não"}}  </td>
+
+                <td ><a title="excluir prato"><mat-icon style="color:rgb(251,88,97) ;">delete</mat-icon></a></td>
+
+            </tr>
+
+        </table>
+
+        <table *ngIf="!cadaComida[i]" >
+            <tr>
+                <td class="tituloTable">Tipo</td>
+                <td class="tituloTable">Desconto</td>
+                <td class="tituloTable">X2</td>
+                <td class="tituloTable">D. início</td>
+                <td class="tituloTable">D. fim</td>
+                <td class="tituloTable">H. início</td>
+                <td class="tituloTable">H. fim</td>
+                <td class="tituloTable">Semana</td>
+
+
+            </tr>
+            <tr>
+                <td >
+                    <p *ngIf="item.typeDiscount" >
+                        {{item.typeDiscount=="porcento" ? "%" : "R$" || "---"}}
+                    </p>
+                    <p *ngIf="!item.typeDiscount" >---</p>
+                </td>
+                <td >{{item.discountValue || "---"}}</td>
+                <td >{{item.doubleFood==true ? 'Sim' : 'Não'}}</td>
+                <td >{{item.promotionStart | date :'dd/MM/yyyy' }}</td>
+                <td >{{item.promotionEnd | date :'dd/MM/yyyy' }}</td>
+                <td >{{item.hourStart}}</td>
+                <td >{{item.hourEnd}}</td>
+                <td class="centralizado tdSemana">
+                    <p *ngIf="!item.weekDay" >---</p>
+                    <p [ngClass]="{'ativoSemana': item.weekDay[0]}" *ngIf="item.weekDay" >s</p>
+                    <p [ngClass]="{'ativoSemana': item.weekDay[1]}" *ngIf="item.weekDay" >t</p>
+                    <p [ngClass]="{'ativoSemana': item.weekDay[2]}" *ngIf="item.weekDay" >q</p>
+                    <p [ngClass]="{'ativoSemana': item.weekDay[3]}" *ngIf="item.weekDay" >q</p>
+                    <p [ngClass]="{'ativoSemana': item.weekDay[4]}" *ngIf="item.weekDay" >s</p>
+                    <p [ngClass]="{'ativoSemana': item.weekDay[5]}" *ngIf="item.weekDay" >s</p>
+                    <p [ngClass]="{'ativoSemana': item.weekDay[6]}" *ngIf="item.weekDay" >d</p>
+                </td>
+
+
+            </tr>
+        </table>
+        <div class="centralizado botoesVerInfo">
+
+            <a (click)="cadaComida[i]= true; comida=true" *ngIf="!cadaComida[i]" >Comidas desta promoção</a>
+            <a (click)="cadaComida[i]= false; comida=false" *ngIf="cadaComida[i]" > Informações da promoção</a>
+        </div>
+    </div>
+</div> -->
+
+<div class="back  centralizado">
+    <div class="cadaPromocao  centralizado" *ngFor="let item of promotions | search: pesquisa; let i=index">
+        <h1>{{item.name}}</h1>
+        <mat-icon class="btnFechar" style="margin-top: 0;" (click)="abrirEdit(item)">edit</mat-icon>
+        <p *ngIf="item.typeDiscount" >
+            <b>Tipo de desconto: </b>{{item.typeDiscount=="porcento" ? "%" : "R$" || "---"}}
+        </p>
+        <p *ngIf="!item.typeDiscount">Tipo de desconto: ---</p>
+        <p>Valor desconto: {{item.discountValue || "---"}}</p>
+        <p>Pague um e leve mais: {{item.doubleFood==true ? 'Sim' : 'Não'}}</p>
+        <p>Data início: {{item.promotionStart | date :'dd/MM/yyyy' }}</p>
+        <p>Data fim: {{item.promotionEnd | date :'dd/MM/yyyy' }}</p>
+        <p>Hora início: {{item.hourStart}}</p>
+        <p>Hora fim: {{item.hourEnd}}</p> 
+        <div class="centralizado tdSemana">
+            <p style="color: black;">Dias promocionais: </p>
+            <p *ngIf="!item.weekDay" >---</p>
+            <p [ngClass]="{'ativoSemana': item.weekDay[0]}" *ngIf="item.weekDay" >s</p>
+            <p [ngClass]="{'ativoSemana': item.weekDay[1]}" *ngIf="item.weekDay" >t</p>
+            <p [ngClass]="{'ativoSemana': item.weekDay[2]}" *ngIf="item.weekDay" >q</p>
+            <p [ngClass]="{'ativoSemana': item.weekDay[3]}" *ngIf="item.weekDay" >q</p>
+            <p [ngClass]="{'ativoSemana': item.weekDay[4]}" *ngIf="item.weekDay" >s</p>
+            <p [ngClass]="{'ativoSemana': item.weekDay[5]}" *ngIf="item.weekDay" >s</p>
+            <p [ngClass]="{'ativoSemana': item.weekDay[6]}" *ngIf="item.weekDay" >d</p>
+        </div>
+        <div class="botoes centralizado" >
+            <button class="botaoVermelho" (click)="abrirProdutos(item)">Produtos promocionais</button>
+            
+        </div>
+    </div>
+</div>
+
+<!-- <td >
+
+    <p *ngIf="!item.typeDiscount" >---</p>
+</td>
+
+
+
+-->

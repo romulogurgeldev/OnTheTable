@@ -1,0 +1,91 @@
+.main{
+    min-width: 360px;
+    width:92vw;
+    > .complementos{
+        width:100%;
+        justify-content: flex-start;
+        
+        align-items: flex-start;
+        margin-top: 5%;
+        
+        padding: 2%;
+        > .cadaComplemento{
+            width: 100%;
+
+            box-shadow: 1px 1px 5px rgba(0,0,0,0.1),
+            inset 1px 1px 2px #fff;
+            border-radius: 7px;
+            padding: 0%;
+            margin-top: 3%;
+            > .tituloGrupo{
+                width: 94%;
+                flex-direction: row;
+                box-shadow: 1px 5px 5px rgba(0,0,0,0.1);
+                padding: 3%;
+                border-radius: 7px 7px 0px 0px;
+                height: 60px;
+                justify-content: space-between;
+                background-color: rgb(235, 235, 235);
+                > .avisoObg{
+                    width: 30%;
+                    
+                    flex-direction: row;
+                    justify-content: flex-end;
+                    position: relative;
+                    > p{
+                        font-size: 12px;
+                        color: #f27523;
+                    }
+
+                }
+            }
+            > .itens{
+                
+                > .cadaItem{
+                    padding: 5%;
+                    width: 90%;
+                    justify-content: space-between;
+                    flex-direction: row;
+
+                    > .texto{
+                        >p{
+                            font-size: 18px;
+                        }
+                        >small{
+                            font-size: 12px;
+                            color: rgba(0, 0, 0, 0.324);
+                        }
+                    }
+
+                    > .quantidade{
+                        flex-direction: row;
+                        width: 20%;
+                        justify-content: space-between;
+                        > button{
+                            border: 0;
+                            background-color: transparent;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+  
+}
+.editarComplemento{
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+    background-color: #f27523 !important;
+}
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: #f27523 !important;
+}

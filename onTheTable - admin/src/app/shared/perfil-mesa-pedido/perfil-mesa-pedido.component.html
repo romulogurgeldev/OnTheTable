@@ -1,0 +1,104 @@
+
+<app-lista-produto [(mesa)]="mesa" [(mode)]="mode" *ngIf="mode==2" ></app-lista-produto>
+<app-batepapo [(mode)]="mode" *ngIf="mode==3" [(mesa)]="mesa"></app-batepapo>
+<div class="back">
+    <div class="conteudo">
+        <app-fechar-pedido [(id)]="mesa._id" [(mode)]="mode" *ngIf="mode==1" ></app-fechar-pedido>
+
+        <div class="caixa cabecalho centralizado">
+            <h1>{{mesa.name}}</h1>
+            <h6>{{mesa.category.name}}</h6>
+            <h4 *ngIf="mesa.participantes.length>0" >Horário chegada: {{mesa.participantes[0].chegada  | date :'HH:mm'}}</h4>
+        </div>
+        <div class="caixa horarioChegada">
+
+        </div>
+        <div class="caixa totalPessoas">
+            <h2>Total de pessoas: {{mesa.participantes.length }}</h2>
+        </div>
+        <div class="caixa pedidos">
+            Pedidos
+            <table  *ngFor="let item of order"  >
+
+                <tr>
+                    <td class="tituloTable" style="width: 80%">
+                       Pedido: {{item.orderNumber}}
+                       <p title="{{item.status}}" style=" width:200px; white-space: nowrap; font-size: 10px;
+                       overflow: hidden;
+                       text-overflow: ellipsis; color: #f27523;">
+                           {{item.status}}
+                       </p>
+                    </td> 
+
+
+                    <td class="tituloTable" >
+                        Total
+                    </td> 
+                </tr>
+                <tr *ngFor="let item2 of item.orderFood; let i = index;">
+                    <td class="" style=" width:50%; white-space: nowrap;
+
+                    overflow: hidden;
+                    text-overflow: ellipsis;" title="{{item2.quantidade}}x{{item2.nameFood}}">
+                            <div class="quantidade centralizado" *ngIf="item.status =='Aguardando confirmação...'" >
+                                <button class="btnQuantidade btnDesativado centralizado" 
+                                (click)="excluiProduto(item._id, item, i)"
+                                *ngIf="item2.quantidade==1">
+                                    <mat-icon  style="transform: scale(0.8);">clear</mat-icon>
+                                </button>
+            
+                                <button class="btnQuantidade botaoVermelho centralizado" *ngIf="item2.quantidade>1" 
+                                (click)="item2.quantidade = item2.quantidade-1; editPedido(item._id, item)" >-</button>
+                                <p>{{item2.quantidade}}</p>
+                                <button class="btnQuantidade botaoVermelho centralizado" 
+                                (click)="item2.quantidade = item2.quantidade+1;editPedido(item._id, item)">+</button>
+                                <p style="margin-left: 5%;">{{item2.nameFood}}</p>
+                            </div>
+                            <p *ngIf="item.status !='Aguardando confirmação...'">{{item2.quantidade}}x{{" "+item2.nameFood}}</p>
+
+                    </td> 
+            
+                    <td class="" style="width: 50%" >
+                        {{item2.priceFood*item2.quantidade | currency:'BRL':true}} 
+                     </td> 
+
+                </tr>
+                <tr>
+                    <td style="font-weight: 700">Total da Conta</td>
+                    <td  style="font-weight: 700">{{item.originalPrice | currency:'BRL':true}} </td>
+                </tr>
+                <tr >
+
+                    <td class="centralizado botoes"  >
+                        <button *ngIf="item.status =='Pedido pronto'" class="botaoVermelho" 
+                        (click)="changeStatusPedido(item, 'Pedido entregue'); item.status ='Pedido entregue'">Confirmar Entrega</button>
+
+                    </td>
+                    <td *ngIf="item.status =='Aguardando confirmação...'" >
+                        <a class="centralizado"(click)="changeStatusPedido(item, 'Pedido entregue'); item.status ='Pedido entregue'"
+                        title="Editar pedido" style="text-align: center">
+                            <mat-icon  >delete</mat-icon>
+                        </a>
+                    </td>
+                </tr>
+
+            </table>
+
+        </div>
+        <div class="botoesFinal centralizado" *ngIf="mesa.participantes.length>0" >
+            <div class="cadaBotao centralizado" (click)="mode=1" *ngIf="mesa.statusOrder=='Pedido pronto' || mesa.statusOrder=='Pedido entregue'">
+                <button class="botaoVermelho" style="color: white">	<mat-icon > attach_money</mat-icon></button>
+                <p>Fechar conta</p>
+            </div>
+            <div class="cadaBotao centralizado" (click)="mode=2" >
+                <button><mat-icon >add</mat-icon></button>
+                <p>Adicionar pedido</p>
+            </div>
+            <div class="cadaBotao centralizado" (click)="mode=3; temMsg = false"  >
+      
+                <button [ngClass]="{'notificaIcone': temMsg}" ><mat-icon > mail_outline</mat-icon></button>
+                <p>Mensagem</p>
+            </div>
+        </div>
+    </div>
+</div>

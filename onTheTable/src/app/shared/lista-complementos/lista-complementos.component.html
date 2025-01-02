@@ -1,0 +1,37 @@
+<div class="main">
+    <div class="complementos">
+        <div class="cadaComplemento" *ngFor="let item of complementos; let i=index">
+            <div class="tituloGrupo centralizado">
+                <div class="textoGrupo">
+                    <h2>{{item.tipo}}</h2>
+                    <p> {{item.total}}  de {{item.maximo}}</p>
+                </div>
+                <div class="avisoObg" *ngIf="item.minimo>0" >
+                    <p>OBRIGATÓRIO</p>
+                    <small style="font-size: 10px; color: rgba(0, 0, 0, 0.37);">mínimo: {{item.minimo}}</small>
+                </div>
+            </div>
+            
+            <div class="itens">
+                <div class="cadaItem centralizado" *ngFor="let item2 of item.complementos; let j = index" >
+                    <div class="texto">
+                        <p>{{item2.name}}</p>
+                        <small >+ {{item2.value | currency:'BRL':true}}</small>
+                    </div>
+                    <section class="example-section sectionBox centralizado" *ngIf="item.minimo==1" >
+                        <mat-checkbox class="example-margin" [checked]="item2.quantidade>0? true : false" (change)="contador($event, item, j)"></mat-checkbox>
+
+                    </section>
+                    <div class="quantidade centralizado" *ngIf="item.minimo!=1" >
+                        <button (click)="contador2(-1, item, j)">-</button>
+                        <p>{{item2.quantidade}}</p>
+                        <button (click)="contador2(1, item, j)" *ngIf="item.total<item.maximo" >+</button>
+                        <button  *ngIf="item.total>=item.maximo" >+</button>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

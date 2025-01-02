@@ -1,0 +1,33 @@
+<div class="back centralizado">
+    <div class="conteudo centralizado">
+        <button class="botaoVermelho btnFechar" (click)="fecharJanela()">X</button>
+        <h1 style='margin-bottom: 5%;'>{{fraseAtual[pagina]}}</h1>
+        
+        <app-forms-cad-login [(mode)]="mode" *ngIf="pagina==0" [(pagina)]="pagina" [(email)]="email"  [(password)]="password"  ></app-forms-cad-login>
+        
+        <app-forms-cad-pessoal *ngIf="pagina===1" [(mode)]="mode"
+        [(pagina)]="pagina" [(nome)]="nome" [(cpf)]="cpf" [(dataNascimento)]="dataNascimento" ></app-forms-cad-pessoal>
+        
+        <app-forms-cad-funcionario *ngIf="pagina===2" [(mode)]="mode"
+        [(pagina)]="pagina" [(semana)]="semana" [(cargo)]="cargo" [(restaurante)]="restaurante" 
+        [(horaEntrada)]="horaEntrada" [(horaSaida)]="horaSaida"></app-forms-cad-funcionario>
+
+        <app-form-cad-permissao *ngIf="pagina===3" [(mode)]="mode" [(permissao)]="permissao" [(carregando)]="carregando"></app-form-cad-permissao>
+
+        <button style="margin-top: 5%;" class="btn botaoVermelho" (click)="save()" *ngIf="pagina==3 && cargo && restaurante && horaEntrada && horaSaida && !carregando" >Salvar</button>
+        <button style="margin-top: 5%;" class="btn botaoVermelho btnDesativado" 
+        *ngIf="pagina==3 && (!restaurante || !cargo || !horaEntrada
+        || !horaSaida) && !carregando" >Salvar</button>
+
+        <div class="finalizado centralizado" *ngIf="pagina===4" >
+            <button class="botaoVermelho" (click)="pagina=0">
+                Cadastrar outro
+            </button>
+            <button style="margin-top: 10%" class="botaoRosa" (click)="fecharJanela()">
+                Sair
+            </button>
+        </div>
+
+    </div>
+</div>
+

@@ -1,0 +1,25 @@
+<app-form-login-user *ngIf="mode" [(mode)]="mode" ></app-form-login-user>
+<div class="back centralizado">
+  <div class="imagemLogin backgroundImage centralizado" style="background-image: url('./assets/loginImage.jpg');"> 
+    <img src="./assets/logoBranca.png" alt="">
+  </div>
+  <div class="conteudo">
+    <div class="centralizado" style="width: 100vw; margin-top: 20%;">      
+      <div class="google-btn">
+        <div class="google-icon-wrapper">
+          <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+        </div>
+        <p class="btn-text"><b>Continuar com Google</b></p>
+      </div>
+      <button class="loginBtn loginBtn--facebook">
+        <p>Continuar com Facebook</p>
+      </button>
+      <button class="loginBtn loginTelefone" (click)="mode=true">
+        <p>Continuar com email ou telefone</p>
+      </button>
+      <a style="margin-top: 5%;" (click)="backClicked()">Cancelar</a>
+    </div>
+
+  </div>
+</div>
+

@@ -1,0 +1,84 @@
+
+.conteudo{
+    background-color: white;
+    width: 100%;
+    min-width: 350px;
+    min-height: 100px;
+    border-radius: 15px;
+
+}
+h1{
+    font-size: 20px;
+}
+p{
+    font-size: 15px;
+}
+h2{
+    color: #f27523;
+    font-size: 12px;
+    margin-bottom: 1%
+ }
+.conteudo img{
+    width:30%;
+    border-radius: 7px;
+}
+.conteudo .cabecalho{
+    flex-direction: row;
+    width: 80%;
+    justify-content: space-between;
+    margin-top: 5%;
+
+}
+.conteudo .cabecalho .titulo{
+    align-items: flex-start;
+    width: 50%;
+
+    padding: 1%;
+    border-radius: 7px;
+}
+
+.conteudo .descricao{
+    margin-top: 5%;
+    width: 80%;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.1),
+    inset 1px 1px 2px #fff;
+    align-items: flex-start;
+    justify-content: flex-start;
+    border-radius: 7px;
+    min-height: 150px;
+    padding: 1%;
+}
+.descricao p{
+    margin-top: 2%;
+}
+
+.conteudo .infoProduto{
+    flex-direction: row;
+    width: 80%;
+    justify-content: space-between;
+    margin-top: 5%;
+}
+.preco{
+    flex-direction: row;
+    width: 80%;
+    justify-content: space-between;
+    margin-top: 5%;
+}
+
+:host ::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+    background-color: #f276238f;
+}
+
+:host ::ng-deep  .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+    background-color: #f27523 ;
+}
+.addComplemento{
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left:0;
+    z-index: 1;
+    padding-top: 18%;
+}

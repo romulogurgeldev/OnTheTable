@@ -1,0 +1,22 @@
+.divCirculo{
+    position: absolute;
+    width: 100%;
+    overflow: auto;
+    overflow-x: hidden;
+    
+    height: 120vw;
+    z-index: -1;
+}
+.circulo{
+    position: absolute;
+    width: 120vw;
+    background: linear-gradient(0deg, rgba(251,88,97,1) 0%, rgba(252,122,66,1) 100%);
+    height: 105%;
+    border-radius: 100%;
+    top:-50%;
+    left: -10vw;
+    max-height: 800px;
+}
+main{
+    
+}

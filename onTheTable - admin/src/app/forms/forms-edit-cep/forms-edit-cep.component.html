@@ -1,0 +1,46 @@
+<div class="main centralizado container"  style='margin-top: -2%;' *ngIf="!carregando">
+    
+    <form  [formGroup]="form" class="forms centralizado" *ngIf="!carregandoCep" (keyup)="verificaAlteracao()" > 
+
+        <mat-form-field appearance="outline">
+            <mat-label>CEP*</mat-label>
+            <input mask="00.000-000" matInput formControlName="cep" (keyup)="getCep()">  
+            <mat-hint class="mat-error" *ngIf="!statusCEP && form.controls['cep'].touched">CEP inválido</mat-hint>
+            <mat-hint class="mat-error" *ngIf="statusCEP && form.controls['cep'].touched" style="color: green;">CEP válido</mat-hint>     
+        </mat-form-field>
+        <div class="inputMenor centralizado">
+            <mat-form-field appearance="outline">
+                <mat-label>Estado*</mat-label>
+                <input matInput    formControlName="uf" >       
+                <mat-error *ngIf="form.controls['uf'].invalid && form.controls['uf'].touched" > - Campo obrigatório</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Cidade*</mat-label>
+                <input matInput    formControlName="localidade"  >  
+                <mat-error *ngIf="form.controls['localidade'].invalid && form.controls['localidade'].touched" > - Campo obrigatório</mat-error>    
+            </mat-form-field>
+        </div>
+        <mat-form-field appearance="outline">
+            <mat-label>Bairro*</mat-label>
+            <input matInput   formControlName="bairro" >             
+            <mat-error *ngIf="form.controls['bairro'].invalid && form.controls['bairro'].touched" > - Campo obrigatório</mat-error>       
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Rua*</mat-label>
+            <input matInput   formControlName="logradouro" >
+            <mat-error *ngIf="form.controls['logradouro'].invalid && form.controls['logradouro'].touched" > - Campo obrigatório</mat-error>     
+        </mat-form-field>
+        <div class="inputMenor centralizado">
+            <mat-form-field appearance="outline">
+                <mat-label>Número*</mat-label>
+                <input  matInput    formControlName="numero">       
+                <mat-error *ngIf="form.controls['numero'].invalid && form.controls['numero'].touched" > - Campo obrigatório</mat-error>                  
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Complemento</mat-label>
+                <input matInput formControlName="complemento">
+            </mat-form-field>
+        </div>
+    </form>
+
+</div>

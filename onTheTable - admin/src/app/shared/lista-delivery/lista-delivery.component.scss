@@ -1,0 +1,69 @@
+h1{
+    font-size: 25px;
+}
+h5{
+    font-size: 20px;
+}
+p{
+    font-size: 15px;
+
+}
+small{
+    color: #f27523;
+    margin-top: 5%;
+    font-size: 10px;
+}
+.back{
+    width: 48vw;
+    min-width: 300px;
+
+    min-height: 400px;
+    height: 80vh;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 5%;
+
+
+}
+.botoes{
+    width: 45%;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 5%;
+}
+.conteudo{
+    width: 100%;
+    margin-top: 5%;
+}
+.infoDelivery{
+    width: 100%;
+    border-radius: 20px;
+    background-color: white;
+    height: 80px;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.1),
+    inset 1px 1px 2px #fff;
+    margin-top: 2%;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 5%;
+    cursor: pointer;
+
+}
+.ifood {
+    margin-top: 5%;
+    width: 100%;
+    align-items: flex-start;
+}
+.ifood button{
+    width: 40%;
+    text-decoration: underline;
+    color: rgba(0, 0, 0, 0.604);
+    margin-top: 2%;
+}
+.infoDeliveryAtivo{
+    color: white;
+    background: linear-gradient(0deg, rgba(251,88,97,1) 0%, rgba(252,122,66,1) 100%);
+
+
+    
+}

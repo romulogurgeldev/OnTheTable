@@ -1,0 +1,60 @@
+.back{
+    width: 100%;
+    height: 100vh;
+    justify-content: flex-start;
+}
+.conteudo{
+    width: 90%;
+    margin-top: 5%;
+    overflow: auto;
+    height: 70vh;
+    justify-content: flex-start;
+    padding-bottom: 5%;
+}
+.cabecalho{
+    margin-top: 10%;
+    width: 90%;
+}
+h1{
+    font-size: 20px;
+   text-align: left;
+}
+.cadaReserva{
+    width: 95%;
+    
+    background-color: white;
+    box-shadow: 1px 1px 8px rgba(0,0,0,0.1),
+    inset 1px 1px 2px #fff;
+    border-radius: 7px;
+    margin-top: 5%;
+    padding: 1%;
+
+    padding-left: 3%;
+    padding-bottom: 5%;
+}
+.cadaReserva h1{
+    font-size: 20px;
+}
+.cadaReserva p{
+    margin-top: 5%;
+    font-size: 15px;
+    
+}
+.cadaReserva small{
+    font-size: 10px;
+    color: #f27523;
+}
+.escolha{
+    margin-top: 10%;
+}
+.botoes{
+    width: 90%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.botoes a{
+    color: #f27523;
+}
+.praDireita{
+    justify-content: flex-end;
+}

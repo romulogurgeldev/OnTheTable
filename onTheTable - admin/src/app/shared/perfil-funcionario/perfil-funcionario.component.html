@@ -1,0 +1,106 @@
+<div class="back centralizado">
+
+    <div class="conteudo centralizado">
+        <button class="botaoVermelho btnFechar" (click)="changeMode()">x</button>
+        <h1 >Informações Pessoais</h1>
+        <div class="cadaInfo centralizado">
+            <div class="centralizado" style="width: 100%;">
+                <p>Nome Completo</p>
+                <h4>{{funcionario.user.name || 'nome'}}</h4>
+            </div>
+        </div>
+        
+        <div class="cadaInfo centralizado">
+            <div class="centralizado">
+                <p>CPF</p>
+                <h4>{{funcionario.user.cpf}}</h4>
+            </div>
+            <div class="centralizado">
+                <p>Aniversário</p>
+                <h4>{{funcionario.user.birthday | date :'dd/MM/yyyy'}}</h4>
+            </div>
+        </div>
+        <div class="cadaInfo centralizado">
+            <div class="centralizado">
+                <p>Email</p>
+                <h4>{{funcionario.user.email}}</h4>
+            </div>
+            <div class="centralizado">
+                <p>Telefone</p>
+                <h4>{{funcionario.user.address.telphone}}</h4>
+            </div>
+        </div>
+
+        <h1 style="margin-top: 5%;">Informações Restaurante</h1>
+        <div class="cadaInfo centralizado">
+            <div class="centralizado" >
+                <p>Restaurante onde trabalha</p>
+                <h4>{{funcionario.restaurant.name }}</h4>
+            </div>
+            <div class="centralizado" >
+                <p>Cargo</p>
+                <h4>{{funcionario.cargo }}</h4>
+            </div>
+        </div>
+        
+        <div class="cadaInfo centralizado">
+            <div class="centralizado">
+                <p>Expediente - dia</p>
+                <div class="dias centralizado">
+                    <p [ngClass]="{'ativado': funcionario.semana[0]}" >D</p>
+                    <p [ngClass]="{'ativado': funcionario.semana[1]}" >S</p>
+                    <p [ngClass]="{'ativado': funcionario.semana[2]}" >T</p>
+                    <p [ngClass]="{'ativado': funcionario.semana[3]}" >Q</p>
+                    <p [ngClass]="{'ativado': funcionario.semana[4]}" >Q</p>
+                    <p [ngClass]="{'ativado': funcionario.semana[5]}" >S</p>
+                    <p [ngClass]="{'ativado': funcionario.semana[6]}" >S</p>
+
+                </div>
+            </div>
+            <div class="centralizado">
+                <p>Expediente - horário</p>
+                <h4>{{funcionario.horaEntrada}} às {{funcionario.horaSaida}}</h4>
+            </div>
+
+        </div>
+        <h1 style="margin-top: 5%;">Endereço Pessoal</h1>
+        <div class="cadaInfo centralizado">
+            <div class="centralizado">
+                <p>Rua</p>
+                <h4>{{funcionario.user.address.address}}</h4>
+            </div>
+            <div class="centralizado">
+                <p>CEP</p>
+                <h4>{{funcionario.user.address.cep}}</h4>
+            </div>
+        </div>
+        <div class="cadaInfo centralizado">
+            <div class="centralizado">
+                <p>Cidade</p>
+                <h4>{{funcionario.user.address.city}}</h4>
+            </div>
+            <div class="centralizado">
+                <p>Estado</p>
+                <h4>{{funcionario.user.address.uf}}</h4>
+            </div>
+        </div>
+        <div class="cadaInfo centralizado">
+            <div class="centralizado">
+                <p>Número</p>
+                <h4>{{funcionario.user.address.numberAddress}}</h4>
+            </div>
+            <div class="centralizado">
+                <p>Complemento</p>
+                <h4>{{funcionario.user.address.complement}}</h4>
+            </div>
+        </div>
+        
+        <div class="botoes centralizado">
+            <button class="botaoVermelho"><a [href]="'#/edit/'+funcionario.user._id">Editar Perfil</a></button>
+            <button class="botaoRosa" (click)="deleteFuncionario()">Excluir Perfil</button>
+        </div>
+
+    </div>
+</div>
+
+

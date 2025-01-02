@@ -1,0 +1,40 @@
+<div class="centralizado">
+
+    <form  [formGroup]="form" class="forms centralizado">
+        <!-- <app-upload-image [(image)]="image"></app-upload-image> -->
+        <mat-form-field appearance="outline">
+            <mat-label>Nome Completo*</mat-label>
+            <input matInput formControlName="nome" [(ngModel)]="nome" >
+            
+            <mat-error *ngIf="form.controls['nome'].invalid && form.controls['nome'].touched" > - Campo obrigatório</mat-error>
+                    
+        </mat-form-field>     
+
+        <mat-form-field appearance="outline">
+            <mat-label>CPF do responsável legal*</mat-label>
+
+            <input mask="000.000.000-00" matInput   formControlName="cpf"  [(ngModel)]="cpf" (keyup)="verificaCPF()">
+            
+            <mat-hint class="mat-error" *ngIf="!statusCPF && form.controls['cpf'].touched">CPF inválido</mat-hint>
+            <mat-hint class="mat-error" *ngIf="statusCPF && form.controls['cpf'].touched" style="color: green;">CPF válido</mat-hint>
+            
+            
+        </mat-form-field>     
+
+
+
+
+    </form>
+
+      <div class="botoes centralizado">
+        <!-- <a class="centralizado" href="#/login" *ngIf="!mode" >Cancelar</a> -->
+
+        <button type="button" class="btn botaoVermelho" (click)="save()" 
+        *ngIf="form.controls['nome'].valid && form.controls['cpf'].valid && statusCPF" 
+            >Próximo</button>
+        <button type="button" class="btn botaoVermelho btnDesativado" 
+        *ngIf="form.controls['nome'].invalid || form.controls['cpf'].invalid || !statusCPF" 
+            >Próximo</button>
+    </div> 
+</div>
+

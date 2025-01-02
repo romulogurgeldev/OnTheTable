@@ -1,0 +1,63 @@
+<div class="back">
+
+    <form  [formGroup]="form" class="forms centralizado"> 
+        <mat-form-field appearance="outline">
+            <mat-label>CEP*</mat-label>
+            <input mask="00.000-000" matInput formControlName="cep" (keyup)="getCep()">  
+            
+            <mat-hint class="mat-error" *ngIf="!statusCEP && form.controls['cep'].touched">CEP inválido</mat-hint>
+            <mat-hint class="mat-error" *ngIf="statusCEP && form.controls['cep'].touched" style="color: green;">CEP válido</mat-hint>
+   
+        </mat-form-field>
+        <div class="centralizado" style="width: 95%; margin-bottom: 2%; align-items: flex-start;">
+            <mat-hint class="mat-error"><a href="https://buscacepinter.correios.com.br/app/endereco/index.php" target="_blank">Não sei meu cep</a></mat-hint> 
+        </div>     
+        <div class="duploInput centralizado">
+            <mat-form-field appearance="outline">
+                <mat-label>Estado*</mat-label>
+                <input matInput   (change)="save()" formControlName="uf" >       
+                <mat-error *ngIf="form.controls['uf'].invalid && form.controls['uf'].touched" > - Campo obrigatório</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Cidade*</mat-label>
+                <input matInput   (change)="save()" formControlName="localidade"  >  
+                <mat-error *ngIf="form.controls['localidade'].invalid && form.controls['localidade'].touched" > - Campo obrigatório</mat-error>    
+            </mat-form-field>
+        </div>
+        <mat-form-field appearance="outline">
+            <mat-label>Bairro*</mat-label>
+            <input matInput   (change)="save()" formControlName="bairro" >             
+            <mat-error *ngIf="form.controls['bairro'].invalid && form.controls['bairro'].touched" > - Campo obrigatório</mat-error>       
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Rua*</mat-label>
+            <input matInput   (change)="save()" formControlName="logradouro" >
+            <mat-error *ngIf="form.controls['logradouro'].invalid && form.controls['logradouro'].touched" > - Campo obrigatório</mat-error>     
+        </mat-form-field>
+        <div class="duploInput centralizado">
+            <mat-form-field appearance="outline">
+                <mat-label>Número*</mat-label>
+                <input matInput   (change)="save()" formControlName="numero">       
+                <mat-error *ngIf="form.controls['numero'].invalid && form.controls['numero'].touched" > - Campo obrigatório</mat-error>                  
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline">
+                <mat-label>Complemento</mat-label>
+                <input matInput   (change)="save()" formControlName="complemento">
+            </mat-form-field>
+        </div>
+
+    </form>
+    <div class="botoes centralizado" *ngIf="!restauranteExtra" >
+
+
+        <button type="button" class="btn botaoVermelho" (click)="save(); passaPagina()" 
+        *ngIf="form.controls['logradouro'].valid && form.controls['numero'].valid && form.controls['cep'].valid && form.controls['uf'].valid && form.controls['localidade'].valid && form.controls['bairro'].valid"
+            >Próximo</button>
+        <button type="button" class="btn botaoVermelho btnDesativado" 
+        *ngIf="form.controls['uf'].invalid || form.controls['logradouro'].invalid  || form.controls['numero'].invalid  || form.controls['cep'].invalid || form.controls['localidade'].invalid || form.controls['bairro'].invalid" 
+            >Próximo</button>
+        <!-- <a class="centralizado" href="#/login" *ngIf="!mode" >Cancelar</a> -->
+    </div> 
+</div>
+

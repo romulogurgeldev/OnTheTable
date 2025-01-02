@@ -1,0 +1,115 @@
+<app-add-funcionario *ngIf="mode==1" [(mode)]="mode" [(funcionarios)]="funcionarios"></app-add-funcionario>
+<app-perfil-funcionario *ngIf="funcionarioEscolhido"  [(funcionario)]="funcionarioEscolhido"></app-perfil-funcionario>
+<div class="back centralizado"  *ngIf="funcionarios" >
+    <div class="caixa centralizado">
+        <div class="cadaCategoria mat-elevation-z1" [ngClass]="{'abrir': abrir2==true, 'fechar': abrir2==false}" >
+            <div class="cabecalho centralizado" [ngClass]="{'comSombra': abrir2==true}">
+                <div class="tituloTexto centralizado">
+                    <h1 class="centralizado" (click)="abrir2= abrir2==null ? true : !abrir2 ">
+                        Funcionários
+    
+                    </h1>
+                    <h1 class="centralizado" (click)="abrir2= abrir2==null ? true : !abrir2 " style="margin-left:5px ;">
+                        {{funcionarios.length}}
+    
+                    </h1>
+                    <button>
+                        <mat-icon style="margin-top:2px" (click)="abrir2= abrir2==null ? true : !abrir2 " *ngIf="!abrir2" >expand_more</mat-icon>
+                        <mat-icon style="margin-top:2px" (click)="abrir2= abrir2==null ? true : !abrir2 " *ngIf="abrir2">expand_less</mat-icon>
+                    </button>
+    
+                </div>
+                <div class="input centralizado" (click)="abrir2= true ">
+                    <input type="text" (keyup)="itemPesquisa($event)">
+                    <mat-icon>search</mat-icon>
+                </div>
+                <div class="botoes centralizado">
+                    <button class="btnBranco centralizado"  title="adicionar prato" (click)="mode=1">
+                        <mat-icon style="color:black">add</mat-icon>
+                        Funcionário
+                    </button>
+    
+    
+                </div>
+    
+            </div>
+            <div class="conteudo" *ngIf="abrir2" [ngClass]="{'sumir': abrir2==false, 'aparecer': abrir2==true}">
+    
+                <table  >
+                    <tr>
+    
+                        <td class="tituloTable" >
+                            <div class="centralizado" style="flex-direction: row; justify-content: flex-start;">
+                                <p>Nome</p>
+    
+                            </div>
+    
+                        </td> 
+    
+    
+                        <td class="tituloTable"  >
+                            <div class="centralizado" style="flex-direction: row; justify-content: flex-start;">
+                                CPF
+    
+                            </div>
+    
+                        </td>
+                        
+                        <td class="tituloTable"  >
+                            <div class="centralizado" style="flex-direction: row; justify-content: flex-start;">
+                                Cargo
+    
+                            </div>
+    
+    
+                        </td>
+                        <td class="tituloTable"  >
+                            <div class="centralizado" style="flex-direction: row; justify-content: flex-start;">
+                                Restaurante
+    
+                            </div>
+    
+    
+                        </td>
+                        <td class="tituloTable"  >
+                            <div class="centralizado" style="flex-direction: row; justify-content: flex-start;">
+                                Expediente
+    
+                            </div>
+    
+    
+                        </td>
+                        <td class="tituloTable"  >
+                            <div class="centralizado" style="flex-direction: row; justify-content: flex-start;">
+                                Status
+    
+                            </div>
+    
+    
+                        </td>
+       
+    
+    
+    
+                        
+    
+                        
+                    </tr>
+                    
+                    <tr  *ngFor="let item of funcionarios | search: pesquisa; let j = index"   (click)="escolheFuncionario(item)">
+                        <td style="color: #f27523; text-decoration: underline;" >{{primeiroNome(item.user.name)}}</td>
+                        <td>{{item.user.cpf}}</td>
+                        <td *ngIf="tamanho>=5">{{item.cargo}}</td>
+                        <td>{{item.restaurant.name}}</td>
+                        <td>{{item.horaEntrada}} - {{item.horaSaida}}</td>
+                        <td *ngIf="tamanho>=6" >...</td>
+                    </tr>
+        
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

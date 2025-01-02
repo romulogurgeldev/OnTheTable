@@ -1,0 +1,16 @@
+<div class="back centralizado">
+    <div class="cabecalho centralizado">
+        <h1>Minhas reservas</h1>
+    </div>
+    <div class="conteudo centralizado">
+        <div class="cadaReserva" *ngFor="let item of reservas" >
+            <h1>{{item.restaurant.name}}</h1>
+            <p>Reserva para {{item.date | date: "dd/MM/yyyy - HH:mm"}}</p>
+            <small>{{item.status}}</small>
+        </div>
+
+    </div>
+    <button class="botaoVermelho" [routerLink]="['/reservar/'+idRestaurante]">
+        Nova reserva
+    </button>
+</div>

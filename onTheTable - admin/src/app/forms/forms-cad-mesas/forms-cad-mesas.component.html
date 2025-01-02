@@ -1,0 +1,86 @@
+<div class="centralizado">
+    
+    <mat-spinner *ngIf="carregando" ></mat-spinner>
+    <form  [formGroup]="form" class="forms " *ngIf="!carregando" >
+        <h1 *ngIf="categoria.name!='Balcão'" >Adicionar Mesa</h1>
+        <h1 *ngIf="categoria.name=='Balcão'" >Adicionar Balcão</h1>
+        <mat-form-field appearance="outline"  style="width:100%">
+            <mat-label *ngIf="categoria.name=='Balcão'" >Nome da Mesa (ou número da mesa)</mat-label>
+            <mat-label *ngIf="categoria.name!='Balcão'" >Nome do Balcão</mat-label>
+            <input matInput formControlName="nome">
+            
+            <mat-error *ngIf="form.controls['nome'].invalid && form.controls['nome'].touched" > - Campo obrigatório</mat-error>
+                    
+        </mat-form-field>   
+
+
+        <div class="duploInput centralizado">
+            <mat-form-field appearance="outline" class="form-full-width"   *ngIf="categoria.name!='Balcão'" >
+                <mat-label>Tamanho</mat-label>
+                <mat-select matInput  formControlName="tamanho" style="width: 160px">
+                    <!-- <mat-option *ngFor="let item of horas" [value]="item" >{{item}}</mat-option> -->
+                    <mat-option  value="1" >Mesa para 1 pessoa</mat-option>
+                    <mat-option  value="2" >Mesa para 2 pessoas</mat-option>
+                    <mat-option  value="3" >Mesa para 3 pessoas</mat-option>
+                    <mat-option  value="4" >Mesa para 4 pessoas</mat-option>
+                    <mat-option  value="5" >Mesa para 5 pessoas</mat-option>
+                    <mat-option  value="6" >Mesa para 6 pessoas</mat-option>
+                    <mat-option  value="7" >Mesa para 7 pessoas</mat-option>
+                    <mat-option  value="8" >Mesa para 8 pessoas</mat-option>
+    
+                </mat-select>
+    
+                <mat-error *ngIf="form.controls['tamanho'].invalid && form.controls['tamanho'].touched" > - Campo Obrigatório</mat-error>
+                
+                
+            </mat-form-field>
+
+              
+            <mat-form-field appearance="outline" class="form-full-width" style='margin-left: 13%' *ngIf="categoria && categoria.name!='Balcão'"  >
+                <mat-label>Espaço</mat-label>
+                <mat-select matInput  formControlName="categoria" style="width: 160px" [(ngModel)]="categoria.index">
+                    <mat-option  *ngFor="let item of categorias; let i = index;" [value]="i+'/'+item._id" >{{item.name}}</mat-option>
+                </mat-select>
+
+                <mat-error *ngIf="form.controls['categoria'].invalid && form.controls['categoria'].touched" > - Campo Obrigatório</mat-error>
+                
+                
+            </mat-form-field>  
+
+  
+        </div>
+        <mat-form-field appearance="outline" class="form-full-width" *ngIf="categoria && categoria.name=='Balcão'"  >
+            <mat-label>Espaço</mat-label>
+            <mat-select [disabled]="true" matInput  formControlName="categoria"  [(ngModel)]="categoria.index">
+                <mat-option  *ngFor="let item of categorias; let i = index;" [value]="i+'/'+item._id" >{{item.name}}</mat-option>
+            </mat-select>
+
+            <mat-error *ngIf="form.controls['categoria'].invalid && form.controls['categoria'].touched" > - Campo Obrigatório</mat-error>
+            
+            
+        </mat-form-field>  
+
+    </form>
+
+      <div class="botoes centralizado" *ngIf="categoria.name != 'Balcão'" >
+        
+        <button type="button" class="btn botaoVermelho" (click)="save()" 
+        *ngIf="form.controls['nome'].valid &&  form.controls['categoria'].valid"
+            >Salvar</button>
+        <button type="button" class="btn botaoVermelho btnDesativado" 
+        *ngIf="form.controls['nome'].invalid || form.controls['categoria'].invalid" 
+            >Salvar</button>
+    </div> 
+    <div class="botoes centralizado" *ngIf="categoria.name == 'Balcão'" >
+        
+        <button type="button" class="btn botaoVermelho" (click)="save()" 
+        *ngIf="form.controls['nome'].valid"
+            >Salvar</button>
+        <button type="button" class="btn botaoVermelho btnDesativado" 
+        *ngIf="form.controls['nome'].invalid" 
+            >Salvar</button>
+    </div> 
+</div>
+
+
+

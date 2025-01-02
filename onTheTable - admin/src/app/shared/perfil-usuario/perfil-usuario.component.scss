@@ -1,0 +1,140 @@
+.back{
+    position: absolute;
+    width: 20px;
+    background-color: white;
+    height: 100vh;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.1),
+    inset 1px 1px 2px #fff;
+    
+    padding: 1%;
+    padding-top: 120px;
+    z-index: 2  !important;
+}
+
+.cadaInfo{
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10%;
+}
+.infoPerfil, .infoPlano{
+    opacity: 0;
+}
+.botaoVermelho{
+    min-width:100px !important;
+    border-radius: 10px;
+    height: 35px;
+    margin-top: -5%;
+}
+.cadaInfo div{
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 50%;
+}
+.cadaInfo div p{
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+.cadaInfo div h4{
+    font-size: 18px;
+    font-weight: 500;
+}
+.infoPlano{
+    margin-top: 10%;
+}
+.plano{
+    width: 180px;
+    height: 270px;
+    background-color: white;
+    box-shadow: 0px 1px 8px rgba(0,0,0,0.1),
+    inset 1px 1px 2px #fff;
+    border-radius: 12px;
+    padding: 20px;
+    justify-content: space-between;
+    margin-top: 10%;
+    margin-left: 1%;
+}
+.plano h3{
+    font-size: 20px;
+    text-align: center;
+}
+.plano p{
+    font-size: 14px;
+    text-align: center;
+    
+}
+.preco{
+    flex-direction: row;
+}
+.preco h1{
+    font-size: 50px;
+}
+.preco small{
+   
+    height: 100%;
+    justify-content: flex-start;
+    font-size: 18px;
+    margin-top: -5%;
+}
+.preco p{
+    height: 77%;
+    font-size: 15px;
+    justify-content: flex-end;
+}
+.btnSelecionar{
+    
+    min-width: 150px;
+    height: 35px;
+    border-radius: 12px;
+}
+.btnAbrir{
+    position: absolute;
+    top:45%;
+    right: -15px;
+    border: 0px;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+
+    background-color: #f6f7f8;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    font-size: 20px;
+    z-index: 10;
+}
+.abrir{
+    animation-name: abrir;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+}
+.fechar{
+    animation-name: fechar;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+}
+.aparecer{
+    animation-delay: 0.2s;
+    animation-name: aparecer;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+}
+.sumir{
+    animation-name: sumir;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes abrir {
+    from {width: 20px;}
+    to {width: 360px;}
+}
+@keyframes fechar {
+    from {width: 360px;}
+    to {width: 20px;}
+}
+@keyframes sumir {
+    from {opacity: 1}
+    to {opacity: 0}
+}
+@keyframes aparecer {
+    from {opacity: 0}
+    to {opacity: 1}
+}

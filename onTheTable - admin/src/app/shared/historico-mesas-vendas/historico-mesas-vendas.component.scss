@@ -1,0 +1,81 @@
+
+.cadaHistorico{
+    margin-right: 1%;
+    margin-left: 0;
+    width: 350px;
+    height: 350px;
+    align-items: flex-start;
+    margin-top: 10%;
+    
+}
+.botoes{
+    margin-top: 2%;
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.botoes button{
+    min-width: 100px;
+    
+}
+.infoHistorico{
+    margin-top: 5%;
+    width: 100%;
+    min-height: 320px;
+    background-color: white;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.1),
+    inset 1px 1px 2px #fff;
+    border-radius: 14px ;
+    justify-content: flex-start;
+}
+.botaoCima{
+    width: 90%;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 3%;
+
+}
+.botaoCima button{
+    border: 0px;
+    background-color: transparent;
+    color: #f27523;
+}
+.tituloHistorico{
+    width: 87%;
+    margin-top: 5%;
+}
+.tituloHistorico h1{
+    font-size: 15px;
+    font-weight: 700;
+}
+.itensHistorico{
+    margin-top: 1%;
+    width: 100%;
+    justify-content: flex-start;
+    min-height: 225px;
+    
+}
+.itensHistorico p{
+    margin-top: 5%;
+}
+.maisDetalhe{
+    width: 90%;
+    margin-top:8%;
+    align-items: flex-end;
+
+}
+.maisDetalhe a{
+    cursor: pointer !important;
+    text-decoration: none;
+    color: #f27523 !important;
+}
+.maisDetalhe a:hover{
+    color: #c24e00;
+}
+
+.cadaItemHistorico{
+    width: 87%;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-top: 2%;
+}

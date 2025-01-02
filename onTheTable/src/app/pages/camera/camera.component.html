@@ -1,0 +1,14 @@
+<div class="back centralizado">
+    <!-- <img src="./assets/logo.png" alt="">
+    <qr-scanner
+    [debug]="false"
+    [canvasWidth]="360" 
+    [canvasHeight]="1000" 
+    [stopAfterScan]="true" 
+    [updateTime]="500"> 
+    </qr-scanner>
+    <button class="botaoVermelho">Voltar</button> -->
+    <ngx-scanner-qrcode #action="scanner" (data)="irPara($event)"></ngx-scanner-qrcode>
+
+
+</div>

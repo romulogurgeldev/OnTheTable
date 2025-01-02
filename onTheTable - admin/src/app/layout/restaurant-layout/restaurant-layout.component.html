@@ -1,0 +1,40 @@
+<div class="back centralizado">
+    <div class="menu"  style="z-index: 4;">
+        <app-menu-lateral></app-menu-lateral>
+    </div>
+    <div class="conteudo centralizado" >
+        <router-outlet></router-outlet>
+    
+    </div>
+    <button class="btnBranco btnNotification" title="{{totalNotification>0 ? totalNotification : 'Nenhuma'}} notificações não lida" (click)="telaNotification = true">
+        <span class="centralizado" *ngIf="totalNotification>0">{{totalNotification}}</span>
+        <mat-icon class="iconeAtivo">notifications_none</mat-icon>
+    </button>
+</div>
+<div class="notificacoes centralizado" *ngIf="telaNotification">
+    <div class="conteudoNotificacoes">
+        <button class="botaoVermelho btnFechar" (click)="telaNotification = false">X</button>
+        <h1>Notificações</h1>
+        <div class="caixaNotificacao">
+            <div class="cadaNotificacao centralizado" *ngFor="let item of notifications" [ngClass]="{cadaNotificacaoNaoLida: !item.lida}">
+                <div class="texto" routerLink="pedidos/{{item.type == 'mesa' ? 'mesas' : item.type}}" (click)="readNotification(item); telaNotification = false">
+                    <h2>{{item.type}}</h2>
+                    <p>{{item.table.name+" "+item.msg}}</p>
+                    <small>{{item.createdAt | date : "dd/MM/yyyy - hh:mm"}}</small>
+                </div>
+                <div class="botoes centralizado">
+                    <button class="centralizado" title="Marcar como lido" (click)="readNotification(item)">
+                        
+                        <mat-icon>visibility</mat-icon>
+                    </button>
+    
+                    <button class="centralizado" title="Remover notificação" (click)="openConfirmBox(item._id)">
+                        <mat-icon style="color: rgb(251,88,97);">delete</mat-icon>
+                    </button>
+                </div>
+            </div>
+            
+
+        </div>
+    </div>
+</div>

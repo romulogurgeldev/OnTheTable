@@ -1,0 +1,107 @@
+<div class="centralizado">
+    
+    <mat-spinner *ngIf="carregando" ></mat-spinner>
+    <form  [formGroup]="form" class="forms " *ngIf="!carregando"  >
+        <h1>Editar Prato</h1>
+        <app-upload-image [(image)]="image" [(imagem)]="produto.image.location"></app-upload-image>
+        <mat-form-field appearance="outline"  style="width:100%" >
+            <mat-label>Nome</mat-label>
+            <input matInput formControlName="nome">
+            
+            <mat-error *ngIf="form.controls['nome'].invalid && form.controls['nome'].touched" > - Campo obrigatório</mat-error>
+                    
+        </mat-form-field>   
+        <div class="textArea">
+            <mat-form-field appearance="outline"  style="width:100%">
+                <mat-label>Descrição</mat-label>
+                <textarea matInput formControlName="descricao" rows="5" cols="40" ></textarea>
+                
+                <mat-error *ngIf="form.controls['descricao'].invalid && form.controls['descricao'].touched" > - Campo obrigatório</mat-error>
+                        
+            </mat-form-field>   
+        </div> 
+      
+        <div class="duploInput centralizado">
+            <mat-form-field appearance="outline" class="form-full-width" >
+                <mat-label>Tamanho</mat-label>
+                <mat-select matInput  formControlName="tamanho" style="width: 160px">
+                    <!-- <mat-option *ngFor="let item of horas" [value]="item" >{{item}}</mat-option> -->
+                    <mat-option  value="1" >Prato Individual</mat-option>
+                    <mat-option  value="2" >Serve 2 pessoas</mat-option>
+                    <mat-option  value="3" >Serve 3 pessoas</mat-option>
+                    <mat-option  value="4" >Serve 4 pessoas</mat-option>
+                    <mat-option  value="5" >Serve 5 pessoas</mat-option>
+                    <mat-option  value="6" >Serve 6 pessoas</mat-option>
+                    <mat-option  value="7" >Serve 7 pessoas</mat-option>
+                    <mat-option  value="8" >Serve 8 pessoas</mat-option>
+
+                </mat-select>
+
+                <mat-error *ngIf="form.controls['tamanho'].invalid && form.controls['tamanho'].touched" > - Campo Obrigatório</mat-error>
+                
+                
+            </mat-form-field>    
+            <mat-form-field appearance="outline" class="form-full-width" style='margin-left: 13%' >
+                <mat-label>Tempo de preparo</mat-label>
+                <mat-select matInput  formControlName="tempo" style="width: 160px">
+                    
+                    <mat-option  value="5" >5 minutos</mat-option>
+                    <mat-option  value="10" >10 minutos</mat-option>
+                    <mat-option  value="15" >15 minutos</mat-option>
+                    <mat-option  value="20" >20 minutos</mat-option>
+                    <mat-option  value="30" >30 minutos</mat-option>
+                    <mat-option  value="40" >40 minutos</mat-option>
+                    <mat-option  value="50" >50 minutos</mat-option>
+                    <mat-option  value="60" >1 hora</mat-option>
+                    <mat-option  value="75" >1 hora e 15 minutos</mat-option>
+                    <mat-option  value="90" >1 hora e 30 minutos</mat-option>
+                    <mat-option  value="120" >2 horas</mat-option>
+
+                </mat-select>
+
+                <mat-error *ngIf="form.controls['tempo'].invalid && form.controls['tempo'].touched" > - Campo Obrigatório</mat-error>
+                
+                
+            </mat-form-field>           
+  
+        </div>
+        <div class="duploInput centralizado">
+            <mat-form-field appearance="outline"  class="form-full-width">
+                <mat-label>Preço</mat-label>
+                <input type="number" matInput formControlName="preco">
+                
+                <mat-error *ngIf="form.controls['preco'].invalid && form.controls['preco'].touched" > - Campo obrigatório</mat-error>
+                        
+            </mat-form-field>     
+            <mat-form-field appearance="outline" class="form-full-width" style='margin-left: 13%' *ngIf="categoria"  >
+                <mat-label>Categoria</mat-label>
+                <mat-select matInput  formControlName="categoria" style="width: 160px" >
+                    <mat-option  *ngFor="let item of categorias; let i = index;" [value]="i+'/'+item._id" >{{item.name}}</mat-option>
+                </mat-select>
+
+                <mat-error *ngIf="form.controls['categoria'].invalid && form.controls['categoria'].touched" > - Campo Obrigatório</mat-error>
+                
+                
+            </mat-form-field>           
+  
+        </div>
+
+    </form>
+
+      <div class="botoes centralizado" *ngIf="!carregando" >
+        
+        <button type="button" class="btn botaoVermelho" (click)="openConfirmBox('Os novos dados serão salvos, não é possível reverter essa ação!')" 
+        *ngIf="form.controls['nome'].valid && form.controls['tamanho'].valid && form.controls['descricao'].valid &&
+        form.controls['categoria'].valid && form.controls['preco'].valid && form.controls['tempo'].valid
+        "
+            >Salvar</button>
+        <button type="button" class="btn botaoVermelho btnDesativado" 
+        *ngIf="form.controls['nome'].invalid || form.controls['tamanho'].invalid || form.controls['descricao'].invalid ||
+        form.controls['categoria'].invalid || form.controls['preco'].invalid || form.controls['tempo'].invalid 
+        " 
+            >Salvar</button>
+    </div> 
+</div>
+
+
+

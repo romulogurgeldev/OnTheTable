@@ -1,0 +1,25 @@
+<div class="centralizado" style="margin-top: 5%">
+    <h1>{{products.name}}</h1>
+    <div class="conteudo centralizado">
+        <h2>Comidas nesta promoção: </h2>
+        <div class="input centralizado">
+
+            <input type="text" (keyup)="itemPesquisa($event)">
+            <mat-icon>search</mat-icon>
+        </div>
+        <div class="checkBox centralizado">
+            <div class="cadaSelection centralizado" *ngFor="let item of comidas | search: pesquisa; let i = index"
+            >
+                <div class="itemSelection centralizado" [ngClass]="{'foodAtivo': temFood(item._id)}">
+                    <div class="img backgroundImage" style="width: 50px; height: 50px" [ngStyle]="{'background-image': 'url(' +item.image.location + ')'}">
+                        
+                    </div>
+                    <p>{{item.name}}</p>
+
+                </div>
+                <mat-icon *ngIf="temFood(item._id)" (click)="removeFood(item._id)" >delete_outline</mat-icon>
+                <mat-icon *ngIf="!temFood(item._id)" style="opacity: 1;" (click)="addFood(item)">add</mat-icon>
+            </div>
+        </div>
+    </div>
+</div>

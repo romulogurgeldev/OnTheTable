@@ -1,0 +1,116 @@
+small{
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.555);
+    margin-top: 2%;
+}
+.back{
+    position: absolute;
+    width: 90%;
+    height: 80vh;
+    background-color: white;
+    z-index: 100;
+    justify-content: flex-start;
+    margin-top: 15%;
+    box-shadow: 1px 1px 8px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    margin-left: 5%;
+    
+}
+.cadaMensagem{
+    width: 100%;
+    height: 70%;
+   
+    overflow: auto;
+}
+.textArea{
+    height: 15%;
+    padding: 0.5%;
+    width: 98%;
+    justify-content: space-between;
+    
+    
+    flex-direction: row;
+
+}
+.textArea textarea{
+    box-shadow: 1px 1px 8px rgba(0,0,0,0.1);
+    border: 0px;
+    border-radius: 8px;
+    margin-left: 4%;
+}
+.botaoVermelho{
+    min-width: 100px;
+}
+.balaoRestaurante{
+    width: 100%;
+    min-height:50px;
+    align-items: flex-end;
+    padding: 4%
+}
+.balaoUsuario{
+    width: 100%;
+    min-height: 50px;
+    align-items: flex-start;
+    padding: 4%
+
+}
+.msgUsuario{
+    min-width: 10%;
+
+    max-width: 90%;
+    min-height: 50px;
+
+    margin-left: 0;
+    background-color: #f59c60;
+    box-shadow: 1px 1px 8px rgba(0,0,0,0.1);
+    padding: 1%;
+    padding: 5%;
+    border-radius: 7px;
+}
+.msgRestaurante{
+    min-width: 10%;
+    max-width: 90%;
+    min-height: 50px;
+    background-color: white;
+    box-shadow: 1px 1px 8px rgba(0,0,0,0.1);
+    padding: 1%;
+    padding: 5%;
+    border-radius: 7px;
+}
+
+.botoesFinal{
+    width: 98%;
+    height: 20px;
+
+    margin-top: 10%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.botoesFinal p{
+    font-size: 12px;
+}
+.cadaBotao{
+    width: 100px;
+    position: relative;
+
+}
+.cadaBotao .iconeNotificacao{
+    top: 0;
+    right: 20px;
+    width: 20px;
+    height: 20px;
+    transform: scale(0.5);
+    animation: piscar 1s linear infinite
+}
+.cadaBotao button{
+    min-width: 65px;
+    width: 65px;
+    height: 65px;
+    border: 0px;
+    box-shadow: 1px 1px 8px rgba(0,0,0,0.2),
+    inset 1px 1px 2px #fff;
+    background-color: white;
+    border-radius: 15px;
+    margin-bottom: 5%;
+    color: rgb(122, 122, 122);
+}

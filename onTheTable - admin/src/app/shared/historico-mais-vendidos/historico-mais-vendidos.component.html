@@ -1,0 +1,33 @@
+<div class="cadaHistorico centralizado">
+    <div class="botoes centralizado">
+        <button class="botaoVermelho" [ngClass]="{'btnBranco': sumMonth}" (click)="pegaHistoricoByDay()">Diário</button>
+        
+        <button class="botaoVermelho" [ngClass]="{'btnBranco': !sumMonth}" (click)="pegaHistoricoByMonth()" style="margin-left: 5%;">Mensal</button>
+
+    </div>
+    <div class="infoHistorico centralizado">
+        <div class="botaoCima centralizado">
+            <button (click)="escolherDia(-1)"><</button>
+            <div class="centralizado" style="flex-direction: row; width: 50%;">
+                <p *ngIf="!sumMonth" >{{diaEscolhido + " de "}}</p><p style="margin-left: 2%;">{{mesEscolhido}}</p>
+            </div>
+            <button (click)="escolherDia(1)">></button>
+        </div>
+        <div class="itensHistorico centralizado">
+            <div class="tituloHistorico">
+                <h1>Mais pedidos</h1>
+            </div>
+            <p *ngIf="foods.length==0" > Nenhum produto vendido</p>
+            <div class="cadaItemHistorico centralizado" *ngFor="let item of foods" >
+                
+                <p *ngIf="item.count" >{{item.nameFood}}</p>
+                <p *ngIf="item.count" > {{item.count}}</p>
+                
+            </div>
+
+        </div>
+        <div class="maisDetalhe centralizado">
+            <a (click)="abrirQuadro()">Mais detalhes</a>
+        </div>
+    </div>
+</div>

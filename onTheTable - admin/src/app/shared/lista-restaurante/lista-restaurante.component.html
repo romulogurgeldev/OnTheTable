@@ -1,0 +1,67 @@
+<app-cadastrar-restaurante *ngIf="addRestaurante" [(addRestaurante)]="addRestaurante"></app-cadastrar-restaurante>
+<div class="back centralizado" *ngIf="restaurant && myPlan" >
+    <div class="conteudo centralizado">
+        <div class="cabecalhoMaior centralizado">
+            <div class="texto">
+                <h1>Meus Restaurantes</h1>
+                <small 
+                title="Seu plano suporta apenas {{myPlan.plano.quantityRestaurants}} estabelecimentos cadastrados, dê um upgrade no seu plano para cadastrar mais restaurantes">
+                    Total: {{restaurant.length}}/{{myPlan.plano.quantityRestaurants}}
+                </small>
+            </div>
+            <button class="addRestaurante botaoVermelho" title="Adicionar novo restaurante" (click)="addRestaurante = true" *ngIf="restaurant.length<myPlan.plano.quantityRestaurants" >+</button >
+            <button class="addRestaurante botaoVermelho btnDesativado " 
+            title="Seu plano suporta apenas {{myPlan.plano.quantityRestaurants}} estabelecimentos cadastrados, dê um upgrade no seu plano para cadastrar mais restaurantes"
+            *ngIf="restaurant.length>=myPlan.plano.quantityRestaurants" >+</button >
+
+        </div>
+        <div class="restaurantes centralizado">
+            <div class="cadaRestaurante" *ngFor="let item of restaurant; let i = index" >
+                <div class="cabecalho">
+                    <h3>{{item.name}}</h3>
+                </div>
+                <div class="config centralizado">
+                    <p>Cardápio </p>
+                    <div class="icone">
+                        <p>{{totalFood[i]}}</p>
+
+                    </div>
+
+                </div>
+                <div class="config centralizado">
+                    <p>Mesas</p>
+                    <div class="icone">
+                        <p>{{totalTable[i]}}</p>
+
+                    </div>
+
+                </div>
+                <div class="config centralizado" *ngIf="minhasConfig" >
+                    <p>Delivery</p>
+                    <div class="icone">
+                        <mat-icon style="color: green;" *ngIf="minhasConfig[i]?.delivery" >check_circle</mat-icon>
+                        <mat-icon style="color: red;" *ngIf="!minhasConfig[i]?.delivery" >cancel</mat-icon>
+
+                    </div>
+
+                </div>
+                <div class="config centralizado" *ngIf="minhasConfig" >
+                    <p>Pagamento Online</p>
+                    <div class="icone">
+                        <mat-icon style="color: green;" *ngIf="minhasConfig[i]?.pagamento" >check_circle</mat-icon>
+                        <mat-icon style="color: red;" *ngIf="!minhasConfig[i]?.pagamento" >cancel</mat-icon>
+
+                    </div>
+
+                </div>
+                <div class="botoes centralizado">
+                    <button class="botaoRosa"(click)="irPara('configuracoes', item._id)">Configurar</button>
+                    <button class="botaoVermelho" (click)="irPara('restaurante', item._id)">Abrir</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+

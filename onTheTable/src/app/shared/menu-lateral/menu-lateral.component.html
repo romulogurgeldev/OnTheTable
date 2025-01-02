@@ -1,0 +1,62 @@
+
+<!-- <app-cad-nome *ngIf="!logado && menu" [(logado)]="logado" [(mesa)]="mesa"></app-cad-nome> -->
+<div class="back centralizado" *ngIf="menu" >
+  <div class="conteudo centralizado">
+    <div class="cadaBotao centralizado" (click)="irPara('mesa')">
+    
+      <button class="centralizado" (click)="escolhido=2">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" >home</mat-icon>
+  
+      </button>
+      <p>Home</p>
+    </div>
+    <div class="cadaBotao centralizado" (click)="irPara('minha-mesa')">
+      
+      <button class="centralizado" (click)="escolhido=1">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" svgIcon="mesa"></mat-icon>
+      </button>
+      <p>Mesa</p>
+    </div>
+    <div class="cadaBotao centralizado" (click)="irPara('carrinho')">
+      
+      <button class="centralizado"  (click)="escolhido=0">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" svgIcon="carrinho"></mat-icon>
+  
+      </button>
+      <p>Carrinho</p>
+    </div>
+    <div class="cadaBotao centralizado" (click)="irPara('pedidos')">
+    
+      <button class="centralizado" (click)="escolhido=2">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" svgIcon="pedidos"></mat-icon>
+  
+      </button>
+      <p>Pedidos</p>
+    </div>
+
+    <div class="cadaBotao centralizado" (click)="irPara('perfil')">
+    
+      <button class="centralizado" (click)="escolhido=2">
+        <mat-icon>account_circle</mat-icon>
+  
+      </button>
+      <p>Perfil</p>
+    </div>
+  </div>
+</div>
+
+  
+<!-- <div class="cabecalho centralizado" *ngIf="abrir==true" [ngClass]="{'sumir': abrir==false, 'aparecer': abrir==true}">
+  <h4>{{titulos[escolhido]}}</h4>
+</div>
+<div class="conteudo" *ngIf="abrir==true" [ngClass]="{'sumir': abrir==false, 'aparecer': abrir==true}">
+  
+  
+  
+</div>
+<div class="botoes centralizado"  [ngClass]="{'sumir': abrir==false, 'aparecer': abrir==true}" *ngIf="abrir==true">
+
+
+
+
+</div> -->

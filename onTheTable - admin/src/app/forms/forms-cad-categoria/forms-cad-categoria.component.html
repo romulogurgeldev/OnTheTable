@@ -1,0 +1,40 @@
+<div class="centralizado">
+
+    <mat-spinner *ngIf="carregando" ></mat-spinner>
+    <form  [formGroup]="form" class="forms centralizado" *ngIf="!carregando" >
+        <h1 *ngIf="tipo=='comida'" >Adicionar Categoria</h1>
+        <h1 *ngIf="tipo=='mesa'" >Adicionar Espaço</h1>
+        <div style="width: 100%; min-width: 350px;">
+            <div class="row" style='margin-top: -7%;'>
+                <div class="form-group col-md-12 centralizado">
+                    <div class="inputLogin centralizado" style='width: 95%;'>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Nome</mat-label>
+                            <input matInput formControlName="nome">
+                            
+                            <mat-error *ngIf="form.controls['nome'].invalid && form.controls['nome'].touched" > - Campo obrigatório</mat-error>
+                                    
+                        </mat-form-field>                
+                    </div>  
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </form>
+
+      <div class="botoes centralizado">
+        
+        <button type="button" class="btn botaoVermelho" (click)="save()" 
+        *ngIf="form.controls['nome'].valid
+        "
+            >Salvar</button>
+        <button type="button" class="btn botaoVermelho btnDesativado" 
+        *ngIf="form.controls['nome'].invalid 
+        " 
+            >Salvar</button>
+    </div> 
+</div>
+

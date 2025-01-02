@@ -1,0 +1,47 @@
+<div class="back centralizado">
+    <div class="conteudo container">
+        <mat-spinner *ngIf="carregando" style="margin-top: 10%"></mat-spinner>
+        <div class="botoes centralizado" *ngIf="!carregando && !sucesso" >
+            
+            <mat-form-field appearance="outline" class="centralizado">
+                <mat-label>Seu Nome*</mat-label>
+
+                <input matInput name="name"  [(ngModel)]="nomeUser" >
+
+
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="centralizado">
+                <mat-label>Telefone*</mat-label>
+
+                <input matInput name="name"  [(ngModel)]="telefoneUser" >
+
+
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="centralizado">
+                <mat-label>Total de pessoas para reserva*</mat-label>
+
+                <input matInput name="name" type="number" [(ngModel)]="quantosLugares" >
+
+
+            </mat-form-field>
+            <h5>Escolha uma data para reserva: </h5>
+            <div class="data centralizado">
+                <input type="date" min="{{today | date :'YYYY-MM-dd'}}" max="{{twoWeeks | date :'YYYY-MM-dd'}}" [(ngModel)]="dataEscolhida" >
+                <input type="time" [(ngModel)]="horas" >
+
+            </div>
+            <button class="botaoVermelho" style="margin-top:5%;"
+            *ngIf="horas && telefoneUser && nomeUser && dataEscolhida && quantosLugares" 
+            (click)="reservar()" >Reservar</button>
+            <button class="botaoVermelho botaoDesativado" style="margin-top:5%;" 
+            *ngIf="!horas || !telefoneUser || !nomeUser || !dataEscolhida || !quantosLugares">Reservar</button>
+        </div>
+        <div class="sucesso centralizado" *ngIf="!carregando && sucesso" >
+            <h1>Solicitação de reserva enviada com sucesso!</h1>
+            <p>Aguarde o restaurante confirmar sua reserva através do número de contato fornecido </p>
+            <button class="botaoVermelho" style="margin-top:5%;"
+            
+           (click)="sucesso=false" >Ok</button>
+        </div>
+    </div>
+</div>

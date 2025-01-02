@@ -1,0 +1,28 @@
+<div class="back centralizado" *ngIf="mesa" >
+    <div class="cabecalho centralizado">
+        <h1>{{mesa.restaurant.name}} - {{mesa.name}}</h1>
+    </div>
+    <div class="conteudo centralizado">
+        <div class="mensagens" *ngFor="let item of mensagens" >
+            <div class="cadaMensagem msgRestaurante centralizado" *ngIf="item.restaurante" >
+                <div class="msg" >
+                    <p [innerHTML]="item.msg">{{item.msg}}</p>
+                    <small>{{item.date | date: "dd/MM/yyyy - HH:mm"}}</small>
+                </div>
+                
+            </div>
+            <div class="cadaMensagem msgUsuario centralizado" *ngIf="!item.restaurante" >
+                <div class="msg" >
+                    <p [innerHTML]="item.msg">{{item.msg}}</p>
+                    <small>{{item.date | date: "dd/MM/yyyy - HH:mm"}}</small>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="textArea centralizado">
+        
+        <textarea name="" id="" cols="35" rows="5" [(ngModel)]="msgEscrita" ></textarea>
+        <button class="botaoVermelho" (click)="enviarMensagem()">Enviar</button>
+    </div>
+</div>

@@ -1,0 +1,126 @@
+
+
+.ativoSemana{
+    color: #f27523 !important;
+}
+
+.aclass img{
+    background-color: blue;
+    width: 20px !important;
+}
+.abrir{
+    animation-name: abrirPraCima2;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+}
+.fechar{
+    animation-name: fecharPraCima2;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+}
+.aparecer{
+    animation-delay: 0.1s;
+    animation-name: aparecer;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+.sumir{
+    animation-name: sumir;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+}
+@keyframes abrirPraCima2 {
+    from {height: 72px;}
+    to {height: 360px;}
+}
+@keyframes fecharPraCima2 {
+    from {height: 360px;}
+    to {height: 72px;}
+}
+@keyframes sumir {
+    from {opacity: 1}
+    to {opacity: 0}
+}
+@keyframes aparecer {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+:host ::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+    background-color: #f276238f;
+}
+
+:host ::ng-deep  .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+    background-color: #f27523 ;
+}
+
+
+
+
+.back{
+    width: 100%;
+
+    flex-wrap: wrap;
+    height: 70vh;
+    overflow: auto;
+    padding: 1%;
+    margin-top: 5%;
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+
+    grid-gap:7%;
+    row-gap:2%;overflow-x: hidden;
+}
+.back::-webkit-scrollbar-track {
+    background-color: #F4F4F4;
+}
+.back::-webkit-scrollbar {
+    width: 6px;
+    background: #F4F4F4;
+}
+::-webkit-scrollbar-thumb {
+    background: #dad7d7;
+} 
+.cadaPromocao{
+    position: relative;
+    background-color: white;
+    width: 260px;
+    height: 330px;
+    margin-bottom: 5%;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.1),
+    inset 1px 1px 2px #fff;
+    justify-content: flex-start;
+    padding: 5%;
+    align-items: flex-start;
+}
+.cadaPromocao h1{
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 5%;
+    font-weight: 700;
+    margin-top: 8%;
+}
+.cadaPromocao p{
+    font-size: 12px;
+    margin-top: 10px;
+}
+.tdSemana{
+    width: 80%;
+
+    flex-direction: row;
+    justify-content: space-between;
+
+    color: rgba(0, 0, 0, 0.438);
+}
+.botoes{
+    width: 100%; margin-top: 8%;
+    flex-direction: row;
+
+}
+mat-icon{
+    color: #f27523;
+    transform: scale(0.8);
+    cursor: pointer;
+    right: 2px;
+    top: 2px;
+}

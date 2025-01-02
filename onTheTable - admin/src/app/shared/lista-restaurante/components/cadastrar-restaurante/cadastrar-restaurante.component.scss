@@ -1,0 +1,40 @@
+.cadRestaurante{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.096);
+    z-index: 100;
+    
+    > .conteudoCadastro{
+        position: relative;
+        background-color: white;
+        width: 50%;
+        min-width: 350px;
+        min-height: 50%;
+        border-radius: 15px;
+        padding: 2%;
+        padding-top: 1%;
+        max-height: 90vh;
+        > h1{
+            margin-left: 3%;
+            font-size: 25px;
+        }
+        > .conteudoCadastro2{
+            height: 95%;
+            overflow: auto;
+            margin-top: 4%;
+        }
+    }
+}
+.conteudoCadastro2::-webkit-scrollbar-track {
+    background-color: #F4F4F4;
+}
+.conteudoCadastro2::-webkit-scrollbar {
+width: 6px;
+background: #F4F4F4;
+}
+::-webkit-scrollbar-thumb {
+background: #dad7d7;
+} 

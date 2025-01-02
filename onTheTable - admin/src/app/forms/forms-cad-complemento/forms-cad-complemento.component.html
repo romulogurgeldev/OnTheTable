@@ -1,0 +1,166 @@
+<div class="centralizado main">
+    
+    <mat-spinner *ngIf="carregando" ></mat-spinner>
+    <div class="preForm  centralizado">
+        <div class="cabecalho centralizado">
+            <h1>Complementos</h1>
+            <p>Seu item tem complementos? Indique aqui</p>
+        </div>
+        <div class="selectOption centralizado">
+            <mat-radio-group aria-label="Select an option"  >
+                <mat-radio-button value="false" [checked]="true" (change)="checkComplemento(false)">Não, este item não tem complementos</mat-radio-button>
+                <mat-radio-button value="true" (change)="checkComplemento(true)">Sim, este item tem complementos</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <div class="grupoComplementos centralizado" *ngIf="temComplementos" >
+            <div class="cadaComplemento" *ngFor="let item of complementos; let i=index" [ngClass]="{'expandir': abrir[i]==true, 'encolher': abrir[i]==false}">
+                <div class="tituloGrupo centralizado">
+                    <div class="textoGrupo">
+                        <h2>{{item.tipo}}</h2>
+                        <p>{{item.complementos.length}} opções</p>
+                    </div>
+                    <button (click)="abrir[i]=false" *ngIf="abrir[i]">                            
+                        
+                        <mat-icon  >expand_less</mat-icon>
+                    </button>
+                    <button (click)="abrir[i]=true" *ngIf="!abrir[i]" >                            
+                        <mat-icon  >expand_more</mat-icon>
+
+                    </button>
+                </div>
+                <div class="itens" *ngIf="abrir[0]">
+                    <div class="cadaItem" *ngFor="let item2 of item.complementos" >
+                        <p *ngIf="abrir[i]">{{item2.name}}</p>
+                        
+                    </div>
+                </div>
+
+            </div>
+            <!-- <div class="cadaComplemento" [ngClass]="{'expandir': abrir[0]==true, 'encolher': abrir[0]==false}" >
+                <div class="tituloGrupo centralizado">
+                    <div class="textoGrupo">
+                        <h2>Título</h2>
+                        <p>4 opções</p>
+                    </div>
+                    <button (click)="abrir[0]=false" *ngIf="abrir[0]">                            
+                        
+                        <mat-icon  >expand_less</mat-icon>
+                    </button>
+                    <button (click)="abrir[0]=true" *ngIf="!abrir[0]" >                            
+                        <mat-icon  >expand_more</mat-icon>
+
+                    </button>
+                </div>
+                <div class="itens">
+                    <div class="cadaItem">
+                        <p *ngIf="abrir[0]" >teste</p>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        <div class="botoesComplemento centralizado" *ngIf="temComplementos">
+            <button class="botaoVermelho" (click)="formComplementos=true">Adicionar grupo de complementos</button>
+            
+        </div>
+        <a  (click)="fechar()" *ngIf="comida && complementos.length==0" class="btnCancelar" >Cancelar</a>
+        <a  (click)="fechar()" *ngIf="comida && complementos.length>0" class="btnCancelar"  >Salvar e sair</a>
+    </div>
+
+    <form  [formGroup]="form" class="forms " *ngIf="!carregando && formComplementos" >
+        <button class="botaoVermelho btnFechar" (click)="formComplementos=false">X</button>      
+        <h1>Novo grupo de complementos</h1>
+        <div class="menuBotoes centralizado" *ngIf="!carregando" >
+            <p [ngClass]="{'ativo': paginaComplementos==false}" (click)="paginaComplementos=false">Detalhes</p>
+            <p *ngIf="form.controls['categoria'].invalid" [ngClass]="{'ativo': paginaComplementos==true}" title="preencha campo obrigatório">Complementos</p>
+            <p *ngIf="form.controls['categoria'].valid" [ngClass]="{'ativo': paginaComplementos==true}" (click)="paginaComplementos=true">Complementos</p>
+        </div>
+        <mat-form-field appearance="outline"  style="width:100%" *ngIf="!paginaComplementos" >
+            <mat-label>Nome do grupo de complementos</mat-label>
+            <input matInput formControlName="categoria">
+            
+            <mat-error *ngIf="form.controls['categoria'].invalid && form.controls['categoria'].touched" > - Campo obrigatório</mat-error>
+                    
+        </mat-form-field>   
+        <div class="bloco obrigatoriedade centralizado" *ngIf="!paginaComplementos" >
+            <h2>Obrigatoriedade</h2>
+            <p>Indique se essa categoria é necessária para pedir o prato</p>
+            <mat-radio-group aria-label="Select an option"  >
+                <mat-radio-button value="false" [checked]="true" (change)="obrigatoriedade=false; minimo=0; maximo=1">Opcional: O cliente deve ou não selecionar um item</mat-radio-button>
+                <mat-radio-button value="true"  (change)="obrigatoriedade=true; minimo=1; maximo=1">Obrigatório: O cliente deve escolher no mínimo um item</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <div class="bloco quantidade centralizado" *ngIf="!paginaComplementos" >
+                    
+            <h2>Quantidade</h2>
+            <p>Indique quantos itens podem ser selecionados</p>
+            <div class="inputsQuantidade centralizado">
+                <div class="cadaInput centralizado">
+                    <button (click)="contaQuantidade(-1)" [ngClass]="{'pAtivo': obrigatoriedade && minimo>1}" >-</button>
+                    <h2>{{minimo}}</h2>
+                    <button (click)="contaQuantidade(1)" [ngClass]="{'pAtivo': obrigatoriedade}" >+</button>
+                 </div>
+                 <div class="cadaInput centralizado">
+                     <button (click)="contaQuantidade(-1, false)" [ngClass]="{'pAtivo': maximo>1}" >-</button>
+                     <h2>{{maximo}}</h2>
+                     <button (click)="contaQuantidade(1, false)" class="pAtivo" >+</button>
+                  </div>
+            </div>
+        </div>
+        <div class="bloco botoes centralizado" *ngIf="!paginaComplementos" >
+            <button type="button" class="btn botaoVermelho" (click)="paginaComplementos=true" 
+            *ngIf="form.controls['categoria'].valid"
+                >Próximo</button>
+            <button type="button" class="btn botaoVermelho btnDesativado" title="Campo 'nome' é obrigatório"
+            *ngIf=" form.controls['categoria'].invalid" 
+                >Próximo</button>
+        </div>
+        <div class="duploInput centralizado" *ngIf="paginaComplementos && formComplementoIndividual" >
+            <mat-form-field appearance="outline"  class="form-full-width">
+                <mat-label>Nome</mat-label>
+                <input matInput formControlName="nome">
+                
+                <mat-error *ngIf="form.controls['nome'].invalid && form.controls['nome'].touched" > - Campo obrigatório</mat-error>
+                        
+            </mat-form-field>  
+            <mat-form-field appearance="outline" class="form-full-width">
+                <mat-label>Preço</mat-label>
+                <input type="number"  matInput formControlName="preco" (change)="verificaPreco()" >
+                
+                <mat-error *ngIf="form.controls['preco'].invalid && form.controls['preco'].touched" > - Campo obrigatório</mat-error>
+                        
+            </mat-form-field>  
+        </div>
+        <div class="bloco centralizado" *ngIf="paginaComplementos">
+            <h2 *ngIf="!formComplementos" >Adicionar complemento:</h2>
+            <h2 *ngIf="formComplementos"  >Adicionar outro complemento:</h2>
+            
+        </div>
+        <div class="bloco botoesEscolha centralizado" *ngIf="paginaComplementos" >
+
+            <div class="cadaBotao centralizado" (click)="tipo='preparado'; criaComplemento(); formComplementoIndividual=true">
+                <h5>Preparado</h5>
+                <p>Itens produzidos pela sua loja, como pizzas e bolos.</p>
+            </div>
+            <div class="cadaBotao centralizado" (click)="tipo='industrializado'; criaComplemento(); formComplementoIndividual=true">
+                <h5>Industrializados</h5>
+                <p>Itens prontos, como refrigerantes e chocolates.</p>
+            </div>
+        </div>
+        <div class="bloco botoes centralizado" *ngIf="paginaComplementos && formComplementoIndividual"  style="margin-top: 35%;">
+            
+            <button type="button" class="btn botaoVermelho" (click)="save()" 
+            *ngIf="(form.controls['nome'].valid && form.controls['categoria'].valid) 
+            || complemento.complementos.length>0" 
+                >Salvar</button>
+            <button type="button" class="btn botaoVermelho btnDesativado" title="Campo 'nome' é obrigatório"
+            *ngIf=" (form.controls['nome'].invalid 
+            || form.controls['categoria'].invalid) && complemento.complementos.length==0" 
+                >Salvar</button>
+        </div>
+    </form>
+
+
+</div>
+
+
+

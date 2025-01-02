@@ -1,0 +1,42 @@
+<div class="back">
+    <h1>Mais Vendidos</h1>
+    <div class="dias centralizado">
+        <div class="botoes centralizado">
+            <button class="botaoVermelho" [ngClass]="{'btnBranco': sumMonth}" (click)="pegaHistoricoByDay()">Diário</button>
+            
+            <button class="botaoVermelho" [ngClass]="{'btnBranco': !sumMonth}" (click)="pegaHistoricoByMonth()">Mensal</button>
+    
+        </div>
+        <div class="botaoCima centralizado">
+            <button (click)="escolherDia(-1)"><</button>
+            <p *ngIf="!sumMonth" >{{diaEscolhido + " de "}}</p><p>{{mesEscolhido}}</p>
+            <button (click)="escolherDia(1)">></button>
+        </div>
+    </div>
+    <div class="produtosVendidos visaoGeral centralizado">
+        <div class="cadaVisaoGeral">
+            <p>Total vendido</p>
+            <h2>{{total | currency:'BRL':true}}</h2>
+        </div>
+        <div class="cadaVisaoGeral">
+            <p>Quantidade vendidas</p>
+            <h2>{{quantidade}}</h2>
+        </div>
+    </div>
+    <div class="produtosVendidos">
+        <table>
+            <tr>
+                <td title="Nome">Nome</td>
+                <td title="Quantidade">Qtd.</td>
+                <td title="Valor">Valor</td>
+                <td title="Total">Total</td>
+            </tr>
+            <tr *ngFor="let item of foods" class="trConteudo">
+                <td>{{item.nameFood}}</td>
+                <td>{{item.count}}</td>
+                <td>{{item.priceFood | currency:'BRL':true}}</td>
+                <td>{{item.priceFood*item.count | currency:'BRL':true}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

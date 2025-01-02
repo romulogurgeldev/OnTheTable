@@ -1,0 +1,43 @@
+<div style="position:relative">
+    <div class="back centralizado" [ngClass]="{'abrir': abrir==true, 'fechar': abrir==false}">
+        <img src="./assets/logo.png" alt="logo - on the table" *ngIf="abrir" [ngClass]="{'sumir': abrir==false, 'aparecer': abrir==true}">
+        <div class="menu centralizado" *ngIf="abrir" [ngClass]="{'sumir': abrir==false, 'aparecer': abrir==true}">
+            <div class="icone centralizado" (click)="fazEscolha(botoes.pedidos, 1)" [ngClass]="{'ativo': numeroEscolha==1}">
+                <mat-icon aria-hidden="false" aria-label="Example home icon"  svgIcon="pedidos"></mat-icon>
+                <p>Pedidos</p>
+            </div>
+            <div class="icone centralizado" (click)="fazEscolha(botoes.historico, 2)" [ngClass]="{'ativo': numeroEscolha==2}">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" svgIcon="historico"></mat-icon>
+                <p>Histórico</p>
+            </div>
+            <div class="icone centralizado" (click)="fazEscolha(botoes.ajustes, 3)" [ngClass]="{'ativo': numeroEscolha==3}">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" svgIcon="config"></mat-icon>
+                <p>Ajustes</p>
+            </div>
+
+        </div>
+    
+    
+    </div>
+    <div class="menu2 centralizado" 
+    [ngClass]="{
+        'abrir2': abrir==true, 
+        'fechar2': abrir==false 
+        
+
+    }">
+        <button class="btnAbrir centralizado" (click)="abrir=true" *ngIf="!abrir" >></button>
+        <button class="btnAbrir centralizado" (click)="abrir=false" *ngIf="abrir" ><</button>
+        <div class="menu centralizado" *ngIf="abrir" [ngClass]="{'sumir': abrir==false, 'aparecer': abrir==true}">
+            <div class="icone centralizado" *ngFor="let item of escolha" 
+            [ngClass]="{'ativo': item.selecionado}"
+            (click)="irPara(item.endereco); item.selecionado = true">
+                <mat-icon aria-hidden="false" aria-label="Example home icon"  [svgIcon]="item.svg" *ngIf="item.visualizacao" ></mat-icon>
+                <p *ngIf="item.visualizacao" >{{item.titulo}}</p>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+

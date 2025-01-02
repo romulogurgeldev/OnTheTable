@@ -1,0 +1,64 @@
+<div class="centralizado">
+    
+    <mat-spinner *ngIf="carregando" ></mat-spinner>
+    <table *ngIf="!carregando" >
+        <tr>
+            <td></td>
+            <td>Permitir</td>
+            <td>Não Permitir</td>
+        </tr>
+        <tr>
+            <td style="text-align: start;">Pedidos</td>
+            <td><mat-checkbox class="example-margin" [(ngModel)]="permissao.pedidos.permissao" ></mat-checkbox></td>
+            <td><mat-checkbox class="example-margin" ></mat-checkbox></td>
+        </tr>
+        <tr>
+            <td style="text-align: start;">Pedidos/Mesas</td>
+            <td><mat-checkbox class="example-margin" [(ngModel)]="permissao.pedidos.mesas"></mat-checkbox></td>
+            <td><mat-checkbox class="example-margin"  [(ngModel)]="!permissao.pedidos.mesas" (change)="permissao.pedidos.mesas=false; save();"></mat-checkbox></td>
+        </tr>
+        <tr>
+            <td style="text-align: start;">Pedidos/Cozinha</td>
+            <td><mat-checkbox class="example-margin" [(ngModel)]="permissao.pedidos.cozinha"></mat-checkbox></td>
+            <td><mat-checkbox class="example-margin" [(ngModel)]="!permissao.pedidos.cozinha" (change)="permissao.pedidos.cozinha=false; save();"></mat-checkbox></td>
+        </tr>
+        <tr>
+            <td style="text-align: start;">Histórico</td>
+            <td><mat-checkbox class="example-margin" [(ngModel)]="permissao.historico.permissao"></mat-checkbox></td>
+            <td><mat-checkbox class="example-margin" [(ngModel)]="!permissao.historico.permissao" (change)="permissao.historico.permissao=false; save();"></mat-checkbox></td>
+        </tr>
+        <tr>
+            <td style="text-align: start;">Ajustes</td>
+            <td><mat-checkbox class="example-margin" [(ngModel)]="permissao.ajustes.permissao"></mat-checkbox></td>
+            <td><mat-checkbox class="example-margin" [(ngModel)]="!permissao.ajustes.permissao" (change)="permissao.ajustes.permissao=false; save();"></mat-checkbox></td>
+        </tr>
+        <tr>
+            <td style="text-align: start;">Ajustes/Cardápio</td>
+            <td><mat-checkbox class="example-margin" [(ngModel)]="permissao.ajustes.cardapio"></mat-checkbox></td>
+            <td><mat-checkbox class="example-margin" [(ngModel)]="!permissao.ajustes.cardapio" (change)="permissao.ajustes.cardapio=false; save();"></mat-checkbox></td>
+        </tr>
+        <tr>
+            <td style="text-align: start;">Ajustes/Mesas</td>
+            <td><mat-checkbox class="example-margin" [(ngModel)]="permissao.ajustes.mesa"></mat-checkbox></td>
+            <td><mat-checkbox class="example-margin" [(ngModel)]="!permissao.ajustes.mesa" (change)="permissao.ajustes.mesa=false; save();"></mat-checkbox></td>
+        </tr>
+        <tr>
+            <td style="text-align: start;">Ajustes/Promoções</td>
+            <td><mat-checkbox class="example-margin" [(ngModel)]="permissao.ajustes.promotion"></mat-checkbox></td>
+            <td><mat-checkbox class="example-margin" [(ngModel)]="!permissao.ajustes.promotion" (change)="permissao.ajustes.promotion=false; save();"></mat-checkbox></td>
+        </tr>
+        <tr>
+            <td style="text-align: start;">Ajustes/Configurações</td>
+            <td><mat-checkbox class="example-margin" [(ngModel)]="permissao.ajustes.config"></mat-checkbox></td>
+            <td><mat-checkbox class="example-margin" [(ngModel)]="!permissao.ajustes.config" (change)="permissao.ajustes.config=false; save();"></mat-checkbox></td>
+        </tr>
+        <tr>
+            <td style="text-align: start;">Delivery</td>
+            <td><mat-checkbox class="example-margin" [(ngModel)]="permissao.delivery.permissao"></mat-checkbox></td>
+            <td><mat-checkbox class="example-margin" [(ngModel)]="!permissao.delivery.permissao" (change)="permissao.delivery.permissao=false; save();"></mat-checkbox></td>
+        </tr>
+    </table>
+</div>
+
+
+

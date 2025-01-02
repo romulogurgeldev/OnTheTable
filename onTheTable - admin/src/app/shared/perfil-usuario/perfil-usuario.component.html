@@ -1,0 +1,42 @@
+
+<div class="back " [ngClass]="{'abrir': abrir==true, 'fechar': abrir==false}">
+    <button class="btnAbrir centralizado" (click)="abrir=true" *ngIf="!abrir" >></button>
+    <button class="btnAbrir centralizado" (click)="abrir=false" *ngIf="abrir" ><</button>
+    
+    <div class="infoPerfil" *ngIf="usuario && abrir" [ngClass]="{'sumir': abrir==false, 'aparecer': abrir==true}" >
+        <div class="cadaInfo centralizado">
+            <h1>Minha Conta</h1>
+            <button class="botaoVermelho" >
+                <a [href]="'#/edit/'+usuario._id">Editar Perfil</a>
+            </button>
+        </div>
+        <div class="cadaInfo centralizado">
+            <div class="centralizado" style="width: 100%;">
+                <p>Nome Completo</p>
+                <h4>{{usuario.name}}</h4>
+            </div>
+        </div>
+        <div class="cadaInfo centralizado">
+            <div class="centralizado">
+                <p>CPF</p>
+                <h4>{{usuario.cpf}}</h4>
+            </div>
+            <div class="centralizado">
+                <p>Aniversário</p>
+                <h4>{{usuario.birthday | date :'dd/MM/yyyy'}}</h4>
+            </div>
+        </div>
+        <div class="cadaInfo centralizado">
+            <div class="centralizado">
+                <p>Telefone</p>
+                <h4>{{usuario.address.telphone}}</h4>
+            </div>
+            <div class="centralizado">
+                <p>Email</p>
+                <h4>{{usuario.email}}</h4>
+            </div>
+        </div>
+        <div class="cadaInfo centralizado"></div>
+    </div>
+
+</div>

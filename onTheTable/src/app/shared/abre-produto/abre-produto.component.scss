@@ -1,0 +1,160 @@
+.back{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+    z-index: 100;
+    justify-content: flex-start;
+    min-height: 700px;
+    > .botoesFinalizar{
+        position: fixed;
+        bottom: 0;
+        box-shadow: -5px 0px 5px rgba(0,0,0,0.1),
+        inset 1px 1px 2px #fff;
+        width: 100%;
+        flex-direction: row;
+        background-color: white;
+        z-index: 101;
+        justify-content: space-between;
+        height: 90px;
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-top: 0;
+    }
+}
+.conteudo{
+    position: relative;
+    
+    background-color: white;
+    width: 100%;
+    height: 90vh;
+    min-height: 600px;
+
+    
+    justify-content: flex-start;
+    overflow: auto;
+    z-index: 100;
+    
+
+    
+}
+.conteudo .fotoComida{
+    width: 100%;
+    height: 35%;
+    
+}
+.conteudo .texto{
+    
+    margin-top: 10%;
+    width: 95%;
+    justify-content:space-between;
+    align-items: flex-start;
+    height: 50%;
+    
+}
+.conteudo .texto h1{
+    font-size: 24px;
+    font-weight: 700;
+
+}
+.conteudo .texto p{
+    margin-top: 10%;
+    font-size: 18px;
+
+
+}
+.conteudo .texto h4{
+    font-size: 18px;
+    font-weight: 700;
+
+}
+.preco{
+    margin-top: 5%;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.quantidade{
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-left: 6%;
+
+}
+.quantidade p{
+    width: 30px;
+    margin-top: 1% !important;
+    font-size: 18px !important;
+    border: 1px solid rgb(214, 214, 214);
+    text-align: center;
+}
+.btnQuantidade{
+    min-width: 30px;
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+}
+.forms{
+    
+    margin-top: 5%;
+    margin-bottom: 100%;
+    height: 200px;
+    
+    padding-bottom: 5%;
+    width: 100%;
+    > .textoArea{
+        position: fixed;
+        background-color: white;
+        width: 100%;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        padding-left: 2%;
+        padding-right: 2%;
+        > textArea{
+            background-color: transparent;
+            border: 0px;
+            border-radius: 7px;
+            margin-top: 5%;
+            outline: none;
+
+        }
+        > .tituloTextoArea{
+            width: 95%;
+            justify-content: space-between;
+            flex-direction: row;
+            margin-top: 3%;
+            > mat-icon{
+                color: #f27523;
+            }
+        }
+        > .buttonSalvar{
+            position: fixed;
+            width: 100%;
+            bottom: 5%;
+        }
+    }
+
+}
+.forms .textArea{
+    width: 95%;
+    height: 50px;
+    background-color: transparent;
+    border: 0px;
+    padding: 2%;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.1),
+    inset 1px 1px 2px #fff;
+    border-radius: 7px;
+    margin-top: 5%;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.435);
+    font-size: 12px;
+}
+
+.botaoConfirmar{
+    
+    width: 50%;
+    min-width: 100px;
+}

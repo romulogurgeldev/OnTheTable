@@ -1,0 +1,50 @@
+<div class="back">
+    <form  [formGroup]="form" class="forms centralizado">
+        <!-- <app-upload-image [(image)]="image"></app-upload-image>                         -->
+        <mat-form-field appearance="outline">
+            <mat-label>Nome do Restaurante*</mat-label>
+            <input matInput formControlName="nomeRestaurante" (keyup)="save()" >
+            
+            <mat-error *ngIf="form.controls['nomeRestaurante'].invalid && form.controls['nomeRestaurante'].touched" > - Campo obrigatório</mat-error>
+                    
+        </mat-form-field>    
+        <mat-form-field appearance="outline">
+            <mat-label>CNPJ*</mat-label>
+            <input mask="00.000.000/0000-00" matInput formControlName="cnpj" (keyup)="save()" >
+            
+            <mat-error *ngIf="form.controls['cnpj'].invalid && form.controls['cnpj'].touched" > - Campo Obrigatório</mat-error>
+            
+            
+        </mat-form-field>     
+
+        <mat-form-field appearance="outline">
+            <mat-label>Razão Social*</mat-label>
+            <input matInput   formControlName="razaoSocial" (keyup)="save()" >
+            
+            <mat-error *ngIf="form.controls['razaoSocial'].invalid && form.controls['razaoSocial'].touched" > - Campo Obrigatório</mat-error>
+            
+            
+        </mat-form-field>    
+        <mat-form-field appearance="outline">
+            <mat-label>Telefone do restaurante*</mat-label>
+            <input mask="(00) 0 000000000000" matInput   formControlName="telefone" [validation]="false" (keyup)="save()" >
+            
+            <mat-error *ngIf="form.controls['telefone'].invalid && form.controls['telefone'].touched" > - Campo Obrigatório</mat-error>
+            
+            
+        </mat-form-field>    
+
+
+    </form>
+    
+      <div class="botoes centralizado" *ngIf="!restauranteExtra" >
+   
+
+        <button type="button" class="btn botaoVermelho" (click)="save()" 
+        *ngIf="form.controls['telefone'].valid && form.controls['nomeRestaurante'].valid && form.controls['razaoSocial'].valid && form.controls['cnpj'].valid"
+        >Próximo</button>
+        <button type="button" class="btn botaoVermelho btnDesativado" 
+        *ngIf="form.controls['telefone'].invalid || form.controls['nomeRestaurante'].invalid || form.controls['razaoSocial'].invalid || form.controls['cnpj'].invalid" 
+        >Próximo</button>
+    </div> 
+</div>

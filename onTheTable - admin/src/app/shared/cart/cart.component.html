@@ -1,0 +1,41 @@
+<div class="back centralizado">
+
+    <div class="pedidoss">
+        <div class="centralizado" *ngIf="mesa.cart.length==0" >
+            Carrinho Vazio
+          </div>
+          <div class="centralizado" style="width: 100%" *ngIf="mesa.cart.length>0" >
+          
+            <div class="cadaPedido centralizado" *ngFor="let item of mesa.cart; let i = index"   >
+              
+              <h1 >{{item.name}}</h1>
+              <div class="centralizado pedidos">
+                <div class="infoPedido">
+        
+                  <p style="width: 80%;">{{item.nameFood}}</p>
+                </div>
+                <div class="img backgroundImage" style="background-image: url({{item.imageFood}});"  alt=""> </div>
+        
+        
+              </div>
+              <div class="quantidade centralizado">
+                <button class="btnQuantidade botaoDesativado" *ngIf="item.quantidade==1">-</button>
+        
+                <button class="btnQuantidade botaoVermelho" *ngIf="item.quantidade>1" (click)="item.quantidade = item.quantidade-1; editCart(mesa._id, i, -1)" >-</button>
+                <p>{{item.quantidade}}</p>
+                <button class="btnQuantidade botaoVermelho" (click)="item.quantidade = item.quantidade+1; editCart(mesa._id, i, 1) ">+</button>
+              
+              </div>
+              <div class="preco centralizado">
+                <p>{{item.priceFood*item.quantidade | currency:'BRL':true}}</p>
+                <a (click)="remover(mesa._id, i)">Remover</a>
+              </div>
+            </div>
+        
+        
+          </div>
+    </div>
+    <button class="botaoVermelho" (click)="fazerPedido()" style="margin-top: 5%;">Fazer Pedido</button>
+    <a (click)="voltar()">Voltar</a>
+
+</div>

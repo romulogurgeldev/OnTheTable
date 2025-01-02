@@ -1,0 +1,155 @@
+$white: #fff;
+$google-blue: #4285f4;
+$button-active-blue: #1669F2;
+.back{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+
+    left: 0;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+.imagemLogin{
+    width: 358px;
+    margin-top: 5%;
+    height:358px;
+
+    border-radius: 15px;
+    justify-content: flex-start;
+}
+.imagemLogin img{
+    width: 40%;
+    margin-top: 5%;
+}
+.conteudo{
+    margin-top: -5%;
+
+    padding: 5%;
+}
+form{
+    background-color: transparent !important;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0);
+
+}
+.btnLogin{
+    width: 90%;
+    height: 80px;
+    background-color: white;
+    border: 0px;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.1),
+    inset 1px 1px 2px #fff;
+    margin-top: 5%;
+
+}
+
+
+.google-btn {
+  width: 90%;
+  height: 52px;
+  background-color: $google-blue;
+  border-radius: 2px;
+  box-shadow: 0 3px 4px 0 rgba(0,0,0,.25);
+  .google-icon-wrapper {
+    position: absolute;
+    margin-top: 1px;
+    margin-left: 1px;
+    width: 50px;
+    height: 50px;
+    border-radius: 2px;
+    background-color: $white;
+  }
+  .google-icon {
+    position: absolute;
+    margin-top: 15px;
+    margin-left: 15px;
+    width: 18px;
+    height: 18px;
+  }
+  .btn-text {
+
+    text-align: center;
+    color: $white;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    font-family: "Roboto";
+    margin-top: 6%;
+    margin-left: 4%;
+  }
+  &:hover {
+    box-shadow: 0 0 6px $google-blue;
+  }
+  &:active {
+    background: $button-active-blue;
+  }
+}
+.loginBtn {
+    box-sizing: border-box;
+    position: relative;
+    /* width: 13em;  - apply for fixed size */
+    margin: 0.2em;
+    padding: 0 15px 0 46px;
+    border: none;
+    text-align: left;
+    line-height: 34px;
+    white-space: nowrap;
+    border-radius: 0.2em;
+    font-family: "Roboto";
+    font-size: 14px;
+    color: #FFF;
+    width: 90%;
+    height: 52px;
+    margin-top: 5%;
+  }
+  .loginBtn:before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 34px;
+    height: 100%;
+  }
+  .loginBtn:focus {
+    outline: none;
+  }
+  .loginBtn:active {
+    box-shadow: inset 0 0 0 32px rgba(0,0,0,0.1);
+  }
+  
+  
+  /* Facebook */
+  .loginBtn--facebook {
+    background-color: #4C69BA;
+
+
+    /*font-family: "Helvetica neue", Helvetica Neue, Helvetica, Arial, sans-serif;*/
+
+  }
+  .loginBtn--facebook:before {
+    width: 50px;
+    background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_facebook.png') no-repeat;
+    background-position: center;
+
+  }
+  .loginBtn--facebook:hover,
+  .loginBtn--facebook:focus {
+    background-color: #4864B1;
+
+  }
+  .loginBtn p{
+    margin-left: 20%;
+  }
+  .loginTelefone{
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.1),
+    inset 1px 1px 2px #fff;
+    color: black;
+    background-color: white;
+  }
+  .loginTelefone p{
+    margin-left: 12%;
+  }
+
+
+

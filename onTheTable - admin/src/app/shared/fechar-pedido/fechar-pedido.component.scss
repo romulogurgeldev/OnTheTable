@@ -1,0 +1,141 @@
+.back{
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.511);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 10;
+}
+.conteudo{
+    position: relative;
+    min-height: 200px;
+    width: 20%;
+    min-width: 340px;
+    background-color: white;
+    border-radius: 14px;
+}
+h6{
+    font-size: 10px;
+    color: #f27523;
+    font-weight: 800;
+}
+h4{
+    font-size: 13px;
+    color: #f2762384;
+}
+h1{
+    font-size: 16px;
+}
+h5{
+    margin-top: 5%;
+    font-size: 15px;
+}
+.pedido{
+    width: 100%;
+    overflow: auto;
+    height: 30vh;
+    margin-top: 5%;
+    padding-right: 2%;
+}
+.cadaPedido{
+    width: 90%;
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.1),
+    inset 1px 1px 2px #fff;
+    
+    min-height: 60px;
+    padding: 5%;
+    margin-bottom: 5%;
+    justify-content: space-between;
+    align-items: flex-start;
+
+}
+
+.pedidos{
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 2%;
+}
+.img{
+    width: 30px;
+    height: 30px;
+    background-color: blue;
+
+}
+.infoPedido{
+    width: 75%;
+    flex-direction: row;
+
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.685);
+}
+.preco{
+    width: 15%;
+    align-items: flex-start;
+}
+.preco p{
+    margin-top: 5%;
+    font-size: 12px;
+    font-weight: 700;
+}
+.precoTotal{
+    margin-top: 5%;
+    width: 105%;
+    flex-direction: row;
+    justify-content: flex-end;
+
+}
+.precoTotal p{
+    font-weight: 800;
+}
+
+.pagamento{
+    margin-top: 5%;
+    flex-direction: column;
+}
+.gorjeta{
+    flex-direction: row;
+}
+.botoes{
+    margin-top: 5%;
+    width: 100%;
+}
+.botoes p{
+    cursor: pointer;
+    text-decoration: none;
+    color: #f27523;
+    text-decoration: underline;
+    margin-top: 2%;
+}
+.botoes p:hover{
+    color: #c24e00;
+}
+.botoes input{
+    margin-bottom: 5%;
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.1),
+    inset 1px 1px 2px #fff;
+    border: 0px;
+    border-radius: 7px;
+    height: 30px;
+}
+.botoes input:focus{
+    outline: none;
+}
+.itens{ 
+    > .complementos{
+        > .cadaComplemento{
+            width: 113.5%;
+            flex-direction: row;
+            justify-content: flex-start;
+            > .centralizado{
+                > p{
+                    font-size: 12px;
+                    color: rgba(0, 0, 0, 0.406);
+                    width: 30%;
+                    margin-left: 1%;
+                }
+            }
+        }
+    }
+}

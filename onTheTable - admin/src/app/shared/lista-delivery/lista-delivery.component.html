@@ -1,0 +1,27 @@
+<div class="back centralizado">
+    <h1>Delivery</h1>
+    <div class="botoes centralizado">
+        <button c class="botaoVermelho" type="button" (click)="ativo=true" [ngClass]="{'btnBranco': !ativo}">Ativos</button>
+        <button c class="botaoVermelho" type="button" (click)="ativo= false" [ngClass]="{'btnBranco': ativo}">Finalizados</button>
+
+    </div>
+
+    <div class="conteudo">
+        <h5>Delivery da casa</h5>
+        <div class="infoDelivery centralizado" (click)="abreMenu()" [ngClass]="{'infoDeliveryAtivo': abrir && infoDelivery}">
+            <h5>Delivery 01</h5>
+            <p>2 pedidos</p>
+            <p>às 18:30</p>
+            <p>Cartão de crédito</p>
+
+        </div>
+        <button class="btnBranco" style="margin-top: 5%;" (click)="abreMenu()">Novo pedido</button>
+        <div class="ifood centralizado">
+            <h5>Ifood</h5>
+            <button class="btnBranco">
+                www.ifood.com.br/meurestaurante
+            </button>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,6 @@
+<div class="cupom-desconto">
+  <h2>Insira o código do cupom de desconto</h2>
+  <input type="text" [(ngModel)]="codigoCupom">
+  <button class="bt btn-primary" (click)="aplicarDesconto()">Aplicar</button>
+  <p *ngIf="mensagemDesconto">{{ mensagemDesconto }}</p>
+</div>

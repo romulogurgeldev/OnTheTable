@@ -1,0 +1,147 @@
+.back{
+
+    position: relative;
+    justify-content: flex-start;
+    flex-direction: row;
+    width: 100%;
+    height: 100vh;
+    background: var(--primary-color);
+
+    .btnNotification{
+        position: fixed;
+        bottom:2%;
+        right: 2%;
+        min-width: 10px;
+        border-radius: 100%;
+        width: 60px;
+        height: 60px;
+        z-index: 1000;
+        
+        mat-icon{
+            transform: scale(1.5);
+        }
+        span{
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: rgb(251,88,97);
+            color: white;
+            font-size: 12px;
+            padding: 1px;
+            border-radius: 100%;
+            top: -5px;
+            right: 0;
+
+        }
+
+    }
+}
+.menu{
+    position: absolute;
+}   
+.conteudo{
+    width: 100%;
+
+}
+.iconeAtivo {
+    animation: piscar2 1s linear infinite
+}
+
+.notificacoes{
+    background-color: rgba(0, 0, 0, 0.432);
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    h1{
+        font-size: 25px;
+    }
+    .conteudoNotificacoes{
+        position: relative;
+        background-color: white;
+        width: 50%;
+        min-width: 300px;
+        max-width: 920px;
+        min-height: 50%;
+        max-height: 90vh;
+        border-radius: 15px;
+        padding: 1%;
+        
+
+        .caixaNotificacao{
+            height: 95%;
+            overflow: auto;
+            .cadaNotificacao{
+                padding: 2%;
+                cursor: pointer;
+                flex-direction: row;
+                width: 100%;
+                justify-content: flex-start;
+                
+                height: 100px;
+                background-color: white;
+                .texto{
+                    width:90%;
+                    h2{
+                        font-size: 20px;
+                        text-transform: capitalize;
+                    }
+                    p{
+                        font-size: 12px;
+                        margin-top: 1%;
+                    }
+                    small {
+                        font-size: 10px;
+                        margin-top: 2%;
+                    }
+                }
+                .botoes{
+                    width: 10%;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    button{
+                        min-width: 10px;
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 10px;
+                        color: #f27523;
+                        border: 0px;
+                        background-color: transparent;
+                    }
+                }
+    
+            }
+            .cadaNotificacao:hover{
+                background-color: rgba(0, 0, 0, 0.041);
+            }
+            .cadaNotificacaoNaoLida{
+                background-color: rgba(0, 0, 0, 0.075);
+            }
+        }
+    }
+}
+.caixaNotificacao::-webkit-scrollbar-track {
+    background-color: #F4F4F4;
+}
+.caixaNotificacao::-webkit-scrollbar {
+    width: 6px;
+    background: #F4F4F4;
+}
+::-webkit-scrollbar-thumb {
+    background: #dad7d7;
+} 
+
+
+@keyframes piscar2{
+    0%{
+      color: black;
+    }
+    50%{
+      color: rgb(251,88,97);
+    }
+    100%{
+      color: black;
+    }
+}

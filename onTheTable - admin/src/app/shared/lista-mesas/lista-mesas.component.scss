@@ -1,0 +1,116 @@
+h1{
+    font-size: 32px;
+    font-family: 'Lato', sans-serif;
+}
+h5{
+    font-size: 20px;
+    font-family: 'Lato', sans-serif;
+}
+p{
+    font-size: 15px;
+    margin-top: 10%;
+    font-family: 'Lato', sans-serif;
+}
+small{
+    color: #f27523;
+    margin-top: 5%;
+    font-size: 10px;
+}
+.back{
+    width: 40vw;
+    min-width: 300px;
+
+    min-height: 400px;
+    height: 75vh;
+    min-height: 600px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 10%;
+    overflow: auto;
+    
+
+}
+.reservas{
+    margin-top: 0;
+    margin-left: 2%;}
+.reservas p{
+    color: #f27523;
+    animation: piscar 1s linear infinite;
+    cursor: pointer;
+    margin-top: 2%;
+}
+.reservas h2{
+    color: #f27523;
+    cursor: pointer;
+    margin-top: 2%;
+    
+}
+.categoria{
+    margin-top: 5%;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    overflow: auto;
+    padding-bottom: 2%;
+    min-height: 100px;
+}
+.botaoVermelho{
+    min-width: 120px !important;
+    margin-right: 2%;
+
+}
+.mesas{
+    
+    width: 100%;
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-gap:7%;
+    row-gap:2%;
+}
+.cadaMesa{
+    width: 30%;
+    min-width: 200px;
+    margin-top: 5%;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.1),
+    inset 1px 1px 2px #fff;
+    background-color: white;
+    padding: 2%;
+    border-radius: 12px;
+    min-height: 250px;
+    justify-content: flex-start;
+    cursor: pointer;
+    position: relative;
+}
+.participantes{
+    margin-top: 5%;
+    width: 90%;
+    align-items: flex-start;
+    position: relative;
+}
+.ativo{
+    background: linear-gradient(0deg, rgba(251,88,97,1) 0%, rgba(252,122,66,1) 100%);
+    color: white !important;
+}
+.ativo small{
+    color: white;
+    font-weight: 700;
+}
+.botoes{
+    margin-top: 20%;
+
+}
+.mesaCliente{
+    box-shadow: 0px 0px 5px rgba(252,122,66,1),
+    inset 1px 1px 2px #fff;
+}
+@keyframes piscar{
+    0%{
+      opacity: 0;
+    }
+    50%{
+      opacity: 1;
+    }
+    100%{
+      opacity: 0;
+    }
+}

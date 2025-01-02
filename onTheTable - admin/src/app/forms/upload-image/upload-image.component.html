@@ -1,0 +1,9 @@
+<div class="botaoUpload centralizado">
+    <input accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*"  
+        style="display:none" type="file" name="file" (change)="uploadFoto($event)" required #fileInput/>
+    <button  id="validatedCustomFile" (click)="fileInput.click()" 
+    class="btnUpload backgroundImage" [ngStyle]="{'background-image': 'url(' +imagem + ')'}"
+    ></button>
+    <button type='button' id="validatedCustomFile" (click)="fileInput.click()" class="botaoVermelho" style='margin-bottom: 10%;'>Procurar imagem</button>
+
+</div>

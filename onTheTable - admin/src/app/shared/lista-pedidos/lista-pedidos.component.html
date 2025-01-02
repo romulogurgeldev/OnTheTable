@@ -1,0 +1,100 @@
+<div class="back container centralizado">
+    <h1>Cozinha</h1>
+    <div class="categoria centralizado">
+        
+        <button class="botaoVermelho"  [ngClass]="{'btnBranco': escolhido!='ativos'}" (click)="escolhido='ativos'; atualizaPagina()">Ativos</button>
+        <button class="botaoVermelho"  [ngClass]="{'btnBranco': escolhido!='prontos'}" (click)="escolhido='prontos'; pegaPedido(3)">Prontos</button>
+        <button class="botaoVermelho"  [ngClass]="{'btnBranco': escolhido!='entregue'}" (click)="escolhido='entregue'; pegaPedido(4)">Entregues</button>
+        <button class="botaoVermelho"  [ngClass]="{'btnBranco': escolhido!='cancelados'}" (click)="escolhido='cancelados'; pegaPedido(0)">Cancelados</button>
+
+    </div>
+    <div class="conteudoPedidos" *ngIf="escolhido !='ativos'" >
+        <h5 style="text-transform: capitalize;">{{escolhido}}</h5>
+        <div class="mesas">
+            <div class="" *ngIf="orders.length==0" style="margin-top: 5%;" >
+                Nenhum Pedido
+            </div>
+            <div class="cadaMesa centralizado" *ngFor="let item of orders"  >
+                <h5>{{item.table.name}}</h5>
+                <div class="cadaPedido">
+                    <div class="participantes centralizado" *ngFor="let item2 of item.orderFood" >
+                        <p>{{item2.quantidade}}x {{item2.nameFood}}</p>
+        
+                    </div>
+                </div>
+                <div class="horario centralizado" style="width: 100%; align-items: flex-start;">
+                    <small *ngIf="item.status!='Pedido cancelado'" >Pedido feito às {{item.date | date: "HH:mm"}}</small>
+                    <small *ngIf="item.status!='Pedido cancelado'" >Pedido aceito às {{item.dateConfirma | date: "HH:mm"}}</small>
+                    <small *ngIf="item.status!='Pedido cancelado'" >Pedido pronto às {{item.datePreparado | date: "HH:mm"}}</small>
+                    <small *ngIf="item.status!='Pedido cancelado' && item.status=='Pedido entregue'" >Pedido entregue às {{item.dateEntregue | date: "HH:mm"}}</small>
+                    <small *ngIf="item.status=='Pedido cancelado'" >Pedido cancelado às {{item.dateCancelado | date: "HH:mm"}}</small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="conteudoPedidos" *ngIf="escolhido=='ativos'" >
+        <h5 >Na Fila</h5>
+        <div class="mesas">
+            <div class="" *ngIf="ordersEspera?.length==0" style="margin-top: 5%;" >
+                Nenhum Pedido
+            </div>
+            <div class="cadaMesa centralizado" *ngFor="let item of ordersEspera"  >
+                <h5>{{item.table.name}}</h5>
+                <div class="cadaPedido">
+                    <div class="participantes centralizado" *ngFor="let item2 of item.orderFood" >
+                        <p>{{item2.quantidade}}x {{item2.nameFood}}</p>
+                        <div class="complementos">
+                            <div class="cadaComplemento centralizado" *ngFor="let item3 of item2.complementos" >
+                              <p>{{item3.quantidade}} x</p>
+                              <p>{{item3.name}}</p>
+                              
+                              
+                            </div>
+                          </div>
+                        
+                    </div>
+
+                    
+                </div>
+                <div class="horario" style="width: 100%">
+                    <small>Pedido feito às {{item.date | date: "HH:mm"}}</small>
+                </div>
+                <div class="botoes centralizado">
+                    <button class="botaoVermelho" 
+                    (click)="changeStatusPedido(item, 'Preparando pedido'); item.status='Preparando pedido'" 
+                     >Aceitar</button>
+                    <a title="Cancelar Pedido" class="cancelarPedido" 
+                    (click)="changeStatusPedido(item, 'Pedido cancelado'); item.status='Pedido cancelado'">Cancelar</a>
+    
+                </div>
+            </div>
+        </div>
+        <h5 >Em Preparo</h5>
+        <div class="mesas centralizado">
+    
+            <div class="cadaMesa centralizado" *ngFor="let item of ordersPreparacao"  >
+                <h5>{{item.table.name}}</h5>
+                <div class="cadaPedido">
+                    <div class="participantes centralizado" *ngFor="let item2 of item.orderFood" >
+                        <p>{{item2.quantidade}}x {{item2.nameFood}}</p>
+        
+                    </div>
+                </div>
+                <div class="horario centralizado" style="width: 100%; align-items: flex-start;">
+                    <small>Pedido feito às {{item.date | date: "HH:mm"}}</small>
+                    <small>Pedido aceito às {{item.dateConfirma | date: "HH:mm"}}</small>
+                </div>
+                <div class="botoes centralizado">
+                    <button class="botaoVermelho" 
+                    (click)="changeStatusPedido(item, 'Pedido pronto'); item.status='Pedido pronto'" 
+                     >Pronto</button>
+                    <a title="Cancelar Pedido" class="cancelarPedido" 
+                    (click)="changeStatusPedido(item, 'Pedido cancelado'); item.status='Pedido cancelado'">Cancelar</a>
+    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

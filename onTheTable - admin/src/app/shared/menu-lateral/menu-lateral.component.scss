@@ -1,0 +1,146 @@
+:host{
+    .back{
+        position: relative;
+        width:0px;
+        background-color: white;
+        height: 100vh;
+        box-shadow: 5px 5px 10px rgba(0,0,0,0.1),
+        inset 1px 1px 2px #fff;
+        
+    
+    
+        z-index: 10;
+        justify-content: flex-start;
+        padding: 1%;
+    }
+    .back img{
+        width: 50%;
+        opacity: 0;
+    }
+    .menu{
+        opacity: 0;
+        margin-top: 90%;
+        width: 100%;
+       
+        min-height: 50%;
+    }
+    .menu .icone{
+        width:100px;
+        height:100px;
+    
+        margin-top: 2%;
+        color: rgb(138, 138, 138);
+        cursor: pointer;
+    }
+    .menu .icone p{
+        margin-top: 10%;
+        font-size: 12px;
+        text-align: center;
+    }
+    mat-icon{
+        transform: scale(2);
+    }
+    .ativo mat-icon, .ativo p{
+        color: #f27523;
+    
+    }
+    .menu .icone:hover{
+        color: rgb(251,88,97);
+    }
+    .menu2{
+        position: absolute;
+        top: 20%;
+        width: 20px;
+        left: 0px;
+        height: 500px;
+        background-color: white;
+        box-shadow: 5px 5px 10px rgba(0,0,0,0.1),
+        inset 1px 1px 2px #fff;
+        z-index: 0;
+        border-radius: 0px 30px 30px 0px;
+        
+        align-items: flex-end;
+    
+    }
+    .menu2 .menu{
+        
+        margin-top: 0;
+    
+        margin-right: 10%;
+        align-items: flex-end;
+    }
+    
+    .btnAbrir{
+        position: absolute;
+        top:45%;
+        right: -20px;
+        border: 0px;
+        box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+    
+        background-color: #f6f7f8;
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        font-size: 20px;
+        z-index: 10;
+    }
+    .abrir{
+        animation-name: abrirMenu;
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+    }
+    .fechar{
+        animation-name: fecharMenu;
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+    }
+    .aparecer{
+        
+        animation-name: aparecer;
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+    }
+    .sumir{
+        animation-name: sumir;
+        animation-duration:0.5s;
+        animation-fill-mode: forwards;
+    }
+    .abrir2{
+       
+        animation-name: abrir2;
+        animation-duration:0.5s;
+        animation-fill-mode: forwards;
+    }
+    .fechar2{
+        animation-name: fechar2;
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+    }
+
+
+    @keyframes abrir2 {
+        from {width: 20px;}
+        to {width: 300px;}
+    }
+    @keyframes fechar2 {
+        from {width: 300px;}
+        to {width: 20px;}
+    }
+    
+    @keyframes abrirMenu {
+        from {width: 0px;}
+        to {width: 160px;}
+    }
+    @keyframes fecharMenu {
+        from {width: 160px;}
+        to {width: 0px;}
+    }
+    @keyframes sumir {
+        from {opacity: 1}
+        to {opacity: 0}
+    }
+    @keyframes aparecer {
+        from {opacity: 0}
+        to {opacity: 1}
+    }
+}

@@ -1,0 +1,81 @@
+<div class="conteudo centralizado">
+    <ngx-qrcode *ngIf="produto" 
+        [elementType]="elementType" 
+        value = "{{produto.url}}"
+
+        cssClass = "aclass"
+
+        
+    >
+    </ngx-qrcode>
+
+    <a download="{{produto.name}}-{{produto._id.substr(0, 6)}}.png" [href]="pegaQrCode()" >
+        <button class="botaoVermelho">Download</button>
+    </a>
+
+    <!-- <qrcode [version]="5" [qrdata]="'123456789abcdefghijklmnopqrstuV'"  [errorCorrectionLevel]="'L'" elementType="url"></qrcode> -->
+    <!-- <qr-code [value]="link(produto._id)" size="300" errorCorrectionLevel="Q"></qr-code> -->
+    <div class="quadro cabecalho centralizado">
+
+        <div class="titulo centralizado">
+            <h2>{{produto.name}}</h2>
+            <h1>{{produto.name}} </h1>
+
+        </div>
+
+        <mat-slide-toggle [checked]="produto.status" (change)="disponibilidade($event)">
+            <p *ngIf="produto.status" >Disponível</p>
+            <p *ngIf="!produto.status">Indisponível</p>
+        </mat-slide-toggle>
+    </div>
+    <div class="quadro centralizado">
+        <div class="horarioChegada">
+            <h2>Horário de chegada:</h2>
+            <p>{{produto.chegada | date :'HH:mm dd/MM/yyyy' || "mesa não ocupada"}} </p>
+        </div>
+        <div class="">
+            <h2>Reserva:</h2>
+            <p *ngIf="produto.reserved" >Sim </p>
+            <p *ngIf="!produto.reserved" >Não </p>
+        </div>
+    </div>
+    <div class="quadro centralizado">
+        <div class="ho" *ngIf="produto.reserved" >
+            <h2>Horário da reserva:</h2>
+            <p>{{produto.chegada || "produto não ocupada"}} </p>
+        </div>
+        <div class="">
+            <h2>Clientes:</h2>
+            <p>{{produto.participantes.length}}/{{produto.size}} </p>
+
+        </div>
+    </div>
+    Pedidos
+    <table  >
+        <tr>
+            <td class="tituloTable" >
+               Número
+            </td> 
+            <td class="tituloTable" >
+                Total
+            </td> 
+            <td class="tituloTable " >
+                Status
+            </td> 
+        </tr>
+        <tr *ngFor="let item of order" >
+            <td class="" >
+                {{item.orderNumber}}
+            </td> 
+
+            <td class="" >
+                {{item.originalPrice | currency:'BRL':true}} 
+             </td> 
+            <td class="" title="{{item.status}}" style=" width:20px; white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;">
+                {{item.status}}
+            </td> 
+        </tr>
+    </table>
+</div>

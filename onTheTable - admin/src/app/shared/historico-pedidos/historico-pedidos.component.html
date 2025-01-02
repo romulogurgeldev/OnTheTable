@@ -1,0 +1,33 @@
+<!-- <div class="botoes centralizado">
+    <button class="botaoVermelho" [ngClass]="{'btnBranco': sumMonth}" >Diário</button>
+    
+    <button class="botaoVermelho" [ngClass]="{'btnBranco': !sumMonth}"  style="margin-left: 5%;">Mensal</button>
+
+</div> -->
+<div class="back centralizado">
+    <div class="titulo">
+        <h1>Pedidos</h1>
+    </div>
+    <div class="tabela">
+        
+        <table>
+            <tr>
+                <td>Nº pedido</td>
+                <td>Mesa</td>
+                <td>Valor</td>
+                <td>Data</td>
+                <td>Horário</td>
+                <td>Status</td>
+            </tr>
+            <tr *ngFor="let item of orders" class="trConteudo">
+                <td>{{item.orderNumber}}</td>
+                <td>{{item.table.name}}</td>
+                <td>{{item.originalPrice | currency:'BRL':true}}</td>
+                <td>{{item.date | date :'dd/MM/yyyy' }}</td>
+                <td>{{item.date | date :'HH:mm' }}</td>
+                <td>{{item.status}}</td>
+                <td><a (click)="abrirJanela(item)">+ detalhes</a></td>
+            </tr>
+        </table>
+    </div>
+</div>

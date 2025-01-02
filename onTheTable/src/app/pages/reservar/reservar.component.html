@@ -1,0 +1,13 @@
+<div class="back centralizado">
+    <div class="cabecalho centralizado">
+        <h1>Fazer reserva</h1>
+    </div>
+    <div class="conteudo centralizado">
+        <div class="bloco" *ngIf="restaurante" >
+            <h1>{{restaurante.name}}</h1>
+        </div>
+        <div class="bloco">
+            <app-cad-reserva [(restaurante)]="restaurante"></app-cad-reserva>
+        </div>
+    </div>
+</div>

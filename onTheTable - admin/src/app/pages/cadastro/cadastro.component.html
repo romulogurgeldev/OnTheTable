@@ -1,0 +1,62 @@
+<div class="progresso centralizado" >
+  <div [ngClass]="{'ativado': pagina>=2}" ></div>
+  <div [ngClass]="{'ativado': pagina>=3}" ></div>
+  <div [ngClass]="{'ativado': pagina>=4}" ></div>
+  <div [ngClass]="{'ativado': pagina>=5}" ></div>
+</div>
+<div class="centralizado back container">
+  <div class="centralizado" style="width: 100%;">
+    <mat-spinner *ngIf="carregando==true" style="margin-top: 10%"></mat-spinner>
+  </div>    
+    <h5 style="margin-top:10%; margin-left: 3%;" *ngIf="carregando==false" >{{titulo[pagina-1]}}</h5>
+
+    <div class="conteudo container" *ngIf="carregando==false" >
+      <div  *ngIf="pagina==1" >
+        
+        <app-forms-cad-login [(password)]="password" [(pagina)]="pagina" [(email)]="email" [(nome)]="nome" [(telefone)]="endereco.telphone"></app-forms-cad-login>
+      </div>
+      <div  *ngIf="pagina==2" >
+        <app-forms-cad-restaurante [(pagina)]="pagina" 
+        [(nomeRestaurante)]="nomeRestaurante" [(cnpj)]="cnpj" [(telefone)]="enderecoRestaurante.telphone" [(razaoSocial)]="razaoSocial"
+        ></app-forms-cad-restaurante>
+      </div>
+      <div  *ngIf="pagina==3" >
+        <app-forms-cad-pessoal [(pagina)]="pagina" [(nome)]="nome" [(cpf)]="cpf"></app-forms-cad-pessoal>
+      </div>
+
+      <div  *ngIf="pagina==4" >
+        <app-forms-cad-cep [(pagina)]="pagina"
+         [(endereco)]="enderecoRestaurante" 
+        ></app-forms-cad-cep>
+        <!-- <div class="centralizado" style="width: 98%; align-items: flex-end;">
+          <button class="botaoVermelho" (click)="cadastrar()">Próximo</button>
+        </div> -->
+      </div>
+  
+      
+    </div>
+    <div class="planos centralizado container"  *ngIf="pagina==5 && carregando==false" >
+      <div class="plano centralizado mat-elevation-z1" *ngFor="let item of planos"  >   
+        <h3>{{item.name}}</h3>
+        <div class="preco centralizado">
+          <small class="centralizado">R$</small>
+          <h1>{{item.preco}}</h1>
+          <p class="centralizado" style="font-size: 10px ;" >/{{item.period}} {{item.period>1 ? "dias" : "dia"}}</p>
+
+        </div>
+        <div class="infos centralizado">
+          <p style="font-size: 12px">{{item.quantityRestaurants}} {{item.quantityRestaurants>1 ? "estabelecimentos" : "estabelecimento"}}</p>
+          <p style="font-size: 12px">{{item.quantityTables}} {{item.quantityTables>1 ? "mesas" : "mesa"}}</p>
+          <p style="font-size: 12px">{{item.quantityOrders}} {{item.quantityOrders>1 ? "pedidos" : "pedido"}}</p>
+          
+        </div>
+        <button class="botaoVermelho btnSelecionar" (click)="cadastrar(item)" style="margin-top: 15%;">Selecionar</button>
+      </div>
+  
+  
+  
+  
+    </div>
+  
+  
+</div>

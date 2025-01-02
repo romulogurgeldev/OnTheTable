@@ -1,0 +1,24 @@
+<header class="centralizado" *ngIf="mesa" (scroll)="onScroll()">
+
+    <div class="info centralizado">
+        <div class="compartilhar centralizado">
+            <p>Já cheguei! Avise em qual mesa você está</p>
+            <button class="backgroundImage">
+                <span class="material-symbols-outlined">
+                    share
+                    </span>
+            </button>
+        </div>
+        <div class="nomeMesa">
+            <h1>{{mesa.restaurant.name}}</h1>
+            <!-- <p>Comida Tradicional</p> -->
+            <h4>{{mesa.name}}</h4>
+        </div>
+        <div class="pesquisar centralizado">
+            <span class="material-symbols-outlined">search</span>
+            <input type="text" placeholder="Busque seu prato favorito" (keyup)="itemPesquisa($event)">
+        </div>
+    </div>
+
+</header>
+

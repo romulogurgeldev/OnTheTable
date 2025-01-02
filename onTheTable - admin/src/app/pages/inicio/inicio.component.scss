@@ -1,0 +1,245 @@
+.main{
+    
+    > .intro{
+        position: relative;
+        background-color: var(--primary-color);
+        box-shadow: 0px 5px 5px rgba(0,0,0,0.1),
+        inset 1px 1px 2px #fff;
+        z-index: 3;
+        overflow: auto;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        
+
+        > img{
+            position: absolute;
+            max-height: 100%;
+            right: -10%;
+            width:70%;
+            height: 92%;
+            top:80px;
+        }
+    }
+    > .porque{
+        background-color: white;
+        padding-top: 5%;
+        
+        > h1{
+            font-size: 40px;
+            text-align: center;
+           
+        }
+    }
+    > .comoFunciona{
+        background-color: var(--primary-color);
+        padding-top: 5%;
+        
+        > h1{
+            font-size: 40px;
+            text-align: center;
+           
+        }
+    }
+    > .bloco{
+        width: 100%;
+        min-height: 100vh;
+    
+        > .conteudo{
+            width: 100%;
+
+            min-height: 100vh;
+            
+            align-items: flex-start;
+           
+            padding: 1.5%;
+            > .conteudoTexto{
+                width: 35%;
+                min-width: 360px;
+                
+                > h1{
+                    font-size: 40px;
+                    font-weight: 500;
+                }
+                > h3 {
+                    font-size:25px;
+                    margin-top: 5%;
+                }
+                > p{
+                    font-size: 18px;
+                    margin-top: 8%;
+                }
+                > button{
+                    margin-top: 10%;
+                }
+            }
+        }
+        > .conteudoPq{
+            width: 100%;
+            flex-direction: row;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            height: 80%;
+            margin-top: 5%;
+            align-items: flex-start;
+           
+
+            > .cadaPorque{
+                width: 40%;
+                min-width: 300px;
+                min-height: 180px;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: flex-start;
+                margin-bottom: 3%;
+                > .iconePorque{
+                    height: 100%;
+                    width: 10%;
+                    min-width: 30px;
+                    
+                    > img{
+                        width: 100%;
+                        margin-top: 1%;
+                    }
+                }
+               
+                > .textoPorque{
+                    margin-left: 5%;
+                    width: 60%;
+                    > h3{
+                        font-size:calc(25px + 0.2vw);
+                        font-weight: 700;
+                    }
+                    > p{
+                        font-size:calc(15px + 0.2vw);
+                        margin-top: 5%;
+                        line-height: calc(22px + 0.2vw);
+                    }
+                }
+
+            }
+        }
+        > .conteudoComoFunciona {
+            width: 100%;
+            flex-direction: row;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            height: 80%;
+            margin-top: 5%;
+            align-items: flex-start;
+            > .cadaComoFunciona{
+                
+                width:280px;
+                background-color: white;
+                border-radius: 7px;
+                box-shadow: 0px 5px 5px rgba(0,0,0,0.1),
+                inset 1px 1px 2px #fff;
+                padding: 2%;
+                height: 400px;
+                justify-content: space-between;
+                margin-top: 8%;
+                > img{
+                    margin-top: -50%;
+                    width: 80%;
+                    margin-left: 8%;
+                    
+                }
+                > .textoComoFunciona{
+                    margin-top:10%;
+                    > p{
+                        font-size:15px;
+                        text-align: center;
+                        line-height: 22px;
+                    }
+
+                }
+                > .paraCirculo{
+                    position: relative;
+                   
+                    width: 60px;
+                    height: 60px;
+                    > .circulo{
+                        position: absolute;
+                        bottom: -100%;
+                        left: 0;
+                        width: 60px;
+                        height: 60px;
+                        border-radius: 100%;
+                        color: white;
+                        background: linear-gradient(0deg, rgba(251,88,97,1) 0%, rgba(252,122,66,1) 100%);
+                        font-size: 25px;
+                        
+                    }
+                }
+
+            }
+
+        }
+    }
+}
+
+@media screen and (max-width: 765px) {
+    .main{
+        > .intro{
+            > .conteudo{
+               
+                > .conteudoTexto{
+                    padding: 3%;
+                }
+            }
+    
+            > img{
+                position: absolute;
+                top: auto;
+                bottom: 0;
+                width:65%;
+                
+                height: 33%;
+                
+            }
+        }
+
+        > .bloco{
+            > .conteudo{
+                align-items: center;
+               
+            }
+        
+
+            > .conteudoPq{
+               
+              
+                margin-top: 10%;
+                > .cadaPorque{
+                    width: 100%;
+                    justify-content: center;
+                    margin-bottom: 2%;
+    
+                }
+            }
+
+            > .conteudoComoFunciona {
+                width: 100%;
+                flex-direction: row;
+                justify-content: center;
+
+                > .cadaComoFunciona{
+       
+                    margin-top: 15%;
+
+                    > .paraCirculo{
+
+                        > .circulo{
+  
+                            bottom: -50%;
+
+                            
+                        }
+                    }
+    
+                }
+    
+            }
+
+        }
+    }
+}

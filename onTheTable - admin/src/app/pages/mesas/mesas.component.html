@@ -1,0 +1,16 @@
+
+<div class="menu centralizado " [ngClass]="{'abrir': abrir==true, 'fechar': abrir==false}" >
+
+    <div class="conteudo" *ngIf="abrir"  [ngClass]="{'sumir': abrir==false, 'aparecer': abrir==true}">
+        <button class="botaoVermelho btnFechar" (click)="abrir=false">X</button>
+        <app-perfil-mesa-pedido [(mesa)]="mesa" [(order)]="order" *ngIf="mode==1" ></app-perfil-mesa-pedido>
+        <app-lista-reservas  *ngIf="mode==2" [(reservas)]="reservas" [(mesas)]="mesas" ></app-lista-reservas>
+    </div>
+    <div class="centralizado rodape">
+        <img src="./assets/logo.png" alt="" [ngClass]="{'crescer': abrir==false, 'diminuir': abrir==true}">
+
+    </div>
+
+</div>
+
+<app-lista-mesas [(abrir)]="abrir" [(mesa)]="mesa" [(mesas)]="mesas"  [(order)]="order" [(mode)]="mode" [(reservas)]="reservas"></app-lista-mesas>

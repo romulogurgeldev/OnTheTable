@@ -1,0 +1,66 @@
+<div class="centralizado" *ngIf="!carregando"> 
+
+    <h1 style="margin-top: 2%;">Informações Pessoais</h1>
+
+
+    <!-- <div class="botaoUpload centralizado">
+        <input accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*"  
+            style="display:none" type="file" name="file" (change)="uploadFoto($event)" required #fileInput/>
+        <button  id="validatedCustomFile" (click)="fileInput.click()" 
+        class="btnUpload backgroundImage" [ngStyle]="{'background-image': 'url(' +imagem + ')'}"
+        ></button>
+        <button type='button' id="validatedCustomFile" (click)="fileInput.click()" class="btn btn-primary" style='margin-bottom: 10%;'>Procurar Arquivo</button>
+  
+      </div> -->
+    <form  [formGroup]="form" class="forms centralizado" (keyup)="verificaAlteracao()">
+        <mat-form-field appearance="outline">
+            <mat-label>Nome Completo*</mat-label>
+            <input matInput formControlName="nome">
+            
+            <mat-error *ngIf="form.controls['nome'].invalid && form.controls['nome'].touched" > - Campo obrigatório</mat-error>
+                    
+        </mat-form-field>
+        <div class="inputMenor centralizado">
+            <mat-form-field appearance="outline" class="inputMenor" >
+                <mat-label>CPF</mat-label>
+                <input mask="000.000.000-00" matInput   formControlName="cpf" (keyup)="verificaCPF()" [(ngModel)]="cpf" >
+                
+                <mat-hint class="mat-error" *ngIf="!statusCPF && form.controls['cpf'].touched">CPF inválido</mat-hint>
+                <mat-hint class="mat-error" *ngIf="statusCPF && form.controls['cpf'].touched" style="color: green;">CPF válido</mat-hint>
+                
+                
+            </mat-form-field>                    
+            <mat-form-field appearance="outline" class="inputMenor">
+                <mat-label>Data de nascimento</mat-label>
+                <input matInput [matDatepicker]="picker"  formControlName="dataNascimento" (dateChange)="verificaAlteracao()">
+                <mat-datepicker-toggle matSuffix [for]="picker">
+                    <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                
+                <mat-error *ngIf="form.controls['dataNascimento'].invalid && form.controls['dataNascimento'].touched" > - Campo Obrigatório</mat-error>
+                
+                
+            </mat-form-field>   
+        </div>
+ 
+ 
+    </form>
+
+      <div class="botoes centralizado" *ngIf="!carregando" >
+
+
+        <button type="button" class="btn botaoVermelho" (click)="save()" 
+        *ngIf="form.controls['nome'].valid && form.controls['dataNascimento'].valid && form.controls['cpf'].valid && foiAlterado
+        && statusCPF
+        "
+            >Atualizar</button>
+        <button type="button" class="btn botaoVermelho btnDesativado" 
+        *ngIf="form.controls['nome'].invalid || form.controls['dataNascimento'].invalid || form.controls['cpf'].invalid
+        || !foiAlterado || !statusCPF
+        " 
+            >Atualizar</button>
+    </div> 
+</div>
+
+

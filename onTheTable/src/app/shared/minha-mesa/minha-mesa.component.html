@@ -1,0 +1,27 @@
+<div class="back centralizado">
+    <div class="cabecalho centralizado" >
+      <h1>Mesa </h1>
+    </div>
+    <div class="infoRestaurante centralizado">
+      <h2 style="color: white">{{mesa.restaurant.name+" "}}-{{" "+mesa.name}}</h2>
+      <h2 style="margin-top: 5%; color: white;">Quem está na mesa: </h2>
+      
+    </div>
+    <div class="cadaIntegrante centralizado" *ngFor="let item of mesa.participantes" >
+      <div class="backgroundImage foto" [ngStyle]="{'background-image': 'url(./assets/icones/user.png)'}">
+  
+      </div>
+  
+      <div class="infoPedido">
+        <p>{{item.name}}</p>
+      </div>
+    </div>
+    <div class="botoes centralizado">
+      <!-- <button class="botaoVermelho" *ngIf="token && nome" >Convidar</button> -->
+      <button class="botaoVermelho" *ngIf="!token" (click)="irPara()">Entrar</button>
+      <button class="botaoVermelho" *ngIf="token && !isInTable" (click)="checkin()">Checkin</button>
+    </div>
+</div>
+
+
+  

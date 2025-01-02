@@ -1,0 +1,42 @@
+<div class="menu centralizado " [ngClass]="{'abrir': abrir==true, 'fechar': abrir==false}" >
+
+    <div class="conteudo" [ngClass]="{'sumir': abrir==false, 'aparecer': abrir==true}">
+        <button class="btnFechar botaoVermelho" (click)=" abrir=false">X</button>
+        <div style="width: 100%; margin-top: 10%;"></div>
+        <app-forms-cad-categoria [(tipo)]='tipo' *ngIf="mode==1" [(categorias)]="categorias" ></app-forms-cad-categoria>
+        <app-forms-edit-categoria  *ngIf="mode==2" [(abrir)]="abrir" [(tipo)]='tipo' [(categorias)]="categorias" [(categoria)]="categoria"></app-forms-edit-categoria>
+    
+        <app-forms-cad-mesas  *ngIf="mode==3"  [(categoria)]="categoria" [(categorias)]="categorias"></app-forms-cad-mesas>
+        <app-perfil-mesa *ngIf="mode==4" [(produto)]="produto" [(categoria)]="categoria" [(categorias)]="categorias"></app-perfil-mesa>
+        <app-forms-edit-mesa  *ngIf="mode==5" [(idproduto)]="produto._id" [(categoria)]="categoria" [(categorias)]="categorias"></app-forms-edit-mesa>
+
+    </div>
+    <div class="centralizado rodape">
+        <img src="./assets/logo.png" alt="">
+
+    </div>
+
+</div>
+
+<div class="back">
+    <div class="pesquisa">
+
+    </div>
+    <div class="conteudoCardapio">
+        <div class="cabecalho">
+            <h1>Mesas</h1>
+            
+        </div>
+        
+        <div class="cardapio">
+            <button class="btnBranco" (click)="abrirMenu(1)">+ Adicionar espaço</button>
+            <div class="mesas">
+                <app-lista-categorias [(categorias)]="categorias" [(produto)]="produto"
+                [(categoria)]="categoria" [(abrir)]="abrir" [(tipo)]="tipo" [(mode)]="mode"></app-lista-categorias>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+

@@ -1,0 +1,46 @@
+<div class="back centralizado"  >
+    <button class="botaoVermelho btnFechar" (click)="fecharPagina()">X</button>
+    <div class="pesquisar centralizado" *ngIf="mode==2" >
+        
+        <input type="text" placeholder="Busque por um prato" (keyup)="itemPesquisa($event)">
+    </div>
+  <div class="produtos" *ngIf="mode==2" >
+    
+    <div class="cadaProduto centralizado" *ngFor="let item of produtos | search: pesquisa; let i = index ">
+        <div class="texto centralizado"> 
+            <div class="titulo">
+                <h4>{{item.name}}</h4>
+                <p>
+                    {{item.price | currency:'BRL':true}}
+    
+                    </p>
+            </div>
+            <div class="quantidade centralizado" >
+                                
+                <button class="btnQuantidade btnDesativado centralizado" 
+                
+                *ngIf="quantidade[i]==0">
+                    -
+                </button>
+
+
+                <button class="btnQuantidade botaoVermelho centralizado" *ngIf="quantidade[i]>0" 
+                (click)="quantidade[i] = quantidade[i]-1; verificaCarrinho()" >-</button>
+                <p>{{quantidade[i]}}</p>
+                <button class="btnQuantidade botaoVermelho centralizado" 
+                (click)="quantidade[i] = quantidade[i]+1; cart=true">+</button>
+
+            </div>
+            <p>Observações</p>
+            <textarea rows="4" cols="30" placeholder="Por exemplo: Tire a cebola" (keyup)="observacao($event)">
+                
+            </textarea>
+        </div>
+        <div class="img backgroundImage" style="background-image: url({{item.image.location}})"></div>
+    </div>
+  </div>
+  <button class="botaoVermelho btnDesativado" style="margin-top: 5%" *ngIf="!cart && mode==2"><mat-icon>shopping_cart</mat-icon></button>
+  <button class="botaoVermelho" style="margin-top: 10%" *ngIf="cart && mode==2" (click)="adicionarCarrinho(); mode=3" ><mat-icon>shopping_cart</mat-icon></button>
+  <app-cart *ngIf="mode==3" [(mode)]="mode" [(mesa)]="mesa"></app-cart>
+</div>
+

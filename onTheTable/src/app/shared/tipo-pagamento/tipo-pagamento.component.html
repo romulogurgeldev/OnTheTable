@@ -1,0 +1,25 @@
+<div class="back centralizado">
+    <div class="conteudo centralizado">
+        <button class="botaoVermelho btnFechar" (click)="fechar()">X</button>
+        <h2 style="margin-left: 5.5%;" *ngIf="(!presencial && !online) && cadastro" >Selecione a forma de pagamento</h2>
+
+        <div class="botoes centralizado" *ngIf="!presencial && !online" >
+            <button class="botaoVermelho" (click)="presencial=true; mandaMsg()">Pagamento Presencial</button>
+            <button class="botaoRosa" (click)="online=true" *ngIf="token && configRestaurante?.pagamento" >Pagamento Online</button>
+            <button class="botaoRosa" (click)="irPara()" *ngIf="!token && configRestaurante?.pagamento" >Logar para pagamento Online</button>
+        </div>
+        <div class="pagamentoPresencial centralizado" *ngIf="presencial && !online" >
+            <h1>Aguarde... Um funcionário irá até sua mesa. </h1>
+            <button class="botaoVermelho" (click)="fechar()">Ok</button>
+        </div>
+        <div class="pagamentoOnline centralizado" *ngIf="!presencial && online" >
+            <app-form-login *ngIf="!cadastro" [(cadastro)]="cadastro"c></app-form-login>
+            <div class="pagamento" *ngIf="cadastro" >
+                <button class="botaoVermelho">Cartão de crédito</button>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>

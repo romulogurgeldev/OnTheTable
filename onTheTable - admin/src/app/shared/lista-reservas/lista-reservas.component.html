@@ -1,0 +1,27 @@
+<div class="back centralizado">
+    <div class="cabecalho"><h1>Solicitações para reserva de mesas</h1></div>
+    <div class="conteudo centralizado">
+        
+        <div class="cadaReserva" *ngFor="let item of reservas; let i = index" >
+            <small>{{item.status}}</small>
+            <h1>{{item.user.name}}</h1>
+            <p>Reserva para: {{item.date | date: "dd/MM/yyyy - HH:mm"}}</p>
+            <p *ngIf="item.status=='Reserva confirmada'" >Mesa: {{item.table.name}} - {{item.table.code}}</p>
+            <div class="escolha">
+                <mat-form-field appearance="outline" class="form-full-width" *ngIf="item.status=='Aguardando confirmação'" >
+                    <mat-label>Escolher mesa</mat-label>
+                    <mat-select matInput  [(ngModel)]="mesaEscolhida[i]" >
+                        <mat-option  *ngFor="let item2 of mesas"   [value]="item2._id"  >{{item2.name}} {{item2.size}} lugares</mat-option>
+                    </mat-select>                    
+                </mat-form-field>   
+
+                <div class="botoes centralizado" [ngClass]="{'praDireita': item.status!='Aguardando confirmação'}" >
+                    <button class="botaoVermelho" *ngIf="mesaEscolhida[i] && item.status=='Aguardando confirmação'" (click)="save(item._id, mesaEscolhida[i]); item.status='Reserva confirmada'" >Aceitar</button>
+                    <button class="botaoVermelho btnDesativado" *ngIf="!mesaEscolhida[i] && item.status=='Aguardando confirmação'" >Aceitar</button>
+                    
+                    <a *ngIf="item.status!='Reserva cancelada pelo restaurante'" (click)="cancelar(item._id); item.status='Reserva cancelada pelo restaurante'">Cancelar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

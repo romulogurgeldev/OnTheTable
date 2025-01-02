@@ -1,0 +1,58 @@
+<app-abre-produto *ngIf="comida" [(comida)]="comida" [(idMesa)]="idMesa"></app-abre-produto>
+<h2>{{categoria.name}}</h2>
+<div class="back centralizado" *ngIf="mode==1" >
+
+    <div class="cadaProduto centralizado"  *ngFor="let item of comidas" (click)="comida=item">
+        <div class="avisoDesconto btnFechar centralizado" *ngIf="item.promotions" >{{tipoDesconto(item.promotions)}}</div>
+        <div class="backgroundImage fotoComida" style="background-image: url({{item.image.location}})">
+
+        </div>
+        <div class="texto centralizado">
+            <div>
+                <h1>{{item.name}}</h1>
+                <p>{{item.description}}</p>
+            </div>
+
+            <div class="precos centralizado">
+                <h4 *ngIf="item.promotions " >{{verificaPromotion(item.price, item.promotions) | currency:'BRL':true}}</h4>
+                <h4 *ngIf="item.promotions && item.promotions?.doubleFood" class="pague1">Leve 2 pague 1</h4>
+
+                <h4 [ngClass]="{'precoDesativado': item.promotions}"  *ngIf="!item.promotions?.doubleFood" >{{item.price | currency:'BRL':true}}</h4>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="back centralizado" *ngIf="mode==2" >
+
+    <div class="cadaProduto2 centralizado">
+        <div class="backgroundImage fotoComida" style="background-image: url('./assets/comidas/tangerina.jpg')">
+            <div class="texto">
+                <h1>Suco de Tangerina</h1>
+            </div>
+        </div>
+    </div>
+    <div class="cadaProduto2 centralizado">
+        <div class="backgroundImage fotoComida" style="background-image: url('./assets/comidas/tangerina.jpg')">
+            <div class="texto">
+                <h1>Suco de Tangerina</h1>
+            </div>
+        </div>
+
+    </div>
+    <div class="cadaProduto2 centralizado">
+        <div class="backgroundImage fotoComida" style="background-image: url('./assets/comidas/tangerina.jpg')">
+            <div class="texto">
+                <h1>Suco de Tangerina</h1>
+            </div>
+        </div>
+
+    </div>
+    <div class="cadaProduto2 centralizado">
+        <div class="backgroundImage fotoComida" style="background-image: url('./assets/comidas/tangerina.jpg')">
+            <div class="texto">
+                <h1>Suco de Tangerina</h1>
+            </div>
+        </div>
+    </div>
+</div>

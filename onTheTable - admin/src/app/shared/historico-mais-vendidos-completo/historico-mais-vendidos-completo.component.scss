@@ -1,0 +1,83 @@
+h1{
+    font-size: 20px;
+    margin-left: 4%;
+}
+h2{
+    font-size: 25px;
+}
+.back{
+    padding: 2%;
+    margin-top: 2%;
+    width: 100%;
+    min-height: 400px;
+    
+}
+.dias{
+    width: 38%;
+    margin-top: 3%;
+}
+.botoes{
+    margin-top: 2%;
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.botoes button{
+    min-width: 50px;
+    margin-left: 12%;
+    height: 20px;
+    font-size: 12px;
+    border-radius: 5px !important;
+}
+.botaoCima{
+    width: 90%;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 5%;
+    margin-left: 6%;
+}
+.botaoCima button{
+    border: 0px;
+    background-color: transparent;
+    color: #f27523;
+}
+.produtosVendidos{
+    margin-top: 5%;
+    margin-left: 5%;
+    padding: 1%;
+    width: 92%;
+    box-shadow: 1px 1px 8px rgba(0,0,0,0.1),
+    inset 1px 1px 2px #fff;
+    min-height: 200px;
+    border-radius: 8px;
+}
+.produtosVendidos table{
+    width: 100%;
+    margin-top: 2%;
+    margin-left: 2%;
+}
+tr{
+    height: 30px;
+}
+.trConteudo td{
+    font-size: 12px;
+    height: 20px;
+    
+}
+.cadaVisaoGeral{
+    margin-left: 2%;
+    margin-right: 5%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.cadaVisaoGeral p{
+    font-size: 12px;
+    color: #f27523;
+    
+}
+.visaoGeral{
+    min-height: 10px ;
+    justify-content: flex-start;
+    flex-direction: row;
+
+}

@@ -1,0 +1,316 @@
+h4{
+    font-size: 20px;
+    font-weight: 500;
+}
+.menu{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 25vw;
+    height: 10vh;
+    min-height: 100px;
+    background-color: white;
+    min-width: 360px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.1),
+    inset 1px 1px 2px #fff;
+    z-index: 2;
+}
+.menu .conteudo{
+    position: relative;
+    opacity: 0;
+
+    width: 100%;
+    height: 0%;
+
+}
+
+.abrir .conteudo{
+
+    height: 85%;
+}
+
+.menu .rodape{
+    width: 100%;
+    height: 15%;
+}
+.menu img{
+    width: 20%;
+}
+.pesquisa{
+    width: 50vw;
+    min-width: 360px;
+    min-height: 10vh;
+
+}
+.main{
+    
+    min-width: 360px;
+
+    height: 100vh;
+    margin-top: 2%;
+   
+    > .conteudoConfig{
+        width: 100%;
+        
+        height: 90vh;
+        padding: 2%;
+        justify-content: flex-start;
+        align-items: flex-start;
+        > .cabecalho{
+            width: 100%;
+            flex-direction: row;
+            justify-content: flex-start;
+    
+            > button {
+                border: 0px;
+                background-color: transparent;
+                cursor: pointer;
+                > mat-icon{
+                    color: #f27523;
+                }
+            }
+            >  h1{
+                font-size: 25px;
+                
+            }
+        }
+        > .info{
+            width: 100%;
+            flex-direction: row;
+            margin-top: 5%;
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            > .cadaInfo{
+                width: 45%;
+                min-width: 360px;
+                justify-content: flex-start;
+                align-items: flex-start;
+                
+                > .comandosBotoes{
+                    min-width: 100%;
+                    min-height: 350px;
+                    border-radius: 15px;
+                    
+                    margin-top: 5%;
+                    box-shadow: 1px 1px 8px rgba(0,0,0,0.1),
+                    inset 1px 1px 2px #fff;
+                    padding: 0 8% ;
+                    padding-bottom: 0;
+                    
+                    align-items: flex-start;
+                }
+                .minhaAssinatura{
+                    width: 100%;
+                   
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    > .assinatura{
+                        position: relative;
+                        margin-top: 5%;
+                        min-width: 100%;
+                        min-height: 350px;
+                        padding: 0 8% ;
+                        border-radius: 15px;
+                        box-shadow: 1px 1px 8px rgba(0,0,0,0.1);
+                        background-color: white;
+                        
+
+                        > .btnFechar{
+                            background-color: transparent;
+                            border: 0px;
+                            opacity: 0.2;
+                            > mat-icon{
+                                transform: scale(0.8);
+                            }
+                        }
+                        > .cabecalhoAssinatura{
+                            width: 100%;
+                            align-items: flex-start;
+                            
+                            > h1{
+                                font-size: 22px;
+                            }
+                            > p{
+                                font-size: 11px;
+                                margin-top: 0.5%;
+                                color: #f27523;
+                            }
+                        }
+                        > .conteudoAssinatura{
+                            width: 100%;
+                            margin-top: 2%;
+                            > .cadaItemAssinatura{
+                                width: 100%;
+                                flex-direction: row;
+                                justify-content: space-between;
+                                margin-top: 2%;
+                            }
+                            > .botoes{
+                                width: 100%;
+                                flex-direction: row;
+                                justify-content: space-between;
+                                margin-top: 10%;
+                                > a{
+                                    text-decoration: underline;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        > .btnBranco{
+            padding: 1%;
+            flex-direction: row;
+            margin-top: 5%;
+            > mat-icon{
+                transform: scale(0.8);
+            }
+        }
+
+    }
+    > .mudarPlano{
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.301);
+        width:100%;
+        height: 100%;
+        z-index: 100;
+        
+
+        > .conteudo{
+            background-color: white;
+            width: 50%;
+            height: 50%;
+            padding: 1%;
+            border-radius: 15px;
+            min-width: 360px;
+            > h1{
+                font-size: 25px;
+            }
+
+            > .planos {
+                width: 100%;
+                flex-direction: row;
+                justify-content: flex-start;
+                overflow: auto;
+                height: 100%;
+                > .plano{
+                    width: 200px;
+                    height: 320px;
+                    background-color: white;
+                    border-radius: 12px;
+                    padding: 20px;
+                    justify-content: space-between;
+                    margin-top: 5%;
+                    margin-left: 2.5%;
+                    > .obs{
+                        width: 100%;
+                        margin-top: -25%;
+                        margin-bottom: -7.2%;
+                        align-items: flex-end;
+                        > small{
+                            font-size: 10px;
+                            color: #f27523;
+                            
+                        }
+                    }
+                    > h3{
+                        font-size: 20px;
+                    }
+                    > .preco{
+                        flex-direction: row;
+                        > h1{
+                            font-size: 50px;
+                        }
+             
+                        > small{
+                           
+                            height: 100%;
+                            justify-content: flex-start;
+                            font-size: 18px;
+                            margin-top: -5%;
+                        }
+                        > p{
+                            height: 77%;
+                            font-size: 15px;
+                            justify-content: flex-end;
+                        }
+                    }
+                }
+            }
+        }
+
+        
+    }
+}
+
+
+
+
+.cadaItem{
+    margin-bottom: 5%;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+
+
+.abrir{
+    animation-name: abrirPraCima;
+    animation-duration:0.2s;
+    animation-fill-mode: forwards;
+}
+.fechar{
+    
+    animation-name: fecharPraCima;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+}
+.aparecer{
+    animation-delay: 0.1s;
+    animation-name: aparecer;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+.sumir{
+    animation-name: sumir;
+    animation-duration: 0.1s;
+    animation-fill-mode: forwards;
+}
+.crescer{
+    margin-top: 0%;
+}
+.diminuir{
+    margin-top: 10% !important;
+    width: 18% !important;
+}
+
+@keyframes abrirPraCima {
+    from {height: 10vh;}
+    to {height: 90vh;}
+}
+@keyframes fecharPraCima {
+    from {height: 90vh;}
+    to {height: 10vh;}
+}
+@keyframes sumir {
+    from {opacity: 1}
+    to {opacity: 0}
+}
+@keyframes aparecer {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+:host ::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+    background-color: #f276238f;
+}
+
+:host ::ng-deep  .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+    background-color: #f27523 ;
+}

@@ -1,0 +1,42 @@
+.main{
+
+  > .forms{
+      > mat-form-field {
+          width: 100%;
+          min-width: 10px;
+
+          
+      }
+      >.inputMenor{
+          width: 100%;
+          
+          flex-direction: row;
+          justify-content:space-between;
+          > mat-form-field {
+              width: 45%;
+              min-width: 10px;
+              
+          }
+      }
+  }
+}
+@media screen and (max-width: 992px) {
+  .main{
+      width: 360px;
+      > .forms{
+          width: 100%;
+         
+          >.inputMenor{
+              width: 100%;
+              
+              flex-direction: column;
+              justify-content:space-between;
+              > mat-form-field {
+                  width: 100%;
+                  min-width: 10px;
+                  
+              }
+          }
+      }
+  }
+}

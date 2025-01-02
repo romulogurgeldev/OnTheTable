@@ -1,0 +1,22 @@
+.back{  
+    width: 100%;
+    flex-direction: row;
+    overflow: auto;
+    justify-content: flex-start;
+
+    height: 55px;
+}
+.back p{
+    font-size: 18px;
+    margin-right: 8%;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.773);
+}
+.ativado{
+    font-weight: 700;
+    color: #f27523 !important;
+}
+.cor2 .ativado{
+    font-weight: 700;
+    color: white !important;
+}

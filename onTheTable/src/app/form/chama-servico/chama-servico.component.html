@@ -1,0 +1,18 @@
+<div class="back centralizado">
+    <div class="conteudo centralizado">
+        <button class="botaoVermelho btnFechar" (click)="fechar()">X</button>
+        <form  [formGroup]="form" class="forms centralizado">  
+            <h2>Chamar serviço</h2>
+            <section class="example-section">
+                <mat-checkbox class="example-margin" *ngFor="let item of opcoes; let i = index" (change)="seleciona($event.checked, i)">{{item}}</mat-checkbox>
+
+            </section>
+            <div class="textArea">
+                <h5>Outro motivo:</h5>
+                <textarea name="" id="" cols="40" rows="10" formControlName="outros"></textarea>
+            </div>
+            <button class="botaoVermelho" style="margin-top:5%;" *ngIf="form.controls['outros'].valid || escolha" (click)="checkin()">Chamar</button>
+            <button class="botaoVermelho botaoDesativado" style="margin-top:5%;" *ngIf="form.controls['outros'].invalid && !escolha">Chamar</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="back centralizado">
+    <div class="cabecalho centralizado">
+        <h1>{{nome}}</h1>
+    </div>
+    <div class="conteudo centralizado">
+        <div class="cadaBotao centralizado">
+            <p>Editar Perfil</p>
+
+        </div>
+        
+        <div class="cadaBotao centralizado" [routerLink]="['/messages/'+idMesa]" *ngIf="configRestaurant?.chat" >
+            <p>Mensagens</p>
+
+        </div>
+        <div class="cadaBotao centralizado" (click)="openConfirmBox('Restaurante desativou o chat')" *ngIf="!configRestaurant?.chat" >
+            <p>Mensagens</p>
+
+        </div>
+        
+        <div class="cadaBotao centralizado" [routerLink]="['/reservar/']" *ngIf="configRestaurant?.reservation">
+            <p>Minhas reservas</p>
+
+        </div>
+        <div class="cadaBotao centralizado" (click)="openConfirmBox('Restaurante desativou reserva de mesa')" *ngIf="!configRestaurant?.reservation">
+            <p>Minhas reservas</p>
+
+        </div>
+        <div class="cadaBotao centralizado">
+            <p>Sair da mesa</p>
+
+        </div>
+        <div class="cadaBotao centralizado">
+            <p>Deslogar da conta</p>
+
+        </div>
+    </div>
+</div>

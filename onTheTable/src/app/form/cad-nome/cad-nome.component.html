@@ -1,0 +1,24 @@
+<div class="back centralizado">
+    <div class="conteudo centralizado">
+        <form  [formGroup]="form" class="forms centralizado">  
+            <h5 >Bem-vindo! Identifique-se por favor.</h5>
+            <mat-form-field appearance="outline" class="centralizado">
+                <mat-label>Seu Nome*</mat-label>
+
+                <input matInput name="name"  formControlName="nome">
+                <mat-error *ngIf="form.controls['nome'].invalid && form.controls['nome'].touched" > - Campo obrigatório</mat-error> 
+
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="centralizado">
+                <mat-label>Telefone*</mat-label>
+
+                <input matInput name="name"  formControlName="telefone">
+                <mat-error *ngIf="form.controls['telefone'].invalid && form.controls['telefone'].touched" > - Campo obrigatório</mat-error> 
+
+            </mat-form-field>
+            <button class="botaoVermelho" style="margin-top:5%;" *ngIf="form.controls['nome'].valid && form.controls['telefone'].valid" (click)="checkin()">Entrar</button>
+            <button class="botaoVermelho botaoDesativado" style="margin-top:5%;" 
+            *ngIf="form.controls['nome'].invalid || form.controls['telefone'].invalid">Entrar</button>
+        </form>
+    </div>
+</div>

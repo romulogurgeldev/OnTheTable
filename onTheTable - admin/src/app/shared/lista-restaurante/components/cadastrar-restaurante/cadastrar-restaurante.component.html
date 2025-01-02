@@ -1,0 +1,27 @@
+<div class="cadRestaurante centralizado">
+    
+    <mat-spinner *ngIf="carregando" ></mat-spinner>
+    <div class="conteudoCadastro " *ngIf="!carregando" >
+        <button class="botaoVermelho btnFechar" (click) = "fechar()">X</button>
+        <h1>Cadastrar novo Restaurante</h1>
+        <div class="conteudoCadastro2">
+            
+            <app-forms-cad-restaurante [restauranteExtra]="true" [(cnpj)]="restaurant.cnpj" [(nomeRestaurante)]="restaurant.name" [(razaoSocial)]="restaurant.razaoSocial" [(telefone)]="restaurant.telephone"></app-forms-cad-restaurante>
+            <app-forms-cad-cep [restauranteExtra]="true" [(endereco)]="cep" [(cepCompleto)]="cepCompleto"></app-forms-cad-cep>
+            <div class="botoes centralizado">
+                <button class="botaoVermelho" 
+                *ngIf="restaurant.cnpj && 
+                restaurant.name && 
+                restaurant.razaoSocial && 
+                restaurant.telephone &&
+                cepCompleto" (click)="save()"s>Salvar</button>
+                <button class="botaoVermelho btnDesativado" 
+                *ngIf="!restaurant.cnpj || 
+                !restaurant.name || 
+                !restaurant.razaoSocial || 
+                !restaurant.telephone || 
+                !cepCompleto" >Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>

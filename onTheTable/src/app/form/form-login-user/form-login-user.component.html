@@ -1,0 +1,59 @@
+<div class="back centralizado">
+    <form  [formGroup]="form" class="forms centralizado" *ngIf="!carregando" >  
+
+        <h5 *ngIf="code" style="margin-bottom: 5%;" >Digite o código que enviamos</h5>
+        <h5 *ngIf="!code" style="margin-bottom: 5%;" >Login</h5>
+
+
+        <mat-form-field appearance="outline" class="centralizado" *ngIf="!code && entrarEmail" >
+            <mat-label>Email*</mat-label>
+    
+            <input matInput name="name"  formControlName="email">
+            <mat-error *ngIf="form.controls['email'].invalid && form.controls['email'].touched" > - Campo obrigatório</mat-error> 
+        </mat-form-field>
+        
+        <div class="telefone centralizado"  *ngIf="!code && !entrarEmail">
+            <mat-form-field appearance="outline" style='margin-left: 0%; min-width: 80px; width: 10%;'  >
+                <mat-label>Cód. País</mat-label>
+                <mat-select matInput  [(value)]="paisEscolhido" (selectionChange)="trocaMascara()">
+                    <mat-option  *ngFor="let item of codigoTelefone; let i = index;" [value]="item.ddi" >  <img src="{{item.img}}" alt=""> +{{item.ddi}}</mat-option>
+                </mat-select>
+
+                
+            </mat-form-field>           
+            
+            <mat-form-field appearance="outline" class="centralizado"  style="min-width: 100px; width: 72%;">
+                <mat-label>Telefone*</mat-label>
+        
+                <input matInput name="name"  formControlName="telefone" mask="{{mask}}" [validation]="false">
+                <mat-error *ngIf="form.controls['telefone'].invalid && form.controls['telefone'].touched" > - Campo obrigatório</mat-error> 
+        
+            </mat-form-field>
+        </div>
+
+
+        <mat-form-field appearance="outline" class="centralizado" *ngIf="code" >
+            <mat-label>código</mat-label>
+    
+            <input matInput name="name"  formControlName="code" oninput="this.value = this.value.toUpperCase()">
+            <mat-error *ngIf="form.controls['code'].invalid && form.controls['code'].touched" > - Campo obrigatório</mat-error> 
+    
+        </mat-form-field>
+        <div class="linkTipoEntrada centralizado" style="width: 300px; align-items: flex-start; margin-top: -2%;">
+            <a style="color: #f27523;" (click)="entrarEmail=!entrarEmail; form.controls['telefone'].setValue('')">
+                <p *ngIf="!entrarEmail && !code" >Entrar com email</p>
+                <p *ngIf="entrarEmail && !code" >Entrar com telefone</p>
+            </a>
+
+        </div>
+    
+        <button class="botaoVermelho" style="margin-top:5%;" *ngIf=" !code && (form.controls['email'].valid || form.controls['telefone'].valid)" (click)="checkin()">Entrar</button>
+        <button class="botaoVermelho botaoDesativado" style="margin-top:5%;" 
+        *ngIf="!code && (form.controls['telefone'].invalid && form.controls['email'].invalid)">Entrar</button>
+    
+        <button class="botaoVermelho" style="margin-top:5%;" *ngIf="code && form.controls['code'].valid" (click)="login()">Enviar</button>
+        <button class="botaoVermelho botaoDesativado" style="margin-top:5%;" 
+        *ngIf="code && form.controls['code'].invalid">Enviar</button>
+        <a  style="margin-top: 5%; font-size: 12px;" (click)="fechar()">Trocar forma de login</a>
+    </form>
+</div>

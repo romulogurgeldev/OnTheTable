@@ -1,0 +1,39 @@
+<div class="menu centralizado " [ngClass]="{'abrir': abrir==true, 'fechar': abrir==false}" >
+    <div class="conteudo" *ngIf="abrir"  [ngClass]="{'sumir': abrir==false, 'aparecer': abrir==true}">
+        <button class="btnFechar botaoVermelho" (click)=" abrir=false">X</button>
+        <div style="width: 100%; margin-top: 10%;"></div>
+        <app-forms-cad-categoria *ngIf="mode==1"  [(tipo)]='tipo' [(categorias)]="categorias" ></app-forms-cad-categoria>
+        <app-forms-edit-categoria  *ngIf="mode==2" [(tipo)]='tipo' [(abrir)]="abrir" [(categorias)]="categorias" [(categoria)]="categoria"></app-forms-edit-categoria>
+
+        <app-forms-cad-food  *ngIf="mode==3" [(categoria)]="categoria" [(categorias)]="categorias"></app-forms-cad-food>
+        <app-ver-produto *ngIf="mode==4" [(produto)]="produto"></app-ver-produto>
+        <app-forms-edit-food  *ngIf="mode==5" [(idproduto)]="produto._id" [(categoria)]="categoria" [(categorias)]="categorias"></app-forms-edit-food>
+        <app-perfil-complementos *ngIf="mode==6" [(produto)]="produto._id" ></app-perfil-complementos>
+    </div>
+    <div class="centralizado rodape">
+        <img src="./assets/logo.png" alt="" [ngClass]="{'crescer': abrir==false, 'diminuir': abrir==true}">
+
+    </div>
+
+</div>
+
+<div class="back">
+    <div class="pesquisa">
+
+    </div>
+    <div class="conteudoCardapio">
+        <div class="cabecalho">
+            <h1>Cardápio</h1>
+            
+        </div>
+        
+        <div class="cardapio">
+            <button class="btnBranco" (click)="abrirMenu(1)">+ Adicionar Categoria</button>
+            <div class="categorias">
+                <app-lista-categorias [(produto)]="produto" [(categorias)]="categorias" [(categoria)]="categoria" [(abrir)]="abrir" [(tipo)]="tipo" [(mode)]="mode"></app-lista-categorias>
+            </div>
+
+        </div>
+
+    </div>
+</div>

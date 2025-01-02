@@ -1,0 +1,99 @@
+.back{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.269);
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+}
+h1{
+    margin-top: 0%;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+.conteudo{
+    margin-top: 0%;
+    position: relative;
+    width: 40%;
+    min-width: 600px;
+    height: 92vh;
+    padding: 2%;
+    background-color: #f6f7f8;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow: auto;
+    overflow-x: hidden;
+
+}
+.cadaInfo{
+
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 3%;
+
+}
+.cadaInfo div{
+
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 50%;
+
+}
+.cadaInfo div p{
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+.cadaInfo div h4{
+    font-size: 18px;
+    font-weight: 500;
+}
+.dias{
+
+    width: 100%;
+    flex-direction: row;
+
+}
+.dias p{
+    margin-right: 5%;
+    font-size: 18px !important;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.279);
+}
+.dias .ativado{
+    margin-right: 5%;
+    font-size: 18px !important;
+    font-weight: 500;
+    color: #f27523;
+}
+.botoes{
+    margin-top: 5%;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+@media screen and (max-width: 620px) {
+    .conteudo{
+        width: 90vw;
+        min-width: 350px;
+    }
+}
+@media screen and (max-width: 500px) {
+    .conteudo{
+        width: 90vw;
+        min-width: 350px;
+    }
+    .cadaInfo{
+        flex-direction: column;
+
+    }
+    .cadaInfo div{
+        width: 100%;
+        margin-top: 5%;
+    }
+}

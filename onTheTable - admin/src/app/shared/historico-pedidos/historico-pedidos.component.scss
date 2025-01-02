@@ -1,0 +1,55 @@
+.botoes{
+    margin-top: 2%;
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.botoes button{
+    min-width: 100px;
+    
+}
+.back{
+    width: 42.5vw;
+    min-height: 200px;
+    background-color: white;
+    box-shadow: 1px 1px 8px rgba(0,0,0,0.1),
+    inset 1px 1px 2px #fff;
+    border-radius: 12px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 2%;
+}
+.titulo{
+    margin-top: 1%;
+    margin-left: 2.5%;
+}
+.titulo h1{
+    font-size: 18px;
+    font-weight: 700;
+}
+.tabela{
+    width: 95%;
+    margin-left: 2.5%;
+    margin-top: 2%;
+
+}
+table{
+    width: 100%;
+}
+
+td{
+    
+    padding: 1px;
+}
+tr{
+    height: 30px;
+}
+.trConteudo td{
+    font-size: 12px;
+    height: 30px;
+    
+}
+td a{
+    color: #f27523;
+}
+

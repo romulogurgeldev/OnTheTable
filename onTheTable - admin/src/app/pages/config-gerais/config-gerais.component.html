@@ -1,0 +1,156 @@
+
+
+<div class="main container">
+    <div class="pesquisa">
+
+    </div>
+    <div class="conteudoConfig centralizado" *ngIf="!editar" >
+        <div class="cabecalho centralizado">
+            <button (click)="irPara()">
+                <mat-icon title="retornar">arrow_back_ios</mat-icon>
+            </button>
+            <h1>Configurações gerais</h1>
+            
+        </div>
+        <div class="info centralizado">
+            <div class="cadaInfo centralizado">
+                <h4 style="margin-top: 5%;">Comandos e botões</h4>
+                <div class="comandosBotoes centralizado" *ngIf="config" >
+        
+                    <div class="cadaItem centralizado">
+                        <p>Chat perguntas</p>
+                        <mat-slide-toggle [checked]="config.chat" (change)="config.chat=!config.chat; save($event);"></mat-slide-toggle>
+                    </div>
+                    <div class="cadaItem centralizado">
+                        <p>Chamar serviços</p>
+                        <mat-slide-toggle [checked]="config.servicos" (change)="config.servicos=!config.servicos; save($event);"></mat-slide-toggle>
+                    </div>
+                    <div class="cadaItem centralizado">
+                        <p>Pagamento online</p>
+                        <mat-slide-toggle [checked]="config.pagamento" (change)="config.pagamento=!config.pagamento; save($event);"></mat-slide-toggle>
+                    </div>
+                    <div class="cadaItem centralizado">
+                        <p>Permitir reservas</p>
+                        <mat-slide-toggle [checked]="config.reservation" (change)="config.reservation=!config.reservation; save($event);"></mat-slide-toggle>
+                    </div>
+                    <div class="cadaItem centralizado">
+                        <p>Delivery</p>
+                        <mat-slide-toggle [checked]="config.delivery" (change)="config.delivery=!config.delivery; save($event);"></mat-slide-toggle>
+                    </div>
+                    <div class="cadaItem centralizado">
+                        <p>Cupons</p>
+                        <mat-slide-toggle [checked]="config.cupons" (change)="config.cupons=!config.cupons; save($event);"></mat-slide-toggle>
+                    </div>
+                </div>
+            </div>
+            <div class="cadaInfo centralizado">
+                <h4 style="margin-top: 5%;">Minha assinatura</h4>
+    
+                <div class="minhaAssinatura centralizado">
+                    <div class="assinatura centralizado">
+                        <button class="btnFechar" title="gerenciar assinatura">
+                            <mat-icon>settings</mat-icon>
+                        </button>
+                        <div class="cabecalhoAssinatura centralizado">
+                            <h1>{{plano.plano.name}}</h1>
+                            <p> {{calculaRestante()}}</p>
+                        </div>
+                        <div class="conteudoAssinatura">
+                            <div class="cadaItemAssinatura centralizado">
+                                <p>Estabelecimentos:</p>
+                                <p>{{totalRestaurants}}/{{plano.plano.quantityRestaurants}}</p>
+                            </div>
+                            <div class="cadaItemAssinatura centralizado">
+                                <p>Mesas:</p>
+                                <p>{{totalTables}}/{{plano.plano.quantityTables}}</p>
+                            </div>                    
+                            <div class="cadaItemAssinatura centralizado">
+                                <p>Pedidos:</p>
+                                <p>{{totalOrders}}/{{plano.plano.quantityOrders}}</p>
+                            </div>
+                            <div class="cadaItemAssinatura centralizado">
+                                <p>Pacote extra comprados:</p>
+                                <p>1</p>
+                            </div>                  
+                            <div class="cadaItemAssinatura centralizado">
+                                <p>Valor do plano:</p>
+                                <p>{{plano.plano.preco | currency:'BRL':true}}</p>
+                            </div>
+                            <div class="cadaItemAssinatura centralizado" style="margin-top: 5%">
+                                <p>Total gasto:</p>
+                                <p>{{plano.plano.preco | currency:'BRL':true}}</p>
+                            </div>
+                            <div class="botoes centralizado">
+                                <a (click)="renovarPlano()">Renovar plano</a>
+                                <button class="botaoVermelho" (click)="changePlan = true">Mudar plano</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <button class="btnBranco centralizado" (click)="editar=true">
+            <mat-icon>edit</mat-icon>
+            Editar informações do restaurante
+        </button>
+    </div>
+    <div class="conteudoConfig centralizado" *ngIf="editar" >
+        <div class="cabecalho centralizado">
+            <button (click)="editar = false">
+                <mat-icon title="retornar">arrow_back_ios</mat-icon>
+            </button>
+            <h1>Editar informações do Restaurante</h1>
+            
+        </div>
+        <app-forms-edit-restaurant></app-forms-edit-restaurant>
+
+
+    </div>
+
+    <div class="mudarPlano centralizado" *ngIf="changePlan" >
+        <div class="conteudo centralizado">
+            <h1>Escolha seu plano</h1>
+            <div class="planos centralizado">
+                <div class="plano centralizado mat-elevation-z1">  
+                    
+                    <h3 style="text-align: center; margin-top: -8%;"> {{plano.plano.name}}*</h3>
+                    <div class="preco centralizado">
+                      <small class="centralizado">R$</small>
+                      <h1>{{plano.plano.preco}}</h1>
+                      <p class="centralizado" style="font-size: 10px ;" >/{{plano.plano.period}} {{plano.plano.period>1 ? "dias" : "dia"}}</p>
+            
+                    </div>
+                    <div class="infos centralizado">
+                      <p style="font-size: 12px">{{plano.plano.quantityRestaurants}} {{plano.plano.quantityRestaurants>1 ? "estabelecimentos" : "estabelecimento"}}</p>
+                      <p style="font-size: 12px">{{plano.plano.quantityTables}} {{plano.plano.quantityTables>1 ? "mesas" : "mesa"}}</p>
+                      <p style="font-size: 12px">{{plano.plano.quantityOrders}} {{plano.plano.quantityOrders>1 ? "pedidos" : "pedido"}}</p>
+                      
+                    </div>
+                    <button class="botaoVermelho btnSelecionar" (click)="renovarPlano()"  style="margin-top: 15%;">Renovar</button>
+                    <div class="obs centralizado">
+                        <small>*Plano atual</small> 
+                    </div>
+                </div>
+                <div class="plano centralizado mat-elevation-z1" *ngFor="let item of planos"  >   
+                    <h3>{{item.name}}</h3>
+                    <div class="preco centralizado">
+                      <small class="centralizado">R$</small>
+                      <h1>{{item.preco}}</h1>
+                      <p class="centralizado" style="font-size: 10px ;" >/{{item.period}} {{item.period>1 ? "dias" : "dia"}}</p>
+            
+                    </div>
+                    <div class="infos centralizado">
+                      <p style="font-size: 12px">{{item.quantityRestaurants}} {{item.quantityRestaurants>1 ? "estabelecimentos" : "estabelecimento"}}</p>
+                      <p style="font-size: 12px">{{item.quantityTables}} {{item.quantityTables>1 ? "mesas" : "mesa"}}</p>
+                      <p style="font-size: 12px">{{item.quantityOrders}} {{item.quantityOrders>1 ? "pedidos" : "pedido"}}</p>
+                      
+                    </div>
+                    <button class="botaoVermelho btnSelecionar" (click)="changePlano(item)"  style="margin-top: 15%;">Selecionar</button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

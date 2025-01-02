@@ -1,0 +1,35 @@
+<app-alert-erro [(erro)]="erro" *ngIf="erro" ></app-alert-erro>
+<div class="conteudo">
+
+    <form  [formGroup]="form" class="forms centralizado">
+        <div class="form-group">
+            
+            <div class="inputLogin centralizado">
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="text"  formControlName="email">
+                </mat-form-field>
+            </div>   
+        </div>
+        <div class="form-group">     
+            <div class="inputLogin centralizado">
+                <mat-form-field appearance="outline">
+                    <mat-label>Senha</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'"  formControlName="password">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </div>   
+            
+        </div>
+        <div class="botoesLogin centralizado">
+            <button type="submit" class="btn botaoVermelho" (click)="logar()">Login</button>
+            <a href="#/esqueceu-senha">Esqueci minha senha</a>
+            <p> Seu restaurante ainda não está com a gente? <a href="#/cadastro">Registre-se aqui</a></p>
+        </div>
+        
+    
+    </form>
+
+</div>

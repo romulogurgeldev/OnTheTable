@@ -1,0 +1,77 @@
+h1{
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 5%;
+}
+.conteudo{
+    width: 90%;
+    align-items: flex-start;
+
+
+}
+.checkBox{
+    width: 100%;
+    margin-top: 5%;
+    justify-content: flex-start;
+
+    align-items: flex-start;
+    height: 500px;
+    overflow: auto;
+    overflow-x: hidden;
+  }
+.checkBox::-webkit-scrollbar-track {
+    background-color: #F4F4F4;
+}
+.checkBox::-webkit-scrollbar {
+    width: 6px;
+    background: #F4F4F4;
+}
+::-webkit-scrollbar-thumb {
+    background: #dad7d7;
+} 
+.cadaSelection{
+    width: 100%;
+    flex-direction: row;
+    height: 100px;
+    margin-top: 2%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.265);
+    padding: 1%;
+    justify-content: space-between;
+
+}
+
+.itemSelection{
+    margin-left: 5%;
+    width: 50%;
+    flex-direction: row;
+    justify-content: flex-start;
+    filter: grayscale(1);
+    opacity: 0.5;
+}
+.img{
+    background-size: cover;
+}
+.itemSelection p{
+    margin-left: 5%;
+}
+.foodAtivo{
+    filter: grayscale(0);
+    opacity: 1;
+}
+.cadaSelection mat-icon{
+    color: #f27523;
+    cursor: pointer;
+}
+.input{
+    width: 100%;
+    border: 0px;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.2);
+    border-radius: 7px;
+    height: 35px;
+    flex-direction: row;
+    margin-top: 5%;
+}
+.input input{
+    border: 0px;
+    width: 92%;
+}

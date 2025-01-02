@@ -1,0 +1,67 @@
+<div class="back centralizado" (scroll)="onScroll()" >
+    <mat-spinner *ngIf="carregando" style="margin-top: 10%"></mat-spinner>
+    <div class="conteudo centralizado" *ngIf="!carregando">
+        <button class="botaoVermelho btnFechar" (click)="fechaPagina()">X</button>
+        <div class="backgroundImage fotoComida" style="background-image: url({{comida.image.location}})">
+
+        </div>
+        <div class="texto centralizado">
+            <div>
+                <h1>{{comida.name}}</h1>
+                <p>{{comida.description}}</p>
+            </div> 
+            <div class="preco centralizado">
+                <h4>Preço unitário:</h4>
+                <p>{{comida.price | currency:'BRL':true}}</p>
+
+            </div>
+            {{obrigatoriosForamEscolhidos}}
+            <div class="complementos" *ngIf="comida.complementos" >
+                <app-lista-complementos [(produto)]="comida._id" [(complemento)]="complementos" [(obrigatorios)]="obrigatoriosForamEscolhidos"></app-lista-complementos>
+            </div>
+            
+            <form  [formGroup]="form" class="forms centralizado" >
+                <h4 >Observações</h4>
+                <div class="textArea" (click)="escreveTexto=true">
+                    Por exemplo: Tire a cebola
+                </div>
+                <div class="textoArea" *ngIf="escreveTexto" >
+                    <div class="tituloTextoArea centralizado">
+                        <mat-icon (click)="escreveTexto=false" >expand_more</mat-icon>
+                        <h2>Alguma observação?</h2>
+                        <h2>{{form.controls['obs'].value.length}}/140</h2>
+                    </div>
+                    <textarea rows="4" cols="46" formControlName="obs" placeholder="Por exemplo: Tire a cebola" maxlength='140' >
+                    
+                    </textarea>
+                    <div class="buttonSalvar centralizado" >
+                        <button class="botaoVermelho" (click)="escreveTexto=false">Salvar</button>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+    <div class="botoesFinalizar centralizado" *ngIf="!escreveTexto" >
+        <div style="width: 29%; margin-top: 0%;">
+            
+            <div class="quantidade centralizado">
+                <button class="btnQuantidade botaoDesativado" *ngIf="quantidade==1">-</button>
+
+                <button class="btnQuantidade botaoVermelho" *ngIf="quantidade>1" (click)="quantidade = quantidade-1" >-</button>
+                <p>{{quantidade}}</p>
+                <button class="btnQuantidade botaoVermelho" (click)="quantidade = quantidade+1">+</button>
+            </div>
+
+        </div>
+        <div class="botaoConfirmar centralizado" >
+            <button class="botaoVermelho btnConfirmar" (click)="adicionarCarrinho()" *ngIf="obrigatoriosForamEscolhidos" > 
+                Adicionar Carrinho {{somaPreco() | currency:'BRL':true}}
+            </button>
+            <button class="botaoVermelho botaoDesativado btnConfirmar"  *ngIf="!obrigatoriosForamEscolhidos"  >
+                Adicionar Carrinho {{somaPreco() | currency:'BRL':true}}
+            </button>
+        </div>
+    </div>
+</div>

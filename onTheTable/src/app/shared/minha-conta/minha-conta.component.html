@@ -1,0 +1,88 @@
+<div class="back centralizado">
+    <div class="cabecalho centralizado" >
+        <h1>Mesa </h1>
+    </div>
+    <div class="conteudo">
+        <div class="centralizado" style="width: 100%" *ngIf="pedido" >
+            <div class="cadaPedido centralizado" *ngFor="let item of pedido"   >
+                <div class="centralizado" style="flex-direction: row; justify-content: space-between; width: 100%">
+                    <h6>pedido: {{item.orderNumber}}</h6>
+                    <h6>{{item.date | date: 'dd/MM/yyyy'}}</h6>
+                </div>
+                <div class="status centralizado">
+                    <h4 style="margin-top: 5%">{{item.status}}</h4>
+                    <h4 style="margin-top: 5%; margin-left: 1%;" 
+                    *ngIf="item.status=='Pedido finalizado'" >Pedido finalizado às {{item.dateEntregue | date: 'HH:mm'}}</h4>
+                    <h4 style="margin-top: 5%; margin-left: 1%;" 
+                    *ngIf="item.status=='Pedido entregue' || 
+                        item.status=='Pedido finalizado'" >Pedido entregue às {{item.dateEntregue | date: 'HH:mm'}}</h4>
+                    <h4 style="margin-top: 5%; margin-left: 1%;" 
+                    *ngIf="item.status=='Pedido pronto' || 
+                        item.status=='Pedido entregue' || 
+                        item.status=='Pedido finalizado'" >Pedido pronto às {{item.datePreparado | date: 'HH:mm'}}</h4>
+                    <h4 style="margin-top: 5%; margin-left: 1%;" 
+                    *ngIf=" item.status == 'Preparando pedido' ||
+                        item.status=='Pedido pronto' || 
+                        item.status=='Pedido entregue' || 
+                        item.status=='Pedido finalizado'" >Pedido confirmado às {{item.dateConfirma | date: 'HH:mm'}}</h4>
+                    <h4 style="margin-top: 5%; margin-left: 1%;" 
+                    *ngIf="item.status=='Aguardando confirmação...' || 
+                        item.status=='Pedido cancelado' ||
+                        item.status=='Preparando pedido' ||  
+                        item.status=='Pedido pronto' || 
+                        item.status=='Pedido entregue' ||
+                        item.status=='Pedido finalizado'" >Pedido feito às {{item.date | date: 'HH:mm'}}</h4>
+                </div>
+                <div class="pedidos2" *ngFor="let item2 of item.orderFood" style="width: 100%; margin-top: 5%;">
+                    <div class="centralizado pedidos" >
+                        <div class="infoPedido centralizado">
+                            <p style="width: 20%;">{{item2.quantidade}} x </p><p style="width: 80%;">{{item2.nameFood}}</p>
+        
+                        </div>
+
+                        <div class="preco centralizado">
+                            <p>{{item2.priceFood*item2.quantidade | currency:'BRL':true}}</p>
+                        </div>
+
+                    </div>
+                    <div class="complementos">
+                        <div class="cadaComplemento centralizado" *ngFor="let item3 of item2.complementos" >
+                            <div class="infoPedido centralizado">
+                                <p style="width: 20%;">{{item3.quantidade}} x </p><p style="width: 80%;">{{item3.name}}</p>
+            
+                            </div>
+    
+                            <div class="preco centralizado">
+                                <p>{{item3.price | currency:'BRL':true}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dono">
+                        <h4 style="font-size: 10px;">{{item2.name}}</h4>
+                    </div>
+        
+                </div>
+                <div class="precoTotal centralizado" > 
+                    <p>{{item.originalPrice | currency:'BRL':true}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cadaPedido pagamento centralizado">
+        <h1>Pagamento</h1>
+        <h5>Subtotal: {{subtotal | currency:'BRL':true}}</h5>
+        <h5>Garçom: {{subtotal*(gorjeta/100) | currency:'BRL':true}}</h5>
+        <div class="centralizado gorjeta">
+            <mat-slider min="0" max="50" step="1" value="10" (input)="changeGorjeta($event)"></mat-slider>
+            <p>{{gorjeta}}%</p>
+
+        </div>
+        <div class="precoTotal" style="margin-top: 2%;">
+            <p>Total: {{total | currency:'BRL':true}}</p>
+
+        </div>
+    </div>
+    <div class="botao">
+        <button class="botaoVermelho" (click)="abrirPagamento()">Pagar Conta</button>
+    </div>
+</div>

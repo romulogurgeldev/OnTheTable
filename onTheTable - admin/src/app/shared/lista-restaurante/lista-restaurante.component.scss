@@ -1,0 +1,111 @@
+
+.back{
+    
+
+    margin-top: 0;
+   
+}
+.cabecalhoMaior{
+    min-width: 350px;
+
+    width: 80vw;
+    max-width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-left: 6px;
+}
+.addRestaurante{
+    margin-left: 2%;
+    color: #f27523;
+    font-size: 20px;
+    border: 0;
+    color: white;
+    min-width: 40px !important;
+    height: 40px;
+    border-radius: 12px;
+}
+.conteudo{
+    margin-top: 15%;
+    width: 100vw;
+    height: 80%;
+    max-width: 920px;
+    justify-content: flex-start;
+
+}
+.restaurantes{
+    width: 80vw;
+    flex-direction: row;
+    justify-content: flex-start;
+    overflow: auto;
+    padding-bottom: 2%;
+    max-width: 100%;
+    min-width: 350px;
+}
+.cadaRestaurante{
+    position: relative;
+    min-width: 300px;
+    min-height: 250px;
+    width: 20%;
+    background-color: white;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.1),
+    inset 1px 1px 2px #fff;
+    border-radius: 12px;
+    padding: 20px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 5%;
+    margin-right: 5%;
+    margin-left: 1%;
+}
+
+h1{
+    font-size: 25px;
+}
+small{
+    font-size: 10px;
+    color: #f27523;
+}
+h3{
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.addRestaurante p{
+    font-size: 15px;
+    text-align: center;
+    line-height: 30px;
+    
+}
+.cabecalho{
+    position: relative;
+    flex-direction: row;
+    justify-content: center;
+}
+.config{
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 5%;
+}
+
+.botoes{
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 5%;
+}
+.botoes button{
+    min-width: 120px !important;
+    height: 35px;
+    border-radius: 12px;
+}
+@media screen and (max-width: 450px) {
+    .cadaRestaurante{
+
+        margin-right: 1%;
+        margin-left: 5%;
+    }
+    .cabecalhoMaior{
+
+        padding-left: 24px;
+    }
+}

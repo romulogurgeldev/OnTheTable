@@ -1,0 +1,95 @@
+<div class="back centralizado">
+    <div class="conteudo centralizado">
+        <button class="botaoVermelho btnFechar" (click)="fechar()">X</button>
+        <mat-spinner *ngIf="carregando" ></mat-spinner>
+
+        <h1 style="text-align: center; margin-top: 5%;" *ngIf="!carregando && !finalizado">Finalizar pedido</h1>
+        <div class="pedido" *ngIf="!carregando && !finalizado" >
+
+            <div class="centralizado" style="width: 100%; margin-top: 2%;" *ngIf="pedido" >
+                <div class="cadaPedido centralizado" *ngFor="let item of pedido"   >
+                  <h6>pedido: {{item.orderNumber}} </h6>
+                  <h4 style="margin-top: 5%">{{item.status}} </h4>
+                    <div class="itens" *ngFor="let item2 of item.orderFood" style="width: 100%; margin-top: 5%;">
+                        <div class="centralizado pedidos" >
+                            <div class="infoPedido centralizado">
+                                <p style="width: 20%;">{{item2.quantidade}} x </p><p style="width: 80%;">{{item2.nameFood}}</p>
+            
+                            </div>
+    
+                            <div class="preco centralizado">
+                                <p>{{item2.priceFood*item2.quantidade | currency:'BRL':true}}</p>
+                            </div>
+                        </div>
+                        <div class="complementos">
+                            <div class="cadaComplemento centralizado" *ngFor="let item3 of item2.complementos" >
+                                <div class="infoPedido centralizado">
+                                    <p style="width: 20%;">{{item3.quantidade}} x </p><p style="width: 80%;">{{item3.name}}</p>
+                
+                                </div>
+        
+                                <div class="preco centralizado">
+                                    <p>{{item3.price | currency:'BRL':true}}</p>
+                                </div>
+                            </div>
+                          </div>
+    
+            
+                    </div>
+                    <div class="precoTotal centralizado" > 
+                        <p>{{item.originalPrice | currency:'BRL':true}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cadaPedido pagamento centralizado" *ngIf="!carregando && !finalizado" >
+            <h1>Pagamento</h1>
+            <h5>Subtotal: {{subtotal | currency:'BRL':true}}</h5>
+            <h5>Valor Pago: {{valorJaPago | currency:'BRL':true}}</h5>
+            <h5>Garçom: {{subtotal*(gorjeta/100) | currency:'BRL':true}}</h5>
+            <div class="centralizado gorjeta">
+                <mat-slider min="0" max="50" step="1" value="10" (input)="changeGorjeta($event)"></mat-slider>
+                <p>{{gorjeta}}%</p>
+    
+            </div>
+            <h5>Desconto: {{subtotal*(desconto/100) | currency:'BRL':true}}</h5>
+            <div class="centralizado gorjeta">
+                <mat-slider min="0" max="80" step="1" value="0" (input)="changeDesconto($event)"></mat-slider>
+                <p>{{desconto}}%</p>
+    
+            </div>
+            <div class="centralizado formaPagamento">
+                <mat-form-field appearance="fill">
+                    <mat-label>Forma de pagamento</mat-label>
+                    <mat-select [(value)]="formaPagamento">
+
+                      <mat-option value="dinheiro">Dinheiro</mat-option>
+                      <mat-option value="credito">Cartão de Crédito</mat-option>
+                      <mat-option value="debito">Cartão de Débito</mat-option>
+                      <mat-option value="pix">Pix</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+
+            <div class="precoTotal" style="margin-top: 2%;">
+                
+                <p>Total: {{total | currency:'BRL':true}}</p>
+    
+            </div>
+            <div class="botoes centralizado">
+                <button class="botaoVermelho" (click)="fecharPedido()" *ngIf="!parcial" >Pagamento Total</button>
+                <input type="number" *ngIf="parcial" placeholder="digite o valor" [(ngModel)]="valorParcial">
+                <p (click)="parcial= true" *ngIf="!parcial" >Pagamento parcial</p>
+                <button class="botaoVermelho" (click)="fecharPedidoParcial()" *ngIf="parcial" >Pagamento Parcial</button>
+                <p (click)="parcial= false" *ngIf="parcial" >Voltar</p>
+
+
+            </div>
+        </div>
+        <div class="pagamentoFinalizado centralizado" *ngIf="!carregando && finalizado">
+            <h1>Pagamento feito com sucesso!</h1>
+            <button class="botaoVermelho" style="margin-top: 5%" (click)="reload()">Fechar</button>
+        </div>
+    </div>
+
+</div>

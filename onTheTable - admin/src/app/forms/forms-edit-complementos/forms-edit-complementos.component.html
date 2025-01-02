@@ -1,0 +1,99 @@
+<div class="main centralizado">
+    <mat-spinner *ngIf="carregando" ></mat-spinner>
+    <div  class="forms centralizado" *ngIf="!carregando" style="height: 300px ;" >
+        <button class="botaoVermelho btnFechar" (click)="fechar()">X</button>
+
+        <h1 >Editar grupo complemento</h1>
+
+        <div class="inputs centralizado" style="width: 100%;">
+            <mat-form-field appearance="outline" style="width: 60%; min-width: 100px;" >
+                <mat-label>Nome grupo complementos</mat-label>
+                <input matInput [(ngModel)]="nomeGrupo" >
+                
+               
+                        
+            </mat-form-field>    
+            <mat-form-field appearance="outline" style="width: 35%; min-width: 100px;" >
+                <mat-label>Obrigatório:</mat-label>
+                <mat-select matInput [(ngModel)]="obrigatoriedade" >
+                    <mat-option value="true">Sim</mat-option>
+                    <mat-option value="false">Não</mat-option>
+                </mat-select>
+    
+                
+                
+            </mat-form-field>  
+        </div>
+        <div class="inputs" style="width: 100%;">
+            <div class="bloco quantidade centralizado" >
+                    
+                <h2>Quantidade</h2>
+                <p>Indique quantos itens podem ser selecionados</p>
+                <div class="inputsQuantidade centralizado">
+                    <div class="cadaInput centralizado">
+                        <button (click)="contaQuantidade(-1)" [ngClass]="{'pAtivo': obrigatoriedade == 'true' && minimo>1}" >-</button>
+                        <h2>{{minimo}}</h2>
+                        <button (click)="contaQuantidade(1)" [ngClass]="{'pAtivo': obrigatoriedade == 'true'}" >+</button>
+                     </div>
+                     <div class="cadaInput centralizado">
+                         <button (click)="contaQuantidade(-1, false)" [ngClass]="{'pAtivo': maximo>1}" >-</button>
+                         <h2>{{maximo}}</h2>
+                         <button (click)="contaQuantidade(1, false)" class="pAtivo" >+</button>
+                      </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="forms centralizado">
+        <h1 >Editar Complemento</h1>
+        <div class="centralizado cadaInput" style='width:100%;'   *ngFor="let item of complementos.complementos; let i = index">
+            <div class="inputs">
+                <mat-form-field appearance="outline" style="width: 100%; min-width: 100px;">
+                    <mat-label>Nome complemento</mat-label>
+                    <input matInput [(ngModel)]="complementosEdit[i].name" >
+                    
+                    <mat-error> - Campo obrigatório</mat-error>
+                            
+                </mat-form-field>  
+                  
+            </div>
+            <div class="inputs centralizado" >
+                <mat-form-field appearance="outline" style="width: 40%; min-width: 100px;">
+                    <mat-label>Preço</mat-label>
+                    <input matInput [(ngModel)]="complementosEdit[i].value" >
+                    
+                    <mat-error> - Campo obrigatório</mat-error>
+                            
+                </mat-form-field>    
+                <mat-form-field appearance="outline" style="width: 40%; min-width: 100px;" >
+                    <mat-label>Tipo de produto</mat-label>
+                    <mat-select matInput  [(ngModel)]="complementosEdit[i].type" >
+                        <mat-option   value="industrializado">Industrializado</mat-option>
+                        <mat-option   value="preparado">Preparado</mat-option>
+                    </mat-select>
+        
+                    
+                    
+                </mat-form-field>   
+                <div class="acoesComplemento centralizado">
+                    <button class="deleteComplemento" (click)="deleteComplemento(complementosEdit[i]._id)" title="excluir complemento do grupo">
+                        <mat-icon  >delete</mat-icon>
+                    </button>
+                </div>    
+
+            </div>
+        
+        </div>  
+    </div>
+      <div class="botoes centralizado">
+        
+        <button type="button" class="btn botaoVermelho" (click)="save()" 
+        *ngIf="nomeGrupo">Salvar</button>
+        <button type="button" class="btn botaoVermelho btnDesativado" 
+        *ngIf="!nomeGrupo">Salvar</button>
+        <a (click)="delete()">Excluir grupo</a>
+    </div> 
+</div>

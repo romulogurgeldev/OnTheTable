@@ -1,0 +1,44 @@
+
+<div class="menu centralizado " [ngClass]="{'abrir': abrir==true, 'fechar': abrir==false}" >
+
+    <div class="conteudo" *ngIf="abrir"  [ngClass]="{'sumir': abrir==false, 'aparecer': abrir==true}">
+        <button class="botaoVermelho btnFechar" (click)="abrir=false">X</button>
+        <app-cad-promocao *ngIf="mode==1" [(promotions)]="promotions" ></app-cad-promocao>
+        <app-forms-edit-promocao *ngIf="mode==3" [(promotions)]="promotions" [(products)]="products"></app-forms-edit-promocao>
+        <app-lista-produtos-promocoes *ngIf="mode==2" [(products)]="products" ></app-lista-produtos-promocoes >
+    </div>
+    <div class="centralizado rodape">
+        <img src="./assets/logo.png" alt="" [ngClass]="{'crescer': abrir==false, 'diminuir': abrir==true}">
+
+    </div>
+
+</div>
+<div class="back">
+    <div class="pesquisa">
+
+    </div>
+    <div class="conteudoCardapio">
+        <div class="cabecalho">
+            <h1>Promoções</h1>
+            
+        </div>
+        
+        <div class="cardapio">
+            <div class="cabecalho centralizado">
+                <button class="btnBranco" (click)="abrir = true; mode=1">+ Adicionar Promoção</button>
+                <div class="input centralizado">
+
+                    <input type="text" (keyup)="itemPesquisa($event)" placeholder="Buscar promoção">
+                    <mat-icon>search</mat-icon>
+                </div>
+            </div>
+            
+            <div class="categorias">
+                
+                <app-lista-promocoes [(pesquisa)]="pesquisa" [promotions]="promotions" [(abrir)]="abrir" [(products)]="products" [(mode)]="mode"></app-lista-promocoes>
+            </div>
+
+        </div>
+
+    </div>
+</div>

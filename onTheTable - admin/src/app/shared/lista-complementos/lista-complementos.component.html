@@ -1,0 +1,39 @@
+<div class="editarComplemento" *ngIf="complementoEscolhido">
+    <app-forms-edit-complementos   [(complementos)]="complementoEscolhido"></app-forms-edit-complementos>
+</div>
+<div class="main">
+    <div class="complementos">
+        <div class="cadaComplemento" *ngFor="let item of complementos; let i=index" [ngClass]="{'expandir': abrir[i]==true, 'encolher': abrir[i]==false}">
+            <div class="tituloGrupo centralizado">
+                <div class="textoGrupo" (click)="verMenu[i]=false" >
+                    <h2>{{item.tipo}}</h2>
+                    <p>{{item.complementos.length}} opções</p>
+                </div>
+                <div class="botoesTitulo centralizado">
+                    <button (click)="abrir[i]=false" *ngIf="abrir[i]">                            
+                    
+                        <mat-icon  >expand_less</mat-icon>
+                    </button>
+                    <button (click)="abrir[i]=true" *ngIf="!abrir[i]" >                            
+                        <mat-icon  >expand_more</mat-icon>
+    
+                    </button>
+                    <button class="menu" (click)="verMenu[i]=true" >
+                        <mat-icon>menu</mat-icon>
+                    </button>
+                    <div class="opcoesMenu centralizado" *ngIf="verMenu[i]"  (mouseleave)="verMenu[i] = false" >
+                        <p (click)="complementoEscolhido=item">Editar</p>
+                        <p >Excluir</p>
+                    </div>
+                </div>
+            </div>
+            <div class="itens" *ngIf="abrir[i]">
+                <div class="cadaItem" *ngFor="let item2 of item.complementos" >
+                    <p *ngIf="abrir[i]">{{item2.name}}</p>
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

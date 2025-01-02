@@ -1,0 +1,86 @@
+<div class="back">
+    <h1 style="margin-left: 4%;">Pedidos Nº  {{pedido.orderNumber}} - {{pedido.table.name}}</h1>
+
+
+    <div class="blocoHorario centralizado">
+        <div class="bloco centralizado">
+            <p>Data pedido</p>
+            <h2>{{pedido.date | date: "dd/MM/yyyy"}}</h2>
+        </div>
+        <div class="bloco centralizado">
+            <p>Horário do pedido</p>
+            <h2>{{pedido.date | date: "HH:mm"}}</h2>
+        </div>
+    </div>
+    <div class="blocoHorario centralizado" *ngIf="pedido.status=='Pedido cancelado'" >
+        <div class="bloco centralizado">
+            <p>Horário cancelamento do pedido</p>
+            <h2>{{pedido.dateCancelado | date: "HH:mm"}}</h2>
+        </div>
+
+    </div>
+    <div class="blocoHorario centralizado" *ngIf="pedido.status!='Pedido cancelado'" >
+        <div class="bloco centralizado">
+            <p>Horário confirmação do pedido</p>
+            <h2>{{pedido.dateConfirma | date: "HH:mm"}}</h2>
+        </div>
+        <div class="bloco centralizado" *ngIf="pedido.status!='Pedido cancelado'" >
+            <p>Horário pedido pronto</p>
+            <h2>{{pedido.datePreparado | date: "HH:mm"}}</h2>
+        </div>
+    </div>
+    <div class="blocoHorario centralizado" *ngIf="pedido.status!='Pedido cancelado'" >
+        <div class="bloco centralizado">
+            <p>Horário pedido foi entregue</p>
+            <h2>{{pedido.dateEntregue | date: "HH:mm"}}</h2>
+        </div>
+        <div class="bloco centralizado" *ngIf="pedido.status!='Pedido cancelado'" >
+            <p>Horário pedido foi fechado</p>
+            <h2>{{pedido.dateFinalizado | date: "HH:mm"}}</h2>
+        </div>
+    </div>
+    <h2 style="margin-top: 8%; margin-left: 4%">Pratos pedidos</h2>
+    <div class="blocoPedidos">
+        
+        <div class="cadaPedido centralizado" *ngFor="let item of pedido.orderFood" >
+            <div class="pedidoTexto">
+                <h2>{{item.quantidade}} x {{item.nameFood}}</h2>
+                <h3 style="margin-top: 5%">{{item.quantidade * item.priceFood | currency:'BRL':true}}</h3>
+            </div>
+            
+            <div class="img backgroundImage" style="width: 50px; height: 50px; background-size: cover;" [ngStyle]="{'background-image': 'url(' +item.imageFood + ')'}">
+                        
+            </div>
+        </div>
+    </div>
+    <div class="blocoHorario centralizado" *ngIf="orderMesa" >
+        <div class="bloco centralizado">
+            <p>Valor da conta</p>
+            <h2>{{conta | currency:'BRL':true}}</h2>
+        </div>
+        <div class="bloco centralizado" *ngIf="orderMesa" >
+            <p>Gorjeta garçom</p>
+            <h2>10%</h2>
+        </div>
+    </div>
+    <div class="blocoHorario centralizado" *ngIf="orderMesa" >
+        <div class="bloco centralizado">
+            <p>Valor total</p>
+            <h2>{{conta+(conta*(10/100)) | currency:'BRL':true}}</h2>
+        </div>
+        <div class="bloco centralizado" *ngIf="orderMesa" >
+            <p>Valor pago</p>
+            <h2>{{orderMesa.amountPaid | currency:'BRL':true}}</h2>
+        </div>
+    </div>
+    <div class="blocoHorario centralizado" *ngIf="orderMesa" >
+        <div class="bloco centralizado">
+            <p>Desconto</p>
+            <h2>{{orderMesa.discountValue}}</h2>
+        </div>
+        <div class="bloco centralizado" *ngIf="orderMesa" >
+            <p>Forma de pagamento</p>
+            <h2>{{orderMesa.formPayment}}</h2>
+        </div>
+    </div>
+</div>

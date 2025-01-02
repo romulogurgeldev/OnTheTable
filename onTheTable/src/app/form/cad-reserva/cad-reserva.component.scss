@@ -1,0 +1,51 @@
+.back{
+    width: 100%;
+    
+    background-color: white;
+
+}
+
+.conteudo img{
+    width: 45%;
+}
+.conteudo .botoes{
+    margin-top: 5%;
+}
+.botoes button{
+    margin-top: 8%;
+    width: 250px;
+    height: 50px;
+}
+
+.data{
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 5%;
+}
+.data input{
+    width: 45%;
+    height: 50px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.156);
+    padding: 1%;
+    margin-top: 5%;
+}
+.sucesso{
+    width: 100%;
+    min-height: 100px;
+}
+.sucesso h1{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+}
+.sucesso p{
+    text-align: center;
+    margin-top: 15%;
+  
+    font-size: 15px;
+}
+.sucesso button {
+    margin-top: 20% !important;
+}

@@ -1,0 +1,120 @@
+<div class="centralizado" style="margin-top: 5%;">
+    
+    <mat-spinner *ngIf="carregando" ></mat-spinner>
+    <form  [formGroup]="form" class="forms " *ngIf="!carregando" >
+        <h1>Editar promoção</h1>
+        <mat-form-field appearance="outline"  style="width:100%">
+            <mat-label>Nome da promoção</mat-label>
+            <input matInput formControlName="nome">
+            
+            <mat-error *ngIf="form.controls['nome'].invalid && form.controls['nome'].touched" > - Campo obrigatório</mat-error>
+                    
+        </mat-form-field>   
+
+
+        <div class="checkBox centralizado" style="margin-top: -5px; margin-bottom: -10px; height: 50px; " >
+            <section class="example-section sectionBox centralizado">
+                <mat-checkbox class="example-margin" [checked]="semana[0]" (change)="selecionaSemana(0)">Seg.</mat-checkbox>
+                <mat-checkbox class="example-margin" [checked]="semana[1]" (change)="selecionaSemana(1)">Ter.</mat-checkbox>
+                <mat-checkbox class="example-margin" [checked]="semana[2]" (change)="selecionaSemana(2)">Qua.</mat-checkbox>
+                <mat-checkbox class="example-margin" [checked]="semana[3]" (change)="selecionaSemana(3)">Qui.</mat-checkbox>
+                <mat-checkbox class="example-margin" [checked]="semana[4]" (change)="selecionaSemana(4)">Sex.</mat-checkbox>
+                <mat-checkbox class="example-margin" [checked]="semana[5]" (change)="selecionaSemana(5)">Sáb.</mat-checkbox>
+                <mat-checkbox class="example-margin" [checked]="semana[6]" (change)="selecionaSemana(6)">Dom.</mat-checkbox>
+                
+            </section>
+        </div>
+        <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-label>Data Início</mat-label>
+            <input  matInput [matDatepicker]="picker"  formControlName="dataInicio" >
+            <mat-datepicker-toggle matSuffix [for]="picker" >
+                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            
+            <!-- <mat-error *ngIf="form.controls['dataNascimento'].invalid && form.controls['dataNascimento'].touched" > - Campo Obrigatório</mat-error> -->
+            
+            
+        </mat-form-field>   
+        <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-label>Data Fim</mat-label>
+            <input  matInput [matDatepicker]="picker1"  formControlName="dataFim">
+            <mat-datepicker-toggle matSuffix [for]="picker1" >
+                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+            
+            <!-- <mat-error *ngIf="form.controls['dataNascimento'].invalid && form.controls['dataNascimento'].touched" > - Campo Obrigatório</mat-error> -->
+            
+            
+        </mat-form-field>    
+
+        <mat-form-field appearance="outline" style="width: 100%;" >
+            <mat-label>Hora início</mat-label>
+            <mat-select matInput  formControlName="horaInicio">
+                <mat-option  *ngFor="let item of horas; let i = index;" [value]="item" >{{item}}</mat-option>
+            </mat-select>
+
+            <mat-error *ngIf="form.controls['horaInicio'].invalid && form.controls['horaInicio'].touched" > - Campo Obrigatório</mat-error>
+            
+            
+        </mat-form-field>    
+        <mat-form-field appearance="outline" style="width: 100%;" >
+            <mat-label>Hora encerra</mat-label>
+            <mat-select matInput  formControlName="horaFim">
+                <mat-option  *ngFor="let item of horas; let i = index;" [value]="item" >{{item}}</mat-option>
+            </mat-select>
+
+            <mat-error *ngIf="form.controls['horaFim'].invalid && form.controls['horaFim'].touched" > - Campo Obrigatório</mat-error>
+            
+            
+        </mat-form-field>     
+
+
+        <div class="duploInput centralizado tipoDesconto" style="margin-top: 5%;">
+            <mat-form-field appearance="outline" class="form-full-width" style='margin-left: 0%;'  >
+                <mat-label>Desconto</mat-label>
+                <mat-select matInput  formControlName="tipo" style="width: 160px">
+                    <mat-option  value="porcento" >desconto em porcentagem %</mat-option>
+                    <mat-option  value="reais" >desconto em reais R$</mat-option>
+                </mat-select>
+
+                <mat-error *ngIf="form.controls['tipo'].invalid && form.controls['tipo'].touched" > - Campo Obrigatório</mat-error>
+                
+                
+            </mat-form-field>    
+            <mat-form-field appearance="outline"  class="form-full-width" style="margin-left: 12%;">
+                <mat-label>Valor do desconto</mat-label>
+                <input type="number" matInput formControlName="valorDesconto" type="number">
+                
+
+                        
+            </mat-form-field>  
+
+
+        </div>
+        <div class="checkBox centralizado" style="margin-top: -5%; margin-bottom: -40%;  height:35px;" >
+            <section class="example-section sectionBox centralizado">
+                <mat-checkbox class="example-margin"  formControlName="emDobro">Pague 1 e leve 2</mat-checkbox>
+
+                
+            </section>
+        </div>
+    </form>
+
+      <div class="botoes botoesSalvar centralizado">
+        
+        <button type="button" class="btn botaoVermelho" (click)="openConfirmBox('Os novos dados serão salvos, não é possível reverter essa ação!', 'save')" 
+        *ngIf="form.controls['nome'].valid"
+            >Salvar</button>
+        <button type="button" class="btn botaoVermelho btnDesativado" 
+        *ngIf="form.controls['nome'].invalid" 
+            >Salvar</button>
+            <a (click)="openConfirmBox('Este item será apagado e todos os seus dados, não é possível reverter essa ação!', 'delete')" >Excluir promoção</a>
+    </div> 
+</div>
+
+
+
+
+

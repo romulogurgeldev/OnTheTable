@@ -1,0 +1,115 @@
+<div class="menu centralizado " [ngClass]="{'abrir': abrir==true, 'fechar': abrir==false}" >
+    <div class="conteudo" *ngIf="abrir"  [ngClass]="{'sumir': abrir==false, 'aparecer': abrir==true}">
+        <button class="btnFechar botaoVermelho" (click)=" abrir=false">X</button>
+        <div style="width: 100%; margin-top: 10%;">
+            <app-historico-mais-vendidos-completo *ngIf="mode == 1" ></app-historico-mais-vendidos-completo>
+            <app-historico-mesas-vendas-completo *ngIf="mode == 2" ></app-historico-mesas-vendas-completo>
+            <app-historico-pedidos-completo *ngIf="mode == 3" [(pedido)]="pedido" ></app-historico-pedidos-completo>
+        </div>
+
+    </div>
+    <div class="centralizado rodape">
+        <img src="./assets/logo.png" alt="" [ngClass]="{'crescer': abrir==false, 'diminuir': abrir==true}">
+
+    </div>
+
+</div>
+
+<div class="back">
+    <div class="pesquisa">
+
+    </div>
+    <div class="cabecalho">
+        <h1>Histórico</h1>
+        
+    </div>
+    <div class="conteudoHistorico centralizado">
+        <div style="margin-right: 11%;">
+            <app-historico-mais-vendidos [(abrir)]="abrir" [(mode)]="mode"></app-historico-mais-vendidos>
+
+        </div>
+        <div style="margin-bottom: 5%;"> 
+            <app-historico-mesas-vendas [(abrir)]="abrir" [(mode)]="mode"></app-historico-mesas-vendas>
+        </div>
+        <app-historico-pedidos [(abrir)]="abrir" [(mode)]="mode" [(pedido)]="pedido" ></app-historico-pedidos>
+        <!-- <div class="cadaHistorico centralizado">
+            <h4>Valor </h4>
+            <div class="botoes centralizado">
+                <button class="botaoVermelho">Dia</button>
+                <button class="btnBranco">Semana</button>
+                <button class="btnBranco">Mês</button>
+
+            </div>
+            <div class="infoHistorico centralizado">
+                <div class="botaoCima centralizado">
+                    <button><</button>
+                    16 junho
+                    <button>></button>
+                </div>
+                <div class="itensHistorico centralizado">
+                    <p>1. Pizza</p>
+                    <p>2. Suco</p>
+                    <p>3. Pastel</p>
+                    <p>4. Sorvete</p>
+                    <p>5. Feijoada</p>
+                </div>
+                <div class="maisDetalhe centralizado">
+                    <a (click)="abrir=true">Mais detalhes</a>
+                </div>
+            </div>
+        </div>
+        <div class="cadaHistorico centralizado">
+            <h4>Valor </h4>
+            <div class="botoes centralizado">
+                <button class="botaoVermelho">Dia</button>
+                <button class="btnBranco">Semana</button>
+                <button class="btnBranco">Mês</button>
+
+            </div>
+            <div class="infoHistorico centralizado">
+                <div class="botaoCima centralizado">
+                    <button><</button>
+                    16 junho
+                    <button>></button>
+                </div>
+                <div class="itensHistorico centralizado">
+                    <p>1. Pizza</p>
+                    <p>2. Suco</p>
+                    <p>3. Pastel</p>
+                    <p>4. Sorvete</p>
+                    <p>5. Feijoada</p>
+                </div>
+                <div class="maisDetalhe centralizado">
+                    <a (click)="abrir=true">Mais detalhes</a>
+                </div>
+            </div>
+        </div>
+        <div class="cadaHistorico centralizado">
+            <h4>Valor </h4>
+            <div class="botoes centralizado">
+                <button class="botaoVermelho">Dia</button>
+                <button class="btnBranco">Semana</button>
+                <button class="btnBranco">Mês</button>
+
+            </div>
+            <div class="infoHistorico centralizado">
+                <div class="botaoCima centralizado">
+                    <button><</button>
+                    16 junho
+                    <button>></button>
+                </div>
+                <div class="itensHistorico centralizado">
+                    <p>1. Pizza</p>
+                    <p>2. Suco</p>
+                    <p>3. Pastel</p>
+                    <p>4. Sorvete</p>
+                    <p>5. Feijoada</p>
+                </div>
+                <div class="maisDetalhe centralizado">
+                    <a (click)="abrir=true">Mais detalhes</a>
+                </div>
+            </div>
+        </div> -->
+
+    </div>
+</div>

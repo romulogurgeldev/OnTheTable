@@ -1,0 +1,56 @@
+<app-alert-erro [(erro)]="erro" *ngIf="erro" ></app-alert-erro>
+<div class="back">
+    <form  [formGroup]="form" class="forms centralizado">  
+        <mat-form-field appearance="outline">
+            <mat-label>Nome Completo*</mat-label>
+
+            <input matInput   formControlName="nome">
+            <mat-error *ngIf="form.controls['nome'].invalid && form.controls['nome'].touched" > - Campo obrigatório</mat-error> 
+
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Email*</mat-label>
+
+            <input matInput   formControlName="email">
+            <mat-error *ngIf="form.controls['email'].invalid && form.controls['email'].touched" > - Campo obrigatório</mat-error> 
+
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Telefone*</mat-label>
+
+            <input matInput   formControlName="telefone" mask="(00) 0 0000-0000000" [validation]="false">
+            <mat-error *ngIf="form.controls['telefone'].invalid && form.controls['telefone'].touched" > - Campo obrigatório</mat-error> 
+
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Senha*</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" >
+            <mat-error *ngIf="form.controls['password'].invalid && form.controls['password'].touched" >- Digite uma senha válida (mínimo 6 dígitos)</mat-error>
+
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Confirme a senha</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password2" (keyup)="compara()">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="!statusSenha">{{statusMsg}}</mat-error>
+
+        </mat-form-field>
+    </form>
+    <div class="botoes centralizado">
+
+
+        <button type="button" class="btn botaoVermelho" (click)="save()" 
+        *ngIf="form.controls['nome'].valid && form.controls['telefone'].valid && form.controls['password'].valid && form.controls['email'].valid  && (form.controls['password'].value === form.controls['password2'].value)"
+            >Próximo</button>
+        <button type="button" class="btn botaoVermelho btnDesativado" 
+        *ngIf="form.controls['nome'].invalid  || form.controls['telefone'].invalid  || form.controls['password'].invalid || form.controls['email'].invalid || (form.controls['password'].value != form.controls['password2'].value)" 
+            >Próximo</button>
+        <!-- <a class="centralizado" href="#/login" *ngIf="!mode" >Cancelar</a> -->
+    </div> 
+</div>
+

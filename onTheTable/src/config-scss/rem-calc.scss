@@ -1,0 +1,9 @@
+@function rem-calc($size){
+    $value: $size / 16;
+    @return #{$value}rem;
+}
+
+@function topInput($size, $fontSize){
+    $value: ($size/2)-($fontSize/2);
+    @return #{$value}px;
+}

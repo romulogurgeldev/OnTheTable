@@ -1,0 +1,46 @@
+<div class="conteudo centralizado">
+    <img [src]="produto.image.location" alt="">
+    <div class="cabecalho centralizado">
+        <div class="titulo centralizado">
+            <h2>{{categoria}}</h2>
+            <h1>{{produto.name}} </h1>
+
+        </div>
+
+        <mat-slide-toggle [checked]="produto.available" (change)="disponibilidade($event)">
+            <p *ngIf="produto.available" >Disponível</p>
+            <p *ngIf="!produto.available">Indisponível</p>
+        </mat-slide-toggle>
+    </div>
+    <div class="descricao centralizado">
+        <h1>Descrição:</h1>
+        <p>{{produto.description}}</p>
+
+    </div>
+    <div class="infoProduto centralizado">
+        <div class="tamanhoPrato ">
+            <h2>Tamanho</h2>
+            <p *ngIf="produto.type=='1'" >Prato Individual</p>
+            <p *ngIf="produto.type!='1'" >Prato para: {{produto.type}}</p>
+        </div>
+
+        <div class="tempoPreparo ">
+            <h2>Preparo:</h2>
+            <p> {{produto.preparationTime}} minutos</p>
+        </div>
+
+
+
+    </div>
+    <div class="preco">
+        <h2>Preço:</h2>
+        <small>{{produto.price | currency:'BRL':true:'1.2-2'}}</small>
+
+    </div>
+    <button class="botaoVermelho" style="margin-top: 2%;" (click)="addComplemento=true">Adicionar complementos</button>
+    <div class="addComplemento" *ngIf="addComplemento" >
+        <app-forms-cad-complemento [(comida)]="produto" [(add)]="addComplemento"></app-forms-cad-complemento>
+    </div>
+    <app-lista-complementos [(produto)]="produto._id" *ngIf="produto.complementos" ></app-lista-complementos>
+
+</div>

@@ -1,0 +1,20 @@
+<app-abre-produto *ngIf="comida" [(comida)]="comida" [(idMesa)]="idMesa"></app-abre-produto>
+<div class="back"  >
+    Resultados para {{pesquisa}}
+
+    <div class="cadaProduto centralizado" *ngFor="let item of produtos | search: pesquisa">
+        <div class="texto centralizado" (click)="comida=item"> 
+            <div class="titulo">
+                <h4>{{item.name}}</h4>
+                <p>{{item.description}}</p>
+            </div>
+            <div class="preco">
+                <p>
+                {{item.price | currency:'BRL':true}}
+
+                </p>
+            </div>
+        </div>
+        <div class="img backgroundImage" style="background-image: url({{item.image.location}})"></div>
+    </div>
+</div>
